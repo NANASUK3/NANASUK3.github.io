@@ -1,0 +1,26 @@
+# main links links
+
+main:
+  - title: "News"
+    url: "/#news"
+
+  - title: "Experience"
+    url: "/#experience"
+
+  - title: "Pub"
+    url: "/#publications"
+
+  - title: "Project"
+    url: "/#projects"
+
+  - title: "Blog"
+    url: "/#blog"
+
+  - title: "Awards"
+    url: "/#awards"
+    
+  - title: "CV-En"
+    url: "/files/weidongtang_resume.pdf"
+
+  # - title: "CV-Cn"
+  #   url: "/files/chinese_resume.pdf"
