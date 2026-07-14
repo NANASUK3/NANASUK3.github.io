@@ -26,7 +26,6 @@ breadcrumbs              : false
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled"
-talkmap_link             : false
 
 comments:
   provider               :
@@ -205,7 +204,7 @@ whitelist:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
-  - jemoji
+  - jekyll-redirect-from
 
 category_archive:
   type: liquid

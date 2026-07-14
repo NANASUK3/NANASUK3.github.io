@@ -22,7 +22,6 @@ Example：[wd7ang.github.io](https://wd7ang.github.io).
 ├── _config.yml              # Main site configuration and author metadata
 ├── _data/
 │   ├── navigation.yml       # Header navigation links
-│   ├── authors.yml          # Optional author data
 │   └── ui-text.yml          # Theme UI text
 ├── _includes/               # Reusable Liquid partials
 ├── _layouts/                # Page layout templates
@@ -31,7 +30,6 @@ Example：[wd7ang.github.io](https://wd7ang.github.io).
 ├── assets/                  # CSS, JavaScript, and theme assets
 ├── images/                  # Profile, logos, publication images, and other media
 ├── markdown_generator/      # Helper scripts/templates for generating markdown content
-├── talkmap/                 # Talk map page assets
 ├── Gemfile                  # Ruby/Jekyll dependencies
 ├── package.json             # JavaScript build dependencies and scripts
 └── LICENSE
