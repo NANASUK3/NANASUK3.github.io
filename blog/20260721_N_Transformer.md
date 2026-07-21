@@ -1,4 +1,9 @@
-# From Text to Transformer: A Complete Pipeline from BPE to Language Modeling
+---
+layout: single
+title: "From Text to Transformer: A Complete Pipeline from BPE to Language Modeling"
+date: 2026-07-21
+permalink: /blog/2026/07/21/N-Transformer/
+---
 
 ## 0. Introduction
 本篇博客受CS336启发，将从最常见的自然语言文本出发，讲解语言模型（Language Model）处理自然语言的完整流程。在每一章节的开头，我们将以核心问题为导向，逐步讲解 Transformer 架构的实现细节。
@@ -54,7 +59,7 @@ PAT = r"""'(?:[sdmt]|ll|ve|re)| ?\p{L}+| ?\p{N}+| ?[^\s\p{L}\p{N}]+|\s+(?!\S)|\s
 
 每次合并所产生的子词（Subword）都会被加入词表中，并记录下相应的合并规则（Merge Rules，如 `('e', 's') -> 'es'`）。最终，算法将构建出一个包含丰富子词的词汇表，并建立离散整数 ID 与 Token 之间的映射关系，最终得到词表示例如下：
 
-> [!NOTE]
+> **Note**
 >
 > {0: b'\x00', 1: b'\x01', 2: b'\x02', 3: b'\x03', 4: b'\x04', 5: b'\x05', 6: b'\x06', 7: b'\x07', 8: b'\x08', 9: b'\t', 10: b'\n', 11: b'\x0b', 12: b'\x0c', 13: b'\r', 14: b'\x0e', 15: b'\x0f', 16: b'\x10', 17: b'\x11', 18: b'\x12', 19: b'\x13', 20: b'\x14', ..., 254: b'\xfe', 255: b'\xff', 256: b'<|endoftext|>', 257: b' t', 258: b'he', 259: b' a', 260: b' s',..., 538: b' bridge', 539: b' proud', 540: b' tall'
 > }
@@ -236,7 +241,6 @@ x_{l+1} &= x_l' + \text{FFN}(\text{RMSNorm}(x_l'))
 $$
 该结构有效缓解了深层网络中的梯度衰减问题，并确保了信号在跨层传递过程中的幅值稳定性。
 
-![[figures/QQ_1783406566611.png]]
 ### 5.2 Self-Attention
 
 自注意力机制(Self-Attention)是 Transformer 架构的核心 insight 之一，Self-Attention 通过计算序列内所有 token 的关联权重，实现全局上下文的动态建模。
@@ -341,7 +345,6 @@ class MultiHeadAttention(nn.Module):
 ```
 
 ### 5.3 Pre-Normalization
-![[figures/QQ_1783406600457.png]]
 在 Transformer Block 中，Pre-Normalization 指将 Norm 层放置在残差连接之前。在现代语言模型中，通常采用 RMSNorm (Root Mean Square Layer Normalization) 的方式进行归一化，RMSNorm 仅基于均方根进行缩放，相较于 LayerNorm，省去了计算均值的步骤。
 $$
  \text{RMSNorm}(x) = \frac{x}{\sqrt{\text{RMS}(x) + \epsilon}} \odot \gamma, \quad \text{其中 } \text{RMS}(x) = \sqrt{\frac{1}{d}\sum_{i=1}^{d} x_i^2}
