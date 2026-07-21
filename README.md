@@ -1,6 +1,6 @@
 ﻿# WowPage
 
-WowPage is a clean, responsive academic homepage built with Jekyll and adapted from the Academic Pages theme. It is designed for students, researchers, and engineers who want a personal website for introducing their profile, publications, projects, experience, awards, talks, services, and CV.
+WowPage is a clean, responsive academic homepage built with Jekyll and adapted from the Academic Pages theme. It is designed for students, researchers, and engineers who want a personal website for introducing their profile, publications, projects, experience, awards, talks, and services.
 
 Template is originated from [selen-suyue.github.io](https://selen-suyue.github.io/).
 Example：[wd7ang.github.io](https://wd7ang.github.io).
@@ -10,8 +10,6 @@ Example：[wd7ang.github.io](https://wd7ang.github.io).
 - Single-page navigation for news, experience, publications, projects, awards, services, and talks
 - Custom homepage styling through `assets/css/home.css`
 - Publication filtering on the homepage
-- CV link support through the navigation menu
-- Social profile fields managed from `_config.yml`
 - GitHub Pages compatible Jekyll setup
 - Sitemap and feed support through Jekyll plugins
 
@@ -129,8 +127,6 @@ main:
     url: "/#experience"
   - title: "Pub"
     url: "/#publications"
-  - title: "CV-En"
-    url: "/files/weidongtang_resume.pdf"
 ```
 
 ### Images and Media
@@ -194,7 +190,6 @@ Before publishing, consider updating:
 - Avatar and profile images in `images/`
 - Navigation links in `_data/navigation.yml`
 - Homepage sections in `_pages/about.md`
-- CV file and CV link
 - Publication metadata, project descriptions, and external links
 - Analytics or site verification settings, if needed
 
