@@ -1,7 +1,7 @@
 locale                   : "en-US"
 title                    : "Jingpeng Yang"
 title_separator          : "-"
-name                     : "Jingpeng Yang 杨靖鹏"
+name                     : "Jingpeng Yang"
 description              : &description "The academic homepage."
 url                      : ""
 baseurl                  : ""
@@ -9,14 +9,14 @@ repository               : ""
 
 author:
   avatar           : "avatar.png"
-  name             : "Jingpeng Yang"
+  name             : "Jingpeng Yang 杨靖鹏"
   pronouns         : 
-  bio              : "Computer Vision & Embodied AI."
+  bio              : "Embodied AI & VLM Inference."
   location         : "Hefei, China"
   employer         : 
-  email            : "jingpengyang@ustc.edu.cn"
+  email            : "yangjingpeng@ustc.edu.cn"
 
-  github           : stanic11
+  github           : flyflying
   kaggle           :
   stackoverflow    :
   linkedin         :
