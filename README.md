@@ -23,11 +23,19 @@ Example：[wd7ang.github.io](https://wd7ang.github.io).
 │   └── ui-text.yml          # Theme UI text
 ├── _includes/               # Reusable Liquid partials
 ├── _layouts/                # Page layout templates
-├── _pages/                  # Main site pages, including the homepage
+├── _pages/                  # All site pages (unified page management)
+│   ├── about.md             # Homepage
+│   ├── 404.md               # Error page
+│   ├── sitemap.md           # Sitemap
+│   ├── category-archive.html
+│   ├── tag-archive.html
+│   ├── year-archive.html
+│   └── blog/                # Blog section
+│       ├── index.md         # Blog listing page
+│       └── 2026-07-21-N-Transformer.md  # Blog articles (YYYY-MM-DD-title.md)
 ├── _sass/                   # Theme Sass source files
 ├── assets/                  # CSS, JavaScript, and theme assets
 ├── images/                  # Profile, logos, publication images, and other media
-├── markdown_generator/      # Helper scripts/templates for generating markdown content
 ├── Gemfile                  # Ruby/Jekyll dependencies
 ├── package.json             # JavaScript build dependencies and scripts
 └── LICENSE
