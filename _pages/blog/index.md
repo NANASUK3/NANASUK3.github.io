@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Blog"
+title: "BLOG"
 permalink: /blog/
 author_profile: true
 stylesheets:
