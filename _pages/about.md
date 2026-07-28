@@ -117,37 +117,22 @@ Projects
 
 Blog
 --------
-<div class="blog-grid">
-  <a href="/blog/2026/05/20/first-research-blog/" class="blog-card">
-    <div class="blog-card-image">
-      <img src="images/blog1.jpg" alt="Blog 1" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)';">
-    </div>
-    <div class="blog-card-content">
-      <span class="blog-card-date">2026-05-20</span>
-      <h3 class="blog-card-title">My First Research Blog Post</h3>
-      <p class="blog-card-excerpt">Sharing my thoughts on the latest developments in computer vision and deep learning...</p>
-    </div>
-  </a>
-  <a href="/blog/2026/05/15/graduate-tips/" class="blog-card">
-    <div class="blog-card-image">
-      <img src="images/blog2.jpg" alt="Blog 2" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';">
-    </div>
-    <div class="blog-card-content">
-      <span class="blog-card-date">2026-05-15</span>
-      <h3 class="blog-card-title">Tips for Graduate Students</h3>
-      <p class="blog-card-excerpt">Some lessons learned during my first year of graduate school and research...</p>
-    </div>
-  </a>
-  <a href="/blog/2026/05/01/vit-notes/" class="blog-card">
-    <div class="blog-card-image">
-      <img src="images/blog3.jpg" alt="Blog 3" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)';">
-    </div>
-    <div class="blog-card-content">
-      <span class="blog-card-date">2026-05-01</span>
-      <h3 class="blog-card-title">Paper Reading Notes: Vision Transformers</h3>
-      <p class="blog-card-excerpt">A summary of recent papers on vision transformers and their applications...</p>
-    </div>
-  </a>
+<div class="blog-post-list">
+
+  <article class="blog-post-item">
+    <a href="/blog/2026/07/21/N-Transformer/" class="blog-post-link">
+      <h2 class="blog-post-title">From Text to Transformer: A Complete Pipeline from BPE to Language Modeling</h2>
+      <p class="blog-post-excerpt">This post walks through the complete pipeline of how language models process natural language — from BPE tokenization and token embeddings to RoPE positional encoding, multi-head self-attention, RMSNorm, SwiGLU, and cross-entropy loss with AdamW optimization. Includes PyTorch implementations.</p>
+      <div class="blog-post-meta">
+        <span>Jul 21, 2026</span>
+        <span class="meta-sep">|</span>
+        <span>~25 min read</span>
+        <span class="meta-sep">|</span>
+        <span>Jingpeng Yang</span>
+      </div>
+    </a>
+  </article>
+
 </div>
 
 <div class="blog-read-more">
