@@ -117,37 +117,47 @@ Projects
 
 Blog
 --------
+{% assign blog_posts = site.pages | where: "layout", "single" | sort: "date" | reverse %}
+{% assign blog_count = 0 %}
+{% for post in blog_posts %}
+  {% if post.permalink contains "/blog/" and post.permalink != "/blog/" %}
+    {% assign blog_count = blog_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
 <div class="blog-grid">
-  <a href="/blog/2026/05/20/first-research-blog/" class="blog-card">
-    <div class="blog-card-image">
-      <img src="images/blog1.jpg" alt="Blog 1" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)';">
-    </div>
-    <div class="blog-card-content">
-      <span class="blog-card-date">2026-05-20</span>
-      <h3 class="blog-card-title">My First Research Blog Post</h3>
-      <p class="blog-card-excerpt">Sharing my thoughts on the latest developments in computer vision and deep learning...</p>
-    </div>
-  </a>
-  <a href="/blog/2026/05/15/graduate-tips/" class="blog-card">
-    <div class="blog-card-image">
-      <img src="images/blog2.jpg" alt="Blog 2" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #f093fb 0%, #f5576c 100%)';">
-    </div>
-    <div class="blog-card-content">
-      <span class="blog-card-date">2026-05-15</span>
-      <h3 class="blog-card-title">Tips for Graduate Students</h3>
-      <p class="blog-card-excerpt">Some lessons learned during my first year of graduate school and research...</p>
-    </div>
-  </a>
-  <a href="/blog/2026/05/01/vit-notes/" class="blog-card">
-    <div class="blog-card-image">
-      <img src="images/blog3.jpg" alt="Blog 3" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)';">
-    </div>
-    <div class="blog-card-content">
-      <span class="blog-card-date">2026-05-01</span>
-      <h3 class="blog-card-title">Paper Reading Notes: Vision Transformers</h3>
-      <p class="blog-card-excerpt">A summary of recent papers on vision transformers and their applications...</p>
-    </div>
-  </a>
+  {% for post in blog_posts limit: 3 %}
+    {% if post.permalink contains "/blog/" and post.permalink != "/blog/" %}
+      {% assign gradient_colors = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)|linear-gradient(135deg, #f093fb 0%, #f5576c 100%)|linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" %}
+      {% assign gradient_list = gradient_colors | split: "|" %}
+      {% assign gradient_idx = forloop.index0 | modulo: 3 %}
+      <a href="{{ post.permalink }}" class="blog-card">
+        <div class="blog-card-image" style="background: {{ gradient_list[gradient_idx] }};">
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+          <h3 class="blog-card-title">{{ post.title }}</h3>
+          <p class="blog-card-excerpt">{{ post.content | strip_html | truncatewords: 25 }}</p>
+        </div>
+      </a>
+    {% endif %}
+  {% endfor %}
+  {% if blog_count < 3 %}
+    {% assign fill_needed = 3 | minus: blog_count %}
+    {% for i in (1..fill_needed) %}
+      {% assign gradient_colors = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)|linear-gradient(135deg, #f093fb 0%, #f5576c 100%)|linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" %}
+      {% assign gradient_list = gradient_colors | split: "|" %}
+      {% assign gradient_idx = blog_count | plus: i | minus: 1 | modulo: 3 %}
+      <a href="/blog/2026/07/21/N-Transformer/" class="blog-card">
+        <div class="blog-card-image" style="background: {{ gradient_list[gradient_idx] }};">
+        </div>
+        <div class="blog-card-content">
+          <span class="blog-card-date">2026-07-21</span>
+          <h3 class="blog-card-title">From Text to Transformer: A Complete Pipeline from BPE to Language Modeling</h3>
+          <p class="blog-card-excerpt">本篇博客受CS336启发，将从最常见的自然语言文本出发，讲解语言模型（Language Model）处理自然语言的完整流程...</p>
+        </div>
+      </a>
+    {% endfor %}
+  {% endif %}
 </div>
 
 <div class="blog-read-more">
