@@ -1,43 +1,70 @@
-﻿# WowPage
+# flyflyang.github.io
 
-WowPage is a clean, responsive academic homepage built with Jekyll and adapted from the Academic Pages theme. It is designed for students, researchers, and engineers who want a personal website for introducing their profile, publications, projects, experience, awards, talks, and services.
+Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on GitHub Pages.
 
-Template is originated from [selen-suyue.github.io](https://selen-suyue.github.io/).
-Example：[wd7ang.github.io](https://wd7ang.github.io).
 ## Features
 
-- Academic-style homepage with author profile sidebar
-- Single-page navigation for news, experience, publications, projects, awards, services, and talks
-- Custom homepage styling through `assets/css/home.css`
-- Publication filtering on the homepage
-- GitHub Pages compatible Jekyll setup
-- Sitemap and feed support through Jekyll plugins
+- Single-page homepage with sections: News, Experience, Publications, Projects, Blog, Awards
+- Author profile sidebar with avatar, bio, and social links
+- Blog system with a card-style listing page and MathJax-rendered articles
+- Homepage blog section auto-populates the 3 latest posts via Liquid
+- MathJax 3 support for LaTeX math (`$...$` inline, `$$...$$` display)
+- Font Awesome 6 icons via CDN
+- Responsive design with mobile-friendly layout adjustments
+- Sitemap, Atom feed, and SEO support via Jekyll plugins
+
+## Tech Stack
+
+- **Jekyll** — static site generator
+- **Minimal Mistakes** theme (heavily customized)
+- **kramdown** with GFM input for Markdown processing
+- **MathJax 3** for math rendering
+- **Sass/SCSS** for styling
+- **jQuery + plugins** for interactive features (greedy navigation, magnific popup, etc.)
 
 ## Project Structure
 
 ```text
 .
-├── _config.yml              # Main site configuration and author metadata
+├── _config.yml              # Site configuration and author metadata
 ├── _data/
 │   ├── navigation.yml       # Header navigation links
-│   └── ui-text.yml          # Theme UI text
+│   └── ui-text.yml          # Theme UI text strings
 ├── _includes/               # Reusable Liquid partials
+│   ├── head/custom.html     # Custom <head> snippets (FA, MathJax, favicon)
+│   ├── footer/custom.html   # Custom footer (sitemap link)
+│   └── ...                  # Other theme includes
 ├── _layouts/                # Page layout templates
-├── _pages/                  # All site pages (unified page management)
-│   ├── about.md             # Homepage
+│   ├── default.html         # Base HTML wrapper
+│   ├── single.html          # Single page/article layout
+│   ├── archive.html         # Archive listing layout
+│   └── compress.html        # HTML compression wrapper
+├── _pages/                  # All site pages (unified management)
+│   ├── about.md             # Homepage (single-page with all sections)
 │   ├── 404.md               # Error page
-│   ├── sitemap.md           # Sitemap
+│   ├── sitemap.md           # Sitemap page
 │   ├── category-archive.html
 │   ├── tag-archive.html
 │   ├── year-archive.html
 │   └── blog/                # Blog section
 │       ├── index.md         # Blog listing page
-│       └── 2026-07-21-N-Transformer.md  # Blog articles (YYYY-MM-DD-title.md)
+│       └── 2026-07-21-N-Transformer.md  # Blog articles
 ├── _sass/                   # Theme Sass source files
-├── assets/                  # CSS, JavaScript, and theme assets
-├── images/                  # Profile, logos, publication images, and other media
+│   ├── vendor/              # Vendor libraries (breakpoint, susy, magnific-popup)
+│   └── _*.scss              # Theme component styles
+├── assets/
+│   ├── css/
+│   │   ├── home.css         # Custom homepage styles
+│   │   ├── main.scss        # Main stylesheet entry (imports theme + custom)
+│   │   └── academicons.css  # Academic icons
+│   ├── js/
+│   │   ├── main.min.js      # Built JS (jQuery + plugins, run `npm run build:js`)
+│   │   ├── show_publications.js
+│   │   └── pub_media_rotator.js
+│   └── fonts/               # Academicons font files
+├── images/                  # Avatar, logos, publication images, favicon
 ├── Gemfile                  # Ruby/Jekyll dependencies
-├── package.json             # JavaScript build dependencies and scripts
+├── package.json             # JS build dependencies and scripts
 └── LICENSE
 ```
 
@@ -45,87 +72,61 @@ Example：[wd7ang.github.io](https://wd7ang.github.io).
 
 ### Prerequisites
 
-Install the following tools before running the site locally:
-
 - Ruby and Bundler
 - Node.js and npm
 - Git
 
 ### Installation
 
-Clone the repository and install dependencies:
-
 ```bash
-git clone <your-repository-url>
-cd WowPage
+git clone https://github.com/flyflyang/flyflyang.github.io.git
+cd flyflyang.github.io
 bundle install
 npm install
 ```
 
 ### Run Locally
 
-Start the Jekyll development server:
-
 ```bash
 bundle exec jekyll serve
 ```
 
-Then open the local URL shown in the terminal, usually:
+Open `http://127.0.0.1:4000/` in your browser.
 
-```text
-http://127.0.0.1:4000/
-```
-
-### Build the Site
-
-Generate the static site:
+### Build
 
 ```bash
 bundle exec jekyll build
 ```
 
-The generated files will be written to `_site/`.
+Output is written to `_site/`.
 
 ## Customization
 
-### Basic Site Information
+### Site Configuration
 
-Edit `_config.yml` to update the site title, description, URL, author name, biography, affiliation, location, email, avatar, and social links.
-
-Important fields include:
+Edit `_config.yml` to update:
 
 ```yaml
-title: "WowPage"
+title: "Your Name"
 name: "Your Name"
-description: "A clean academic homepage template."
+description: "Your description."
 author:
-  avatar: "1.png"
+  avatar: "avatar.png"
   name: "Your Name"
-  bio: "Student and researcher."
+  bio: "Your bio."
   location: "City, Country"
-  employer: "Institution or Company"
-  email: "name@example.com"
+  email: "you@example.com"
+  github: yourusername
 ```
 
-### Homepage Content
+### Homepage
 
-The homepage content is mainly maintained in:
-
-```text
-_pages/about.md
-```
-
-Update this file to edit sections such as news, experience, publications, projects, awards, services, talks, and the introductory text.
+The homepage is a single-page layout in `_pages/about.md`. Edit it to update all sections: News, Experience, Publications, Projects, Blog, Awards. The Blog section auto-populates the 3 latest posts from `_pages/blog/`.
 
 ### Navigation
 
-Edit the navigation menu in:
-
-```text
-_data/navigation.yml
-```
-
-For example:
+Edit `_data/navigation.yml`:
 
 ```yaml
 main:
@@ -135,31 +136,38 @@ main:
     url: "/#experience"
   - title: "Pub"
     url: "/#publications"
+  - title: "Blog"
+    url: "/#blog"
+  - title: "Awards"
+    url: "/#awards"
 ```
 
-### Images and Media
+### Adding Blog Posts
 
-Place profile photos, organization logos, project images, publication thumbnails, and other visual assets in:
+1. Create a new file in `_pages/blog/` named `YYYY-MM-DD-title.md`
+2. Add front matter:
 
-```text
-images/
+```yaml
+---
+layout: single
+title: "Your Post Title"
+date: YYYY-MM-DD
+permalink: /blog/YYYY/MM/DD/title/
+---
 ```
 
-Reference them from pages using paths such as:
+3. Write your content in Markdown. MathJax is enabled by default.
+4. The blog listing page (`_pages/blog/index.md`) and homepage blog section update automatically.
 
-```html
-<img src="images/example.png" alt="Example image">
-```
+### Styling
 
-### JavaScript and CSS
+- Homepage custom styles: `assets/css/home.css`
+- Main theme styles: `assets/css/main.scss` (imports Sass partials from `_sass/`)
+- Custom `<head>` snippets (favicon, CDN links, MathJax config): `_includes/head/custom.html`
 
-Custom homepage styles can be edited in:
+### JavaScript
 
-```text
-assets/css/home.css
-```
-
-JavaScript assets are built with npm:
+Rebuild the bundled JS after modifying `assets/js/_main.js` or any plugin:
 
 ```bash
 npm run build:js
@@ -167,44 +175,22 @@ npm run build:js
 
 ## Deployment
 
-This site is compatible with GitHub Pages.
+This site is deployed via GitHub Pages.
 
-A typical deployment workflow is:
-
-1. Push the repository to GitHub.
-2. Open the repository settings on GitHub.
-3. Enable GitHub Pages.
-4. Select the branch and folder used for deployment.
-5. Update `url`, `baseurl`, and `repository` in `_config.yml` if needed.
-
-For a user or organization site, the repository is commonly named:
-
-```text
-<username>.github.io
-```
-
-For a project site, set `baseurl` to the repository name:
+1. Push to the `gh-pages` or `main` branch of your `username.github.io` repository.
+2. In GitHub repository settings, enable Pages and select the branch.
+3. Set `url` in `_config.yml` if using a custom domain:
 
 ```yaml
-url: "https://<username>.github.io"
-baseurl: "/<repository-name>"
+url: "https://yourdomain.com"
 ```
-
-## Content Checklist
-
-Before publishing, consider updating:
-
-- Author name, bio, institution, location, and email in `_config.yml`
-- Avatar and profile images in `images/`
-- Navigation links in `_data/navigation.yml`
-- Homepage sections in `_pages/about.md`
-- Publication metadata, project descriptions, and external links
-- Analytics or site verification settings, if needed
 
 ## License
 
-This project is released under the MIT License. See `LICENSE` for details.
+MIT License. See `LICENSE` for details.
 
 ## Acknowledgements
 
-We appreciate your use of this template and look forward to your contributions. Contributors are welcome to voluntarily submit homepages built with this template for inclusion in our showcase.
+- Theme adapted from [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)
+- Template originated from [selen-suyue.github.io](https://selen-suyue.github.io/)
+- Blog listing design inspired by [lilianweng.github.io](https://lilianweng.github.io/)
