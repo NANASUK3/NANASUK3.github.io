@@ -119,18 +119,15 @@ Blog
 --------
 <div class="blog-post-list">
 
-  <article class="blog-post-item">
-    <a href="/blog/2026/07/21/N-Transformer/" class="blog-post-link">
-      <h2 class="blog-post-title">From Text to Transformer: A Complete Pipeline from BPE to Language Modeling</h2>
-      <p class="blog-post-excerpt">This post walks through the complete pipeline of how language models process natural language — from BPE tokenization and token embeddings to RoPE positional encoding, multi-head self-attention, RMSNorm, SwiGLU, and cross-entropy loss with AdamW optimization. Includes PyTorch implementations.</p>
-      <div class="blog-post-meta">
-        <span>Jul 21, 2026</span>
-        <span class="meta-sep">|</span>
-        <span>~25 min read</span>
-        <span class="meta-sep">|</span>
-        <span>Jingpeng Yang</span>
-      </div>
-    </a>
+  <article class="post-entry">
+    <header class="entry-header">
+      <h2>From Text to Transformer: A Complete Pipeline from BPE to Language Modeling</h2>
+    </header>
+    <section class="entry-content">
+      <p>This post walks through the complete pipeline of how language models process natural language — from BPE tokenization and token embeddings to RoPE positional encoding, multi-head self-attention, RMSNorm, SwiGLU, and cross-entropy loss with AdamW optimization. Includes PyTorch implementations.</p>
+    </section>
+    <footer class="entry-footer">Date: July 21, 2026  |  Estimated Reading Time: 25 min  |  Author: Jingpeng Yang</footer>
+    <a class="entry-link" aria-label="post link to From Text to Transformer" href="/blog/2026/07/21/N-Transformer/"></a>
   </article>
 
 </div>
