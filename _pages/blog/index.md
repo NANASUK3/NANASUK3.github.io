@@ -19,7 +19,7 @@ stylesheets:
     <div class="blog-post-meta">
       <span>Date: July 21, 2026</span>
       <span class="separator">|</span>
-      <span>Author: Jingpeng Yang</span>
+      <span>Estimated Reading Time: 25 min</span>
     </div>
   </article>
 
