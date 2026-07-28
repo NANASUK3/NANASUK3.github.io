@@ -3,21 +3,24 @@ layout: archive
 title: "Blog"
 permalink: /blog/
 author_profile: true
+stylesheets:
+  - /assets/css/home.css
 ---
-
-Welcome to my blog. Here I share my research notes, paper readings, and thoughts.
 
 <div class="blog-post-list">
 
-  <article class="post-entry">
-    <header class="entry-header">
-      <h2>From Text to Transformer: A Complete Pipeline from BPE to Language Modeling</h2>
-    </header>
-    <section class="entry-content">
-      <p>This post is inspired by CS336 and walks through the complete pipeline of how language models process natural language — from BPE tokenization and token embeddings to RoPE positional encoding, multi-head self-attention, RMSNorm, SwiGLU feed-forward networks, and finally cross-entropy loss with AdamW optimization. Each section is guided by a core question and includes PyTorch implementations.</p>
-    </section>
-    <footer class="entry-footer">Date: July 21, 2026  |  Estimated Reading Time: 25 min  |  Author: Jingpeng Yang</footer>
-    <a class="entry-link" aria-label="post link to From Text to Transformer" href="/blog/2026/07/21/N-Transformer/"></a>
+  <article class="blog-post-item">
+    <h2 class="blog-post-title">
+      <a href="/blog/2026/07/21/N-Transformer/">From Text to Transformer: A Complete Pipeline from BPE to Language Modeling</a>
+    </h2>
+    <p class="blog-post-excerpt">
+      本篇博客受 CS336 启发，将从最常见的自然语言文本出发，讲解语言模型（Language Model）处理自然语言的完整流程。涵盖 BPE 分词、词嵌入、旋转位置编码、Self-Attention、RMSNorm、SwiGLU 等核心组件的实现细节...
+    </p>
+    <div class="blog-post-meta">
+      <span>Date: July 21, 2026</span>
+      <span class="separator">|</span>
+      <span>Author: Jingpeng Yang</span>
+    </div>
   </article>
 
 </div>

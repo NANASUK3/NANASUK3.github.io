@@ -118,14 +118,14 @@ Projects
 Blog
 --------
 <div class="blog-grid">
-  <a href="/blog/2026/07/21/N-Transformer/" class="blog-card">
+  <a href="/blog/2026/05/20/first-research-blog/" class="blog-card">
     <div class="blog-card-image">
       <img src="images/blog1.jpg" alt="Blog 1" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, #667eea 0%, #764ba2 100%)';">
     </div>
     <div class="blog-card-content">
-      <span class="blog-card-date">2026-07-21</span>
-      <h3 class="blog-card-title">From Text to Transformer: A Complete Pipeline from BPE to Language Modeling</h3>
-      <p class="blog-card-excerpt">A complete walkthrough of how language models process natural language — from BPE tokenization to Transformer architecture with PyTorch implementations.</p>
+      <span class="blog-card-date">2026-05-20</span>
+      <h3 class="blog-card-title">My First Research Blog Post</h3>
+      <p class="blog-card-excerpt">Sharing my thoughts on the latest developments in computer vision and deep learning...</p>
     </div>
   </a>
   <a href="/blog/2026/05/15/graduate-tips/" class="blog-card">

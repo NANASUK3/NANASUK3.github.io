@@ -341,55 +341,7 @@ a:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-/* ===== Blog List (Lil'Log style) ===== */
-.blog-post-list {
-  margin-top: 14px;
-}
-
-.post-entry {
-  position: relative;
-  margin-bottom: 14px;
-  padding: 14px;
-  background: #fff;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  transition: transform 0.1s;
-}
-
-.post-entry:active {
-  transform: scale(0.96);
-}
-
-.entry-header h2 {
-  font-size: 24px;
-  font-weight: 700;
-  color: #1e1e1e;
-  line-height: 1.3;
-  margin: 0;
-}
-
-.entry-content {
-  margin: 8px 0;
-  color: #6c6c6c;
-  font-size: 14px;
-  line-height: 1.6;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-}
-
-.entry-footer {
-  color: #6c6c6c;
-  font-size: 13px;
-}
-
-.entry-link {
-  position: absolute;
-  inset: 0;
-}
-
-/* ===== Homepage Blog Cards ===== */
+/* ===== Blog Grid & Cards ===== */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -462,6 +414,17 @@ a:hover {
   overflow: hidden;
 }
 
+.blog-toggle-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
 .blog-read-more {
   text-align: center;
   margin-top: 20px;
@@ -485,6 +448,65 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(74, 144, 226, 0.4);
   text-decoration: none !important;
+}
+
+/* ===== Blog Post List (blog listing page) ===== */
+.blog-post-list {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+.blog-post-item {
+  padding: 28px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.blog-post-item:first-child {
+  padding-top: 16px;
+}
+
+.blog-post-item:last-child {
+  border-bottom: none;
+}
+
+.blog-post-title {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin: 0 0 12px 0;
+}
+
+.blog-post-title a {
+  color: #1a1a1a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.blog-post-title a:hover {
+  color: #4a90e2;
+  text-decoration: none;
+}
+
+.blog-post-excerpt {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #555;
+  margin: 0 0 14px 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-post-meta {
+  font-size: 13px;
+  color: #999;
+}
+
+.blog-post-meta .separator {
+  margin: 0 8px;
+  opacity: 0.6;
 }
 
 /* ===== Responsive ===== */
@@ -533,9 +555,5 @@ a:hover {
 
   .blog-grid {
     grid-template-columns: 1fr;
-  }
-
-  .entry-header h2 {
-    font-size: 20px;
   }
 }
