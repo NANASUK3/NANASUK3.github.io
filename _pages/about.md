@@ -60,13 +60,13 @@ Publications
     <div>
       <strong>Coming Soon...</strong><br>
       <i style="font-size: 13px;">
-        <a href="https://wd7ang.github.io" target="_blank">
+        <a href="flyflyang.github.io" target="_blank">
           <strong>Jingpeng Yang</strong>
         </a>.
       </i><br>
       Coming soon...
       <br>
-      <b><i style="color:#83a1c7;">ACL 3026 Oral &nbsp;
+      <b><i style="color:#83a1c7;">ICLR 3026 &nbsp;
       </i></b>
       <a href=""><em>[arXiv]</em></a>
       <a href=""><em>[code]</em></a>
@@ -100,17 +100,16 @@ Projects
 <div class="project-card" data-category="project"> 
   <div style="display: flex; align-items: center;">
     <div class="pub-media-rotator" data-interval="4000" style="position: relative; width: 320px; height: 180px; margin-right: 20px; border-radius: 8px; overflow: hidden; flex: 0 0 auto;">
-      <img src="images/2.png" alt="ManiUniCon" style="width: 320px; height: 180px; object-fit: contain; display: block; margin: 0 auto;">
+      <img src="images/banner_lightmind.png" alt="lightmind" style="width: 320px; height: 180px; object-fit: contain; display: block; margin: 0 auto;">
     </div>
     <div> 
-      <strong>vMiniMind</strong><br>
+      <strong>lightmind</strong><br>
       <i style="font-size: 13px;">
-        <a href="https://wd7ang.github.io" target="_blank"><strong>Me</strong></a>.
       </i><br>
-      Coming soon...
+      A light weight mini size language model based on Qwen-3 architecture.
       <br> 
       <b><i style="color:#83a1c7;">Project &nbsp;</i></b> 
-      <a href=""><em>[code]</em></a> 
+      <a href="https://github.com/flyflyang/lightmind"><em>[code]</em></a>
     </div>
   </div> 
 </div>
