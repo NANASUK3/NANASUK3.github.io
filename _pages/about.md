@@ -14,8 +14,8 @@ News
 <div class="news-box">
   <ul class="news-list">
 
-<li><span class="news-date"><em>[2026/09]</em></span> 🎉 I am starting my postgraduate studies at USTC.</li>
-<li><span class="news-date"><em>[2026/06]</em></span> 🥹 I've graduated from NPU. These four‑year journey is beyond words. </li>
+<li><span class="news-date"><em>Sep.2026</em></span> 🎉 I am starting my postgraduate studies at USTC.</li>
+<li><span class="news-date"><em>Jun.2026</em></span> 🥹 I've graduated from NPU. These four‑year journey is beyond words. </li>
   </ul>
 </div>
 
