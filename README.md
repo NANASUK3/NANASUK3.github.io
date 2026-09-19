@@ -1,13 +1,11 @@
-# flyflyang.github.io
+# nanasuk3.github.io
 
 Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on GitHub Pages.
 
 ## Features
 
-- Single-page homepage with sections: News, Experience, Publications, Projects, Blog, Awards
+- Single-page homepage with sections: News, Experience, Publications, Projects, Awards
 - Author profile sidebar with avatar, bio, and social links
-- Blog system with a card-style listing page and MathJax-rendered articles
-- Homepage blog section auto-populates the 3 latest posts via Liquid
 - MathJax 3 support for LaTeX math (`$...$` inline, `$$...$$` display)
 - Font Awesome 6 icons via CDN
 - Responsive design with mobile-friendly layout adjustments
@@ -42,13 +40,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 ├── _pages/                  # All site pages (unified management)
 │   ├── about.md             # Homepage (single-page with all sections)
 │   ├── 404.md               # Error page
-│   ├── sitemap.md           # Sitemap page
-│   ├── category-archive.html
-│   ├── tag-archive.html
-│   ├── year-archive.html
-│   └── blog/                # Blog section
-│       ├── index.md         # Blog listing page
-│       └── 2026-07-21-N-Transformer.md  # Blog articles
+│   └── sitemap.md           # Sitemap page
 ├── _sass/                   # Theme Sass source files
 │   ├── vendor/              # Vendor libraries (breakpoint, susy, magnific-popup)
 │   └── _*.scss              # Theme component styles
@@ -79,8 +71,8 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 ### Installation
 
 ```bash
-git clone https://github.com/flyflyang/flyflyang.github.io.git
-cd flyflyang.github.io
+git clone https://github.com/NANASUK3/NANASUK3.github.io.git
+cd NANASUK3.github.io
 bundle install
 npm install
 ```
@@ -122,7 +114,7 @@ author:
 
 ### Homepage
 
-The homepage is a single-page layout in `_pages/about.md`. Edit it to update all sections: News, Experience, Publications, Projects, Blog, Awards. The Blog section auto-populates the 3 latest posts from `_pages/blog/`.
+The homepage is a single-page layout in `_pages/about.md`. Edit it to update all sections: News, Experience, Publications, Projects, Awards.
 
 ### Navigation
 
@@ -136,28 +128,11 @@ main:
     url: "/#experience"
   - title: "Pub"
     url: "/#publications"
-  - title: "Blog"
-    url: "/#blog"
+  - title: "Project"
+    url: "/#projects"
   - title: "Awards"
     url: "/#awards"
 ```
-
-### Adding Blog Posts
-
-1. Create a new file in `_pages/blog/` named `YYYY-MM-DD-title.md`
-2. Add front matter:
-
-```yaml
----
-layout: single
-title: "Your Post Title"
-date: YYYY-MM-DD
-permalink: /blog/YYYY/MM/DD/title/
----
-```
-
-3. Write your content in Markdown. MathJax is enabled by default.
-4. The blog listing page (`_pages/blog/index.md`) and homepage blog section update automatically.
 
 ### Styling
 
@@ -193,4 +168,3 @@ MIT License. See `LICENSE` for details.
 
 - Theme adapted from [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)
 - Template originated from [selen-suyue.github.io](https://selen-suyue.github.io/)
-- Blog listing design inspired by [lilianweng.github.io](https://lilianweng.github.io/)

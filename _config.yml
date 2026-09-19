@@ -23,12 +23,7 @@ author:
 
 teaser                   :
 breadcrumbs              : false
-words_per_minute         : 160
 future                   : true
-read_more                : "disabled"
-
-comments:
-  provider               :
 
 atom_feed:
   hide                   : false
@@ -93,16 +88,6 @@ kramdown:
 defaults:
   - scope:
       path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
-  - scope:
-      path: ""
       type: pages
     values:
       layout: single
@@ -116,25 +101,16 @@ permalink: /:categories/:title/
 timezone: UTC
 
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
 
 whitelist:
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
-
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
 
 compress_html:
   clippings: all
