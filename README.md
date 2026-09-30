@@ -4,7 +4,8 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 
 ## Features
 
-- Single-page homepage with sections: News, Experience, Publications, Projects, Awards
+- Single-page homepage with sections: News, Experience, Publications, Awards
+- Standalone Projects page (`/projects/`) with a responsive card grid
 - Author profile sidebar with avatar, bio, and social links
 - MathJax 3 support for LaTeX math (`$...$` inline, `$$...$$` display)
 - Font Awesome 6 icons via CDN
@@ -39,6 +40,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 │   └── compress.html        # HTML compression wrapper
 ├── _pages/                  # All site pages (unified management)
 │   ├── about.md             # Homepage (single-page with all sections)
+│   ├── projects.md          # Projects page (card grid)
 │   ├── 404.md               # Error page
 │   └── sitemap.md           # Sitemap page
 ├── _sass/                   # Theme Sass source files
@@ -47,6 +49,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 ├── assets/
 │   ├── css/
 │   │   ├── home.css         # Custom homepage styles
+│   │   ├── projects.css     # Projects page card grid styles
 │   │   ├── main.scss        # Main stylesheet entry (imports theme + custom)
 │   │   └── academicons.css  # Academic icons
 │   ├── js/
@@ -114,7 +117,13 @@ author:
 
 ### Homepage
 
-The homepage is a single-page layout in `_pages/about.md`. Edit it to update all sections: News, Experience, Publications, Projects, Awards.
+The homepage is a single-page layout in `_pages/about.md`. Edit it to update the sections it renders: News, Experience, Publications, Awards.
+
+### Projects Page
+
+The Projects page is `_pages/projects.md` (served at `/projects/`), styled by `assets/css/projects.css`. To add a project, copy a `.project-tile` block in that file and edit its image, title, description, and date range. A tile can link anywhere (a GitHub repo, a demo, or a sub-page) via its `project-tile__link` anchor; drop the anchor to make a tile unclickable.
+
+The Projects section still present in `_pages/about.md` is wrapped in a Liquid `{% comment %}` block, so it does not render. Delete the `{% comment %}` and `{% endcomment %}` lines to bring it back.
 
 ### Navigation
 
@@ -129,7 +138,7 @@ main:
   - title: "Pub"
     url: "/#publications"
   - title: "Project"
-    url: "/#projects"
+    url: "/projects/"
   - title: "Awards"
     url: "/#awards"
 ```
