@@ -95,6 +95,7 @@ Publications
 <script src="assets/js/show_publications.js"></script>
 <script src="assets/js/pub_media_rotator.js"></script>
 
+{% comment %}
 Projects
 --------
 <div class="project-card" data-category="project"> 
@@ -113,6 +114,7 @@ Projects
     </div>
   </div> 
 </div>
+{% endcomment %}
 
 Awards
 --------
