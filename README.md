@@ -177,3 +177,4 @@ MIT License. See `LICENSE` for details.
 
 - Theme adapted from [Minimal Mistakes](https://github.com/mmistakes/minimal-mistakes)
 - Template originated from [selen-suyue.github.io](https://selen-suyue.github.io/)
+- Projects page card grid inspired by [lucyajiang.github.io/projects](https://lucyajiang.github.io/projects)
