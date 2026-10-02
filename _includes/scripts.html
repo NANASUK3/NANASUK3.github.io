@@ -35,6 +35,45 @@
     init();
   }
 })();
+
+/* EN/ZH toggle: the button only shows on pages that actually carry .lang-zh
+   content, and the choice persists in localStorage. */
+(function() {
+  function init() {
+    var buttons = document.querySelectorAll('[data-lang-toggle]');
+    if (!buttons.length) return;
+
+    if (!document.querySelector('.lang-zh')) {
+      buttons.forEach(function(button) { button.hidden = true; });
+      return;
+    }
+
+    function updateLabel() {
+      var zh = document.documentElement.classList.contains('lang-zh');
+      buttons.forEach(function(button) {
+        button.textContent = zh ? 'EN' : '中文';
+      });
+    }
+
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var zh = document.documentElement.classList.toggle('lang-zh');
+        try {
+          localStorage.setItem('site-lang', zh ? 'zh' : 'en');
+        } catch (e) {}
+        updateLabel();
+      });
+    });
+
+    updateLabel();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
 </script>
 
 {% include analytics.html %}

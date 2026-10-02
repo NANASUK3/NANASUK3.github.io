@@ -41,6 +41,55 @@
     );
   }
 
+  /* ===== Scroll spy =====
+     Highlights the masthead link of the section currently in view. */
+
+  function initScrollSpy() {
+    var links = document.querySelectorAll(
+      '.masthead__menu-item a[href$="#news"], ' +
+      '.masthead__menu-item a[href$="#experience"], ' +
+      '.masthead__menu-item a[href$="#publications"], ' +
+      '.masthead__menu-item a[href$="#awards"]'
+    );
+    if (!links.length) return;
+
+    var sections = [];
+    links.forEach(function (link) {
+      var hash = link.getAttribute('href').split('#')[1];
+      var section = document.getElementById(decodeURIComponent(hash));
+      if (section) sections.push({ link: link, section: section });
+    });
+    if (!sections.length) return;
+
+    var activeLink = null;
+    var ticking = false;
+
+    function update() {
+      ticking = false;
+      var probe = window.scrollY + 96; // just below the fixed masthead
+      var current = null;
+      sections.forEach(function (item) {
+        if (item.section.getBoundingClientRect().top + window.scrollY <= probe) {
+          current = item;
+        }
+      });
+      var next = current ? current.link : null;
+      if (next === activeLink) return;
+      if (activeLink) activeLink.classList.remove('nav-active');
+      if (next) next.classList.add('nav-active');
+      activeLink = next;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    }, { passive: true });
+
+    update();
+  }
+
   function init() {
     var targets = collect();
     if (!targets.length) return;
@@ -70,6 +119,8 @@
     targets.forEach(function (el) {
       observer.observe(el);
     });
+
+    initScrollSpy();
   }
 
   if (document.readyState === 'loading') {

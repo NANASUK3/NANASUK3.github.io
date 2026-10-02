@@ -7,10 +7,14 @@
 
 <meta name="msapplication-config" content="{{ base_path }}/images/browserconfig.xml">
 <meta name="theme-color" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1d22">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 <link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
 
-<!-- Support for MathJax -->
+<!-- MathJax (opt-in: set `math: true` in a page's front matter) -->
+{% if page.math %}
 <script>
   MathJax = {
     tex: {
@@ -20,7 +24,8 @@
     }
   };
 </script>
-<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
 
 <!-- end custom head snippets -->

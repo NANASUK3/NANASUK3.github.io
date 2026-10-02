@@ -1,0 +1,93 @@
+/* ==========================================================================
+   DARK MODE
+   Site-wide overrides for the theme's hardcoded light surfaces, applied when
+   the OS requests a dark color scheme. Page-specific components (news box,
+   cards, project tiles) have their own dark blocks in assets/css/home.css
+   and assets/css/projects.css.
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+
+  body {
+    background-color: #17181c;
+    color: #d6d8dc;
+  }
+
+  a {
+    color: #8ab4f8;
+
+    &:hover {
+      color: #aac6fb;
+    }
+  }
+
+  .masthead {
+    background: #1b1d22;
+    border-bottom: 1px solid #2e3138;
+  }
+
+  .greedy-nav {
+    background: #1b1d22;
+
+    a {
+      color: #9aa0a8;
+
+      &:hover {
+        color: #d6d8dc;
+      }
+    }
+
+    .hidden-links {
+      background: #26282e;
+      border-color: #3a3d44;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
+
+      &:before {
+        border-color: #3a3d44 transparent;
+      }
+
+      &:after {
+        border-color: #26282e transparent;
+      }
+    }
+  }
+
+  .lang-toggle {
+    color: #9aa0a8;
+    border-color: #3a3d44;
+
+    &:hover {
+      color: #d6d8dc;
+      border-color: #565a63;
+    }
+  }
+
+  .author__urls {
+    color: #c3c6cb;
+  }
+
+  .btn--inverse {
+    color: #9aa0a8 !important;
+    border-color: #3a3d44 !important;
+    background-color: #26282e;
+
+    &:hover {
+      color: #d6d8dc !important;
+      border-color: #565a63 !important;
+    }
+  }
+
+  .page__footer {
+    background-color: #1b1d22;
+    border-top: 1px solid #2e3138;
+    color: #9aa0a8;
+
+    a {
+      color: #9aa0a8;
+
+      &:hover {
+        color: #d6d8dc;
+      }
+    }
+  }
+}

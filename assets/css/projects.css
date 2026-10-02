@@ -76,3 +76,23 @@
     max-height: 180px;
   }
 }
+
+/* ===== Dark Mode ===== */
+@media (prefers-color-scheme: dark) {
+  .project-grid .project-tile {
+    background-color: #1f2126;
+  }
+
+  .project-grid .project-tile:hover {
+    background-color: #26282e;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.45);
+  }
+
+  .project-tile .project-tile__img {
+    background-color: #1f2126;
+  }
+
+  .project-tile .project-tile__meta {
+    color: #9aa0a8;
+  }
+}

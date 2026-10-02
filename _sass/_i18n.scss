@@ -1,0 +1,49 @@
+/* ==========================================================================
+   BILINGUAL TOGGLE (EN / ZH)
+   Pages mark translated content with .lang-en / .lang-zh wrappers. A button
+   in the masthead toggles the `lang-zh` class on <html>; the choice is kept
+   in localStorage and restored by an inline script in head.html. Without
+   JavaScript the English text shows.
+   ========================================================================== */
+
+html.lang-zh .lang-en {
+  display: none !important;
+}
+
+html:not(.lang-zh) .lang-zh {
+  display: none !important;
+}
+
+.lang-toggle {
+  position: absolute;
+  right: 3.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  outline: none;
+  background: none;
+  color: $masthead-link-color;
+  font-family: $sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.5;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    color: $masthead-link-color-hover;
+    border-color: $masthead-link-color-hover;
+  }
+}
+
+/* Keep nav links clear of the toggle button at the right edge */
+.greedy-nav {
+  padding-right: 7.5rem;
+}
+
+.masthead__inner-wrap {
+  position: relative;
+}

@@ -8,10 +8,10 @@
 
   <div class="author__avatar">
     {% if author.avatar contains "://" %}
-      <img src="{{ author.avatar }}" alt="{{ author.name }}">
+      <img src="{{ author.avatar }}" alt="{{ author.name }}" width="2266" height="2388" decoding="async">
     {% else %}
       {% assign avatar_path = author.avatar | remove_first: "/images/" | prepend: "/images/" | prepend: base_path %}
-      <img src="{{ avatar_path }}" alt="{{ author.name }}">
+      <img src="{{ avatar_path }}" alt="{{ author.name }}" width="2266" height="2388" decoding="async">
     {% endif %}
   </div>
 

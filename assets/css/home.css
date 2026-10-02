@@ -147,6 +147,10 @@ a:hover {
   color: #4a90e2;
 }
 
+.experience-note {
+  color: #888;
+}
+
 /* ===== Publication Cards ===== */
 .publication-card {
   display: flex;
@@ -434,6 +438,11 @@ a:hover {
   }
 }
 
+/* ===== Scroll Spy ===== */
+.masthead__menu-item a.nav-active {
+  color: #5c6266;
+}
+
 /* ===== Scroll Reveal =====
    An inline script at the top of the page content adds .reveal-armed to
    <html> before first paint, so reveal targets start hidden without a
@@ -494,5 +503,151 @@ a:hover {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Dark Mode (page components; theme surfaces live in _sass/_dark.scss) ===== */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #17181c;
+    color: #d6d8dc;
+  }
+
+  div.markdown-body a,
+  a {
+    color: #8ab4f8;
+  }
+
+  div.markdown-body a:hover,
+  a:hover {
+    color: #aac6fb;
+  }
+
+  .news-box {
+    background: #1f2126;
+  }
+
+  .news-list li:hover {
+    background-color: rgba(138, 180, 248, 0.08);
+  }
+
+  .news-date,
+  .main-heading {
+    color: #7aa7e8;
+  }
+
+  .experience-card {
+    background: #1f2126;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .experience-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+  }
+
+  .experience-info a {
+    color: #8ab4f8;
+  }
+
+  .experience-note {
+    color: #9aa0a8;
+  }
+
+  .publication-card,
+  .project-card {
+    background: #1f2126;
+    border-color: #2e3138;
+    color: #9aa0a8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+  }
+
+  .publication-card > div > strong,
+  .publication-card > div > div > strong,
+  .project-card > div > strong,
+  .project-card > div > div > strong {
+    color: #e8eaed;
+  }
+
+  .publication-card i,
+  .project-card i {
+    color: #9aa0a8;
+  }
+
+  .publication-card:hover,
+  .project-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+  }
+
+  .pub-button {
+    background-color: #26282e;
+    border-color: #3a3d44;
+    color: #c3c6cb;
+  }
+
+  .pub-button:hover {
+    background-color: #2e3138;
+  }
+
+  .pub-button.active {
+    background-color: #3b78c2;
+    border-color: #3b78c2;
+    color: #fff;
+  }
+
+  .pub-badge {
+    background: rgba(255, 255, 255, 0.08);
+    color: #9aa0a8;
+  }
+
+  .pub-badge--oral {
+    color: #8ab4f8;
+    background: rgba(138, 180, 248, 0.14);
+    border-color: rgba(138, 180, 248, 0.35);
+  }
+
+  .full-publication-list {
+    color: #9aa0a8;
+  }
+
+  .full-publication-list .pub-list-title {
+    color: #e8eaed;
+  }
+
+  .pub-list-authors {
+    color: #9aa0a8;
+  }
+
+  .pub-list-authors > strong {
+    color: #e8eaed;
+  }
+
+  .pub-list-note {
+    color: #7aa7e8;
+  }
+
+  .pub-list-badge {
+    border-color: rgba(138, 180, 248, 0.4);
+    background: rgba(138, 180, 248, 0.12);
+    color: #8ab4f8;
+  }
+
+  .pub-list-links a {
+    color: #8ab4f8 !important;
+  }
+
+  .pub-list-links a:hover {
+    color: #aac6fb !important;
+  }
+
+  #full-publications {
+    scrollbar-color: rgba(138, 180, 248, 0.45) rgba(255, 255, 255, 0.06);
+  }
+
+  #full-publications::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .masthead__menu-item a.nav-active {
+    color: #d6d8dc;
   }
 }
