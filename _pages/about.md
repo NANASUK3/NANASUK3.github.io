@@ -7,11 +7,20 @@ redirect_from:
   - /about/
   - /about.html
 ---
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('reveal-armed');
+  window.setTimeout(function () {
+    if (!window.__revealLoaded) root.classList.remove('reveal-armed');
+  }, 2500);
+})();
+</script>
 Hi there, Welcome to my Homepage. I am currently a postgraduate student in Lab for Multimedia Intelligence (LAMI) at <a class="academic-link" href="https://www.ustc.edu.cn/" target="_blank">University of Science and Technology of China (USTC)</a>. Before that, I received my B.S. degree from <a class="academic-link" href="https://www.nwpu.edu.cn/" target="_blank">Northwestern Polytechnical University (NPU)</a> in 2026.
 
 News
 ---------------
-<div class="news-box">
+<div class="news-box" data-reveal>
   <ul class="news-list">
 
 <li><span class="news-date"><em>Sep.2026</em></span> 🎉 I am starting my postgraduate studies at USTC.</li>
@@ -22,7 +31,7 @@ News
 Experience
 --------------
 
-<div class="experience-container">
+<div class="experience-container" data-reveal-group>
 
   <div class="experience-card">
       <img src="images/ustc.png" alt="USTC logo" class="experience-logo">
@@ -47,12 +56,14 @@ Experience
 
 Publications
 --------------
+<div class="pub-button-container" data-reveal-group>
 <button class="pub-button active" onclick="filterPublications(event, 'all')">Core Publications</button>
 <button class="pub-button" onclick="filterPublications(event, 'list')">Full Publications List</button>
+</div>
 
 <div id="core-publications" class="publication-view" data-publication-view="core">
 
-<div class="publication-card" data-category="all">
+<div class="publication-card" data-category="all" data-reveal>
   <div style="display: flex; align-items: center;">
     <div class="pub-media-rotator" data-interval="4000" style="position: relative; width: 320px; height: 180px; margin-right: 20px; border-radius: 8px; overflow: hidden; flex: 0 0 auto;">
       <img src="images/sleep.png" alt="wog" style="width: 320px; height: 180px; object-fit: contain; display: block; margin: 0 auto;">
@@ -76,7 +87,7 @@ Publications
 </div>
 </div>
 
-<div id="full-publications" class="publication-view" data-publication-view="list" hidden>
+<div id="full-publications" class="publication-view" data-publication-view="list" data-reveal hidden>
   <ul class="full-publication-list">
     <li>
       <span class="pub-list-badge">ACL 3026</span>
@@ -94,6 +105,7 @@ Publications
 
 <script src="assets/js/show_publications.js"></script>
 <script src="assets/js/pub_media_rotator.js"></script>
+<script src="assets/js/reveal.js" defer></script>
 
 {% comment %}
 Projects

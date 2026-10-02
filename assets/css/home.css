@@ -19,6 +19,34 @@ body {
   font-size: 15px;
 }
 
+/* ===== Smooth anchor scrolling ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== Keyframes ===== */
+@keyframes home-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes view-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .main-heading {
   font-family: 'Permanent Marker', cursive;
   text-align: center;
@@ -56,7 +84,15 @@ a:hover {
 
 .news-list li {
   margin-bottom: 10px;
+  margin-left: -8px;
+  padding: 2px 8px;
+  border-radius: 8px;
   line-height: 1.5;
+  transition: background-color 0.25s ease;
+}
+
+.news-list li:hover {
+  background-color: rgba(74, 144, 226, 0.07);
 }
 
 .news-date {
@@ -87,6 +123,7 @@ a:hover {
 
 .experience-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
 }
 
 .experience-logo {
@@ -95,6 +132,11 @@ a:hover {
   margin-right: 20px;
   border-radius: 8px;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover .experience-logo {
+  transform: scale(1.06);
 }
 
 .experience-info {
@@ -135,6 +177,7 @@ a:hover {
 
 .publication-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
 }
 
 .publication-card.featured {
@@ -203,6 +246,11 @@ a:hover {
 
 .pub-button:hover {
   background-color: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+.pub-button:active {
+  transform: scale(0.96);
 }
 
 .pub-button.active {
@@ -214,6 +262,10 @@ a:hover {
 /* ===== Publication Views ===== */
 .publication-view[hidden] {
   display: none !important;
+}
+
+.publication-view:not([hidden]) {
+  animation: view-fade-in 0.4s ease both;
 }
 
 #full-publications {
@@ -339,6 +391,7 @@ a:hover {
 
 .project-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
 }
 
 /* ===== Responsive ===== */
@@ -383,5 +436,72 @@ a:hover {
 
   .pub-list-badge {
     margin-bottom: 4px;
+  }
+}
+
+/* ===== Scroll Reveal =====
+   An inline script at the top of the page content adds .reveal-armed to
+   <html> before first paint, so reveal targets start hidden without a
+   flash. assets/js/reveal.js then tags [data-reveal] and reveals elements
+   via IntersectionObserver; if that script never runs, the same inline
+   script removes .reveal-armed after a timeout so nothing stays hidden.
+   Keep the structural selectors below in sync with the auto-tag list in
+   reveal.js (h2/p/ul children of .page__content and children of
+   [data-reveal-group]). */
+.reveal-armed [data-reveal],
+.reveal-armed .page__content > h2,
+.reveal-armed .page__content > p,
+.reveal-armed .page__content > ul,
+.reveal-armed [data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-armed [data-reveal].is-revealed,
+.reveal-armed .page__content > h2.is-revealed,
+.reveal-armed .page__content > p.is-revealed,
+.reveal-armed .page__content > ul.is-revealed,
+.reveal-armed [data-reveal-group] > .is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* One-time entrance for the author sidebar */
+.sidebar {
+  animation: home-fade-up 0.6s ease both;
+  animation-delay: 0.1s;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal-armed [data-reveal],
+  .reveal-armed .page__content > h2,
+  .reveal-armed .page__content > p,
+  .reveal-armed .page__content > ul,
+  .reveal-armed [data-reveal-group] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .sidebar,
+  .publication-view:not([hidden]) {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
