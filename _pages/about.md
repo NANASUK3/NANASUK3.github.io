@@ -81,30 +81,26 @@ redirect_from:
     <div class="lang-en">
       <strong>Coming Soon...</strong><br>
       <i style="font-size: 13px;">
-        <a href="flyflyang.github.io" target="_blank">
-          <strong>Jingpeng Yang</strong>
-        </a>.
+        <strong>Jingpeng Yang</strong>.
       </i><br>
       Coming soon...
       <br>
       <b><i style="color:#83a1c7;">ICLR 3026 &nbsp;
       </i></b>
-      <a href=""><em>[arXiv]</em></a>
-      <a href=""><em>[code]</em></a>
+      <span class="pub-link-placeholder">[arXiv]</span>
+      <span class="pub-link-placeholder">[code]</span>
     </div>
     <div class="lang-zh">
       <strong>敬请期待……</strong><br>
       <i style="font-size: 13px;">
-        <a href="flyflyang.github.io" target="_blank">
-          <strong>Jingpeng Yang</strong>
-        </a>。
+        <strong>Jingpeng Yang</strong>。
       </i><br>
       敬请期待……
       <br>
       <b><i style="color:#83a1c7;">ICLR 3026 &nbsp;
       </i></b>
-      <a href=""><em>[arXiv]</em></a>
-      <a href=""><em>[code]</em></a>
+      <span class="pub-link-placeholder">[arXiv]</span>
+      <span class="pub-link-placeholder">[code]</span>
     </div>
   </div>
 
@@ -127,7 +123,7 @@ redirect_from:
         </a>。
       </span>
       <span class="pub-list-note lang-en">Oral.</span><span class="pub-list-note lang-zh">口头报告。</span>
-      <span class="pub-list-links"><a href="">[arXiv]</a><a href="">[code]</a></span>
+      <span class="pub-list-links"><span class="pub-link-placeholder">[arXiv]</span><span class="pub-link-placeholder">[code]</span></span>
     </li>
   </ul>
 </div>

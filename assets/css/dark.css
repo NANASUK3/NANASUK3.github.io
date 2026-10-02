@@ -61,6 +61,26 @@ a:hover {
   color: #e8eaed;
 }
 
+.back-to-top {
+  background-color: #26282e;
+  border-color: #3a3d44;
+  color: #9aa0a8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.back-to-top:hover {
+  color: #d6d8dc;
+  border-color: #565a63;
+}
+
+.error-page .error-code {
+  color: #7aa7e8;
+}
+
+.error-page .error-text {
+  color: #9aa0a8;
+}
+
 .lang-toggle {
   color: #9aa0a8;
   border-color: #3a3d44;

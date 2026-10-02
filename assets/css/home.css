@@ -1,6 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap');
 
 /* ===== Section Scroll Offset ===== */
 #news,
@@ -43,7 +40,6 @@ body {
 }
 
 .main-heading {
-  font-family: 'Permanent Marker', cursive;
   text-align: center;
   color: #4a90e2;
 }
@@ -391,6 +387,30 @@ a:hover {
 .project-card:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
+}
+
+/* ===== Publication Placeholders ===== */
+.pub-link-placeholder {
+  color: #9aa0a8;
+  font-style: italic;
+}
+
+/* ===== 404 Page ===== */
+.error-page {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+.error-page .error-code {
+  margin: 0;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #4a90e2;
+}
+
+.error-page .error-text {
+  color: #5f6368;
 }
 
 /* ===== Responsive ===== */

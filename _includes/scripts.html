@@ -133,4 +133,33 @@
 })();
 </script>
 
+<script>
+/* Back-to-top: floats in after roughly one screen of scrolling. */
+(function() {
+  function init() {
+    var button = document.querySelector('[data-back-to-top]');
+    if (!button) return;
+
+    function update() {
+      button.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.8);
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+
+    button.addEventListener('click', function() {
+      var reduced = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 {% include analytics.html %}
