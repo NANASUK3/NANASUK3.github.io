@@ -471,11 +471,6 @@ a:hover {
   animation-delay: 0.1s;
 }
 
-/* Used when an anchor jump needs a target visible with no transition */
-.reveal-instant {
-  transition: none !important;
-}
-
 /* ===== Reduced Motion ===== */
 @media (prefers-reduced-motion: reduce) {
   .reveal-armed [data-reveal],

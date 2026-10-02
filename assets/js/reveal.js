@@ -41,70 +41,6 @@
     );
   }
 
-  /* ===== Anchor scrolling =====
-     Same-page hash links reveal everything along the way first, then smooth
-     scroll with the browser's native animation, so the landing section is
-     fully visible on arrival. Runs in the capture phase to pre-empt the
-     theme's own smooth-scroll plugin, which conflicts with per-step
-     smoothing. */
-
-  function revealInstantly(el) {
-    el.classList.add('reveal-instant');
-    el.classList.add('is-revealed');
-    void el.offsetWidth;
-    window.setTimeout(function () {
-      el.classList.remove('reveal-instant');
-    }, 50);
-  }
-
-  function revealInRange(fromY, toY) {
-    var lo = Math.min(fromY, toY);
-    var hi = Math.max(fromY, toY) + window.innerHeight * 1.2;
-    document.querySelectorAll('[data-reveal]:not(.is-revealed)').forEach(function (el) {
-      var rect = el.getBoundingClientRect();
-      var top = rect.top + window.scrollY;
-      if (top <= hi && top + rect.height >= lo) revealInstantly(el);
-    });
-  }
-
-  function targetPosition(target) {
-    var margin = parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-    var y = target.getBoundingClientRect().top + window.scrollY - margin;
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    return Math.max(0, Math.min(y, max));
-  }
-
-  function jumpTo(target) {
-    var targetY = targetPosition(target);
-    var reduced =
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    revealInRange(window.scrollY, targetY);
-    window.scrollTo({ top: targetY, behavior: reduced ? 'auto' : 'smooth' });
-  }
-
-  function handleAnchorClick(event) {
-    if (event.defaultPrevented || event.button !== 0 ||
-        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    if (!(event.target instanceof Element)) return;
-    var link = event.target.closest('a[href*="#"]');
-    if (!link) return;
-
-    var url = new URL(link.href, location.href);
-    if (url.hostname !== location.hostname) return;
-    if (url.pathname.replace(/\/+$/, '') !== location.pathname.replace(/\/+$/, '')) return;
-
-    var id = decodeURIComponent(url.hash.slice(1));
-    if (!id) return;
-    var target = document.getElementById(id);
-    if (!target) return;
-
-    event.preventDefault();
-    event.stopPropagation();
-    jumpTo(target);
-    history.pushState(null, '', url.hash);
-  }
-
   function init() {
     var targets = collect();
     if (!targets.length) return;
@@ -134,26 +70,7 @@
     targets.forEach(function (el) {
       observer.observe(el);
     });
-
-    // If the page loaded directly onto a hash target, make everything up to
-    // and around it visible immediately instead of fading in.
-    if (location.hash.length > 1) {
-      var initialTarget = document.getElementById(
-        decodeURIComponent(location.hash.slice(1))
-      );
-      if (initialTarget) {
-        revealInRange(0, targetPosition(initialTarget) + window.innerHeight);
-      }
-    }
   }
-
-  document.addEventListener('click', handleAnchorClick, true);
-  window.addEventListener('hashchange', function () {
-    revealInRange(
-      window.scrollY - window.innerHeight,
-      window.scrollY + window.innerHeight * 1.2
-    );
-  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
