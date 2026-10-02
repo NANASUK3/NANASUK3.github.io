@@ -19,11 +19,6 @@ body {
   font-size: 15px;
 }
 
-/* ===== Smooth anchor scrolling ===== */
-html {
-  scroll-behavior: smooth;
-}
-
 /* ===== Keyframes ===== */
 @keyframes home-fade-up {
   from {
@@ -476,12 +471,13 @@ a:hover {
   animation-delay: 0.1s;
 }
 
+/* Used when an anchor jump needs a target visible with no transition */
+.reveal-instant {
+  transition: none !important;
+}
+
 /* ===== Reduced Motion ===== */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   .reveal-armed [data-reveal],
   .reveal-armed .page__content > h2,
   .reveal-armed .page__content > p,
