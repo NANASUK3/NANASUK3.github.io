@@ -64,7 +64,10 @@
     var activeLink = null;
 
     function update() {
-      var probe = window.scrollY + 96; // just below the fixed masthead
+      // Switch sections early: a section becomes active once its top edge
+      // reaches the upper part of the screen, not only when its heading
+      // climbs right below the masthead.
+      var probe = window.scrollY + Math.max(96, Math.min(window.innerHeight * 0.3, 240));
       var current = null;
       sections.forEach(function (item) {
         if (item.section.getBoundingClientRect().top + window.scrollY <= probe) {

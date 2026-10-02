@@ -7,6 +7,10 @@
    light rule they override (the <link> is injected last in <head>).
    ========================================================================== */
 
+html {
+  background-color: #17181c;
+}
+
 body {
   background-color: #17181c;
   color: #d6d8dc;
