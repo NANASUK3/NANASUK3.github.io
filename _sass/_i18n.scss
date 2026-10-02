@@ -14,9 +14,12 @@ html:not(.lang-zh) .lang-zh {
   display: none !important;
 }
 
-.lang-toggle {
+/* Masthead buttons (language + light/dark). They sit outside #site-nav on
+   purpose: the greedy-nav plugin binds every button inside it and measures
+   their width, which collapses the menu prematurely. */
+.lang-toggle,
+.theme-toggle {
   position: absolute;
-  right: 3.5rem;
   top: 50%;
   transform: translateY(-50%);
   z-index: 30;
@@ -39,9 +42,18 @@ html:not(.lang-zh) .lang-zh {
   }
 }
 
-/* Keep nav links clear of the toggle button at the right edge */
+.lang-toggle {
+  right: 3.25rem;
+}
+
+.theme-toggle {
+  right: 6.75rem;
+  padding: 0.25rem 0.6rem;
+}
+
+/* Keep nav links clear of the toggle buttons at the right edge */
 .greedy-nav {
-  padding-right: 7.5rem;
+  padding-right: 9.5rem;
 }
 
 .masthead__inner-wrap {

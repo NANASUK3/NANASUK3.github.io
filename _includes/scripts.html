@@ -51,7 +51,7 @@
     function updateLabel() {
       var zh = document.documentElement.classList.contains('lang-zh');
       buttons.forEach(function(button) {
-        button.textContent = zh ? 'EN' : '中文';
+        button.textContent = zh ? 'EN' : 'CN';
       });
     }
 
@@ -66,6 +66,63 @@
     });
 
     updateLabel();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/* Light/dark toggle: dark.css ships with media="(prefers-color-scheme: dark)"
+   so the site follows the OS by default; this flips the link's media
+   attribute and persists an explicit choice in localStorage. */
+(function() {
+  function effectiveTheme() {
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+    } catch (e) {}
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+
+  function applyTheme() {
+    var t = effectiveTheme();
+    var link = document.querySelector('link[data-theme-dark]');
+    if (link) link.media = (t === 'dark') ? 'all' : 'not all';
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(button) {
+      button.innerHTML = t === 'dark'
+        ? '<i class="fa-solid fa-sun" aria-hidden="true"></i>'
+        : '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
+      button.setAttribute('aria-label', t === 'dark'
+        ? '切换为浅色模式 / Switch to light mode'
+        : '切换为深色模式 / Switch to dark mode');
+    });
+    var meta = document.querySelector('meta[name="theme-color"]:not([media])');
+    if (meta) meta.setAttribute('content', t === 'dark' ? '#1b1d22' : '#ffffff');
+  }
+
+  function init() {
+    var button = document.querySelector('[data-theme-toggle]');
+    if (button) {
+      button.addEventListener('click', function() {
+        try {
+          localStorage.setItem('theme', effectiveTheme() === 'dark' ? 'light' : 'dark');
+        } catch (e) {}
+        applyTheme();
+      });
+      if (window.matchMedia) {
+        var query = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function() {
+          var saved = null;
+          try { saved = localStorage.getItem('theme'); } catch (e) {}
+          if (saved !== 'dark' && saved !== 'light') applyTheme();
+        };
+        if (query.addEventListener) query.addEventListener('change', onChange);
+      }
+    }
+    applyTheme();
   }
 
   if (document.readyState === 'loading') {

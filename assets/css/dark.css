@@ -1,0 +1,242 @@
+/* ==========================================================================
+   DARK MODE
+   Loaded from head.html with media="(prefers-color-scheme: dark)" so the
+   site follows the OS setting by default; the masthead theme toggle flips
+   the link's media attribute to force one mode and persists the choice in
+   localStorage (key "theme"). Rules here must therefore come after every
+   light rule they override (the <link> is injected last in <head>).
+   ========================================================================== */
+
+body {
+  background-color: #17181c;
+  color: #d6d8dc;
+}
+
+div.markdown-body a,
+a {
+  color: #8ab4f8;
+}
+
+div.markdown-body a:hover,
+a:hover {
+  color: #aac6fb;
+}
+
+.masthead {
+  background: #1b1d22;
+  border-bottom: 1px solid #2e3138;
+}
+
+.greedy-nav {
+  background: #1b1d22;
+}
+
+.greedy-nav a {
+  color: #9aa0a8;
+}
+
+.greedy-nav a:hover {
+  color: #d6d8dc;
+}
+
+.greedy-nav .hidden-links {
+  background: #26282e;
+  border-color: #3a3d44;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.55);
+}
+
+.greedy-nav .hidden-links:before {
+  border-color: #3a3d44 transparent;
+}
+
+.greedy-nav .hidden-links:after {
+  border-color: #26282e transparent;
+}
+
+.masthead__menu-item a.nav-active {
+  color: #e8eaed;
+}
+
+.lang-toggle {
+  color: #9aa0a8;
+  border-color: #3a3d44;
+}
+
+.lang-toggle:hover {
+  color: #d6d8dc;
+  border-color: #565a63;
+}
+
+.author__urls {
+  color: #c3c6cb;
+}
+
+.btn--inverse {
+  color: #9aa0a8 !important;
+  border-color: #3a3d44 !important;
+  background-color: #26282e;
+}
+
+.btn--inverse:hover {
+  color: #d6d8dc !important;
+  border-color: #565a63 !important;
+}
+
+.page__footer {
+  background-color: #1b1d22;
+  border-top: 1px solid #2e3138;
+  color: #9aa0a8;
+}
+
+.page__footer a {
+  color: #9aa0a8;
+}
+
+.page__footer a:hover {
+  color: #d6d8dc;
+}
+
+/* ===== Homepage components ===== */
+
+.news-box {
+  background: #1f2126;
+}
+
+.news-list li:hover {
+  background-color: rgba(138, 180, 248, 0.08);
+}
+
+.news-date,
+.main-heading {
+  color: #7aa7e8;
+}
+
+.experience-card {
+  background: #1f2126;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+}
+
+.experience-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+}
+
+.experience-info a {
+  color: #8ab4f8;
+}
+
+.experience-note {
+  color: #9aa0a8;
+}
+
+.publication-card,
+.project-card {
+  background: #1f2126;
+  border-color: #2e3138;
+  color: #9aa0a8;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+}
+
+.publication-card > div > strong,
+.publication-card > div > div > strong,
+.project-card > div > strong,
+.project-card > div > div > strong {
+  color: #e8eaed;
+}
+
+.publication-card i,
+.project-card i {
+  color: #9aa0a8;
+}
+
+.publication-card:hover,
+.project-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+}
+
+.pub-button {
+  background-color: #26282e;
+  border-color: #3a3d44;
+  color: #c3c6cb;
+}
+
+.pub-button:hover {
+  background-color: #2e3138;
+}
+
+.pub-button.active {
+  background-color: #3b78c2;
+  border-color: #3b78c2;
+  color: #fff;
+}
+
+.pub-badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: #9aa0a8;
+}
+
+.pub-badge--oral {
+  color: #8ab4f8;
+  background: rgba(138, 180, 248, 0.14);
+  border-color: rgba(138, 180, 248, 0.35);
+}
+
+.full-publication-list {
+  color: #9aa0a8;
+}
+
+.full-publication-list .pub-list-title {
+  color: #e8eaed;
+}
+
+.pub-list-authors {
+  color: #9aa0a8;
+}
+
+.pub-list-authors > strong {
+  color: #e8eaed;
+}
+
+.pub-list-note {
+  color: #7aa7e8;
+}
+
+.pub-list-badge {
+  border-color: rgba(138, 180, 248, 0.4);
+  background: rgba(138, 180, 248, 0.12);
+  color: #8ab4f8;
+}
+
+.pub-list-links a {
+  color: #8ab4f8 !important;
+}
+
+.pub-list-links a:hover {
+  color: #aac6fb !important;
+}
+
+#full-publications {
+  scrollbar-color: rgba(138, 180, 248, 0.45) rgba(255, 255, 255, 0.06);
+}
+
+#full-publications::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ===== Projects page ===== */
+
+.project-grid .project-tile {
+  background-color: #1f2126;
+}
+
+.project-grid .project-tile:hover {
+  background-color: #26282e;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.45);
+}
+
+.project-tile .project-tile__img {
+  background-color: #1f2126;
+}
+
+.project-tile .project-tile__meta {
+  color: #9aa0a8;
+}

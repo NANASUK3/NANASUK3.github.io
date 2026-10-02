@@ -62,10 +62,8 @@
     if (!sections.length) return;
 
     var activeLink = null;
-    var ticking = false;
 
     function update() {
-      ticking = false;
       var probe = window.scrollY + 96; // just below the fixed masthead
       var current = null;
       sections.forEach(function (item) {
@@ -80,12 +78,7 @@
       activeLink = next;
     }
 
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        ticking = true;
-        window.requestAnimationFrame(update);
-      }
-    }, { passive: true });
+    window.addEventListener('scroll', update, { passive: true });
 
     update();
   }
