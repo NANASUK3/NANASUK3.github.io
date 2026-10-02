@@ -16,59 +16,35 @@ redirect_from:
   }, 2500);
 })();
 </script>
-<span class="lang-en">Hi there, Welcome to my Homepage. I am currently a postgraduate student in Lab for Multimedia Intelligence (LAMI) at <a class="academic-link" href="https://www.ustc.edu.cn/" target="_blank">University of Science and Technology of China (USTC)</a>. Before that, I received my B.S. degree from <a class="academic-link" href="https://www.nwpu.edu.cn/" target="_blank">Northwestern Polytechnical University (NPU)</a> in 2026.</span><span class="lang-zh">你好，欢迎来到我的个人主页！我目前是<a class="academic-link" href="https://www.ustc.edu.cn/" target="_blank">中国科学技术大学</a>多媒体智能实验室（LAMI）的硕士研究生，此前于 2026 年在<a class="academic-link" href="https://www.nwpu.edu.cn/" target="_blank">西北工业大学</a>获得学士学位。</span>
+<p><span class="lang-en">{{ site.data.i18n.intro.en }}</span><span class="lang-zh">{{ site.data.i18n.intro.zh }}</span></p>
 
-<h2 id="news"><span class="lang-en">News</span><span class="lang-zh">动态</span></h2>
+<h2 id="news"><span class="lang-en">{{ site.data.i18n.sections.news.en }}</span><span class="lang-zh">{{ site.data.i18n.sections.news.zh }}</span></h2>
 
 <div class="news-box" data-reveal>
   <ul class="news-list">
-
-<li><span class="news-date"><em>Sep.2026</em></span> <span class="lang-en">🎉 I am starting my postgraduate studies at USTC.</span><span class="lang-zh">🎉 我在中国科学技术大学开始了研究生阶段的学习。</span></li>
-<li><span class="news-date"><em>Jun.2026</em></span> <span class="lang-en">🥹 I've graduated from NPU. These four‑year journey is beyond words.</span><span class="lang-zh">🥹 我从西北工业大学毕业了。这四年的旅程难以言表。</span></li>
+{% for item in site.data.i18n.news.items %}
+<li><span class="news-date"><em>{{ item.date }}</em></span> <span class="lang-en">{{ item.en }}</span><span class="lang-zh">{{ item.zh }}</span></li>
+{% endfor %}
   </ul>
 </div>
 
-<h2 id="experience"><span class="lang-en">Experience</span><span class="lang-zh">经历</span></h2>
+<h2 id="experience"><span class="lang-en">{{ site.data.i18n.sections.experience.en }}</span><span class="lang-zh">{{ site.data.i18n.sections.experience.zh }}</span></h2>
 
 <div class="experience-container" data-reveal-group>
-
+{% for entry in site.data.i18n.experience.items %}
   <div class="experience-card">
-      <img src="images/ustc.png" alt="USTC logo" class="experience-logo" width="250" height="250" loading="lazy" decoding="async">
-      <div class="experience-info lang-en">
-          <strong>University of Science and Technology of China</strong><br>
-          <em>Sep.2026 - Present</em><br>
-          Postgraduate Student Major in Artificial Intelligence. <br>
-          <span class="experience-note">Research interests include Computer Vision and Embodied AI.</span>
-      </div>
-      <div class="experience-info lang-zh">
-          <strong>中国科学技术大学</strong><br>
-          <em>2026年9月 - 至今</em><br>
-          人工智能专业硕士研究生。<br>
-          <span class="experience-note">研究方向包括计算机视觉与具身智能。</span>
-      </div>
+      <img src="{{ entry.logo }}" alt="{{ entry.alt }}" class="experience-logo" width="250" height="250" loading="lazy" decoding="async">
+      <div class="experience-info lang-en">{{ entry.en }}</div>
+      <div class="experience-info lang-zh">{{ entry.zh }}</div>
   </div>
-
-  <div class="experience-card">
-      <img src="images/nwpu.png" alt="NPU logo" class="experience-logo" width="250" height="250" loading="lazy" decoding="async">
-      <div class="experience-info lang-en">
-          <strong>Northwestern Polytechnical University</strong><br>
-          <em>Sep.2022 - Jul.2026</em><br>
-          B.S. in Electrical Information Engineering<br>
-      </div>
-      <div class="experience-info lang-zh">
-          <strong>西北工业大学</strong><br>
-          <em>2022年9月 - 2026年7月</em><br>
-          电子信息工程专业，工学学士<br>
-      </div>
-  </div>
+{% endfor %}
 </div>
 
-
-<h2 id="publications"><span class="lang-en">Publications</span><span class="lang-zh">论文</span></h2>
+<h2 id="publications"><span class="lang-en">{{ site.data.i18n.sections.publications.en }}</span><span class="lang-zh">{{ site.data.i18n.sections.publications.zh }}</span></h2>
 
 <div class="pub-button-container" data-reveal-group>
-<button class="pub-button active" onclick="filterPublications(event, 'all')"><span class="lang-en">Core Publications</span><span class="lang-zh">核心论文</span></button>
-<button class="pub-button" onclick="filterPublications(event, 'list')"><span class="lang-en">Full Publications List</span><span class="lang-zh">全部论文列表</span></button>
+<button class="pub-button active" onclick="filterPublications(event, 'all')"><span class="lang-en">{{ site.data.i18n.publications.core_button.en }}</span><span class="lang-zh">{{ site.data.i18n.publications.core_button.zh }}</span></button>
+<button class="pub-button" onclick="filterPublications(event, 'list')"><span class="lang-en">{{ site.data.i18n.publications.full_button.en }}</span><span class="lang-zh">{{ site.data.i18n.publications.full_button.zh }}</span></button>
 </div>
 
 <div id="core-publications" class="publication-view" data-publication-view="core">
@@ -79,11 +55,12 @@ redirect_from:
       <img src="images/sleep.png" alt="wog" style="width: 320px; height: 180px; object-fit: contain; display: block; margin: 0 auto;" loading="lazy" decoding="async">
     </div>
     <div class="lang-en">
-      <strong>Coming Soon...</strong><br>
+      <strong>{{ site.data.i18n.publications.card_title.en }}</strong><br>
       <i style="font-size: 13px;">
-        <strong>Jingpeng Yang</strong>.
-      </i><br>
-      Coming soon...
+        <strong>Jingpeng Yang</strong>
+      </i>.
+      <br>
+      {{ site.data.i18n.publications.card_desc.en }}
       <br>
       <b><i style="color:#83a1c7;">ICLR 3026 &nbsp;
       </i></b>
@@ -91,11 +68,12 @@ redirect_from:
       <span class="pub-link-placeholder">[code]</span>
     </div>
     <div class="lang-zh">
-      <strong>敬请期待……</strong><br>
+      <strong>{{ site.data.i18n.publications.card_title.zh }}</strong><br>
       <i style="font-size: 13px;">
-        <strong>Jingpeng Yang</strong>。
-      </i><br>
-      敬请期待……
+        <strong>Jingpeng Yang</strong>
+      </i>。
+      <br>
+      {{ site.data.i18n.publications.card_desc.zh }}
       <br>
       <b><i style="color:#83a1c7;">ICLR 3026 &nbsp;
       </i></b>
@@ -111,7 +89,7 @@ redirect_from:
   <ul class="full-publication-list">
     <li>
       <span class="pub-list-badge">ACL 3026</span>
-      <span class="pub-list-title lang-en">Coming soon...</span><span class="pub-list-title lang-zh">敬请期待……</span><br>
+      <span class="pub-list-title lang-en">{{ site.data.i18n.publications.card_title.en }}</span><span class="pub-list-title lang-zh">{{ site.data.i18n.publications.card_title.zh }}</span><br>
       <span class="pub-list-authors lang-en">
         <a href="https://wd7ang.github.io" target="_blank">
           <strong>Jingpeng Yang</strong>
@@ -122,7 +100,7 @@ redirect_from:
           <strong>Jingpeng Yang</strong>
         </a>。
       </span>
-      <span class="pub-list-note lang-en">Oral.</span><span class="pub-list-note lang-zh">口头报告。</span>
+      <span class="pub-list-note lang-en">{{ site.data.i18n.publications.list_note.en }}</span><span class="pub-list-note lang-zh">{{ site.data.i18n.publications.list_note.zh }}</span>
       <span class="pub-list-links"><span class="pub-link-placeholder">[arXiv]</span><span class="pub-link-placeholder">[code]</span></span>
     </li>
   </ul>
@@ -153,6 +131,8 @@ Projects
 </div>
 {% endcomment %}
 
-<h2 id="awards"><span class="lang-en">Awards</span><span class="lang-zh">荣誉</span></h2>
+<h2 id="awards"><span class="lang-en">{{ site.data.i18n.sections.awards.en }}</span><span class="lang-zh">{{ site.data.i18n.sections.awards.zh }}</span></h2>
 
-- <span class="lang-en"><em>Sep.2024</em>, Outstanding Student in Academic Performance, School of Electronics and Information, NPU.</span><span class="lang-zh"><em>2024年9月</em>，西北工业大学电子信息学院学业优秀学生。</span>
+{% for award in site.data.i18n.awards.items %}
+- <span class="lang-en">{{ award.en }}</span><span class="lang-zh">{{ award.zh }}</span>
+{% endfor %}
