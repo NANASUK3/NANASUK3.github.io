@@ -41,6 +41,7 @@
       var t = localStorage.getItem('theme');
       if (t === 'dark' || t === 'light') {
         document.querySelector('link[data-theme-dark]').media = t === 'dark' ? 'all' : 'not all';
+        document.documentElement.style.colorScheme = t;
       }
     } catch (e) {}
   })();

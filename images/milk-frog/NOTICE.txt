@@ -9,6 +9,11 @@ Source commit: f7b8aa8ecf0d0c5c6f601cf7c5ce71ca4230404a
 Source atlas SHA-256:
   30825CA73A7A4D2AB7EC689A7EF4D2649693A016A5C3FC5A608FB18820B7E9B0
 
+The `*-24.webp` files are 24-frame animated WebP derivatives. They use
+the source poses as keyframes and generated in-between frames, with a
+42 ms frame duration (about 24 fps). The individual `idle-*`, `greet-*`,
+and `laugh-*` files remain as static source/fallback references.
+
 The homepage treats Naiwa / 奶蛙 as the community-created public character
 described by the site owner. The source repository publishes its code and
 project files under MIT and asks users to confirm the separate rights of the

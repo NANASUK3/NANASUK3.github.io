@@ -14,11 +14,11 @@
     var sequenceId = 0;
     var preloaded = Object.create(null);
 
-    var frames = {
-      idle: ['idle-0.webp', 'idle-1.webp', 'idle-2.webp', 'idle-3.webp'],
-      greet: ['greet-0.webp', 'greet-1.webp', 'greet-2.webp', 'greet-3.webp', 'greet-4.webp'],
-      laugh: ['laugh-0.webp', 'laugh-1.webp', 'laugh-2.webp', 'laugh-3.webp', 'laugh-4.webp'],
-      working: ['working-0.webp']
+    var sequences = {
+      idle: { animated: 'idle-24.webp', fallback: 'idle-0.webp', duration: 0 },
+      greet: { animated: 'greet-24.webp', fallback: 'greet-0.webp', duration: 1008 },
+      laugh: { animated: 'laugh-24.webp', fallback: 'laugh-0.webp', duration: 1008 },
+      working: { animated: null, fallback: 'working-0.webp', duration: 0 }
     };
 
     function source(file) {
@@ -50,58 +50,38 @@
 
     function startIdle() {
       clearTimers();
-      var id = ++sequenceId;
-      var sequence = frames.idle;
-      var index = 0;
+      sequenceId += 1;
 
-      if (motionQuery.matches) {
-        show(sequence[0]);
-        return;
+      if (motionQuery.matches || !sequences.idle.animated) {
+        show(sequences.idle.fallback);
+      } else {
+        preload([sequences.idle.animated]);
+        show(sequences.idle.animated);
       }
-
-      function tick() {
-        if (id !== sequenceId || document.hidden) return;
-        show(sequence[index]);
-        index = (index + 1) % sequence.length;
-        timers.push(window.setTimeout(tick, 260));
-      }
-
-      tick();
     }
 
     function play(name) {
-      var sequence = frames[name];
+      var sequence = sequences[name];
       if (!sequence) return;
 
       clearTimers();
-      var id = ++sequenceId;
-      var index = 0;
+      sequenceId += 1;
 
-      if (motionQuery.matches || sequence.length === 1) {
-        show(sequence[0]);
-        if (name !== 'working') {
-          timers.push(window.setTimeout(startIdle, 850));
-        }
+      if (motionQuery.matches || !sequence.animated) {
+        show(sequence.fallback);
+        if (sequence.duration) timers.push(window.setTimeout(startIdle, sequence.duration));
         return;
       }
 
-      function tick() {
-        if (id !== sequenceId || document.hidden) return;
-        show(sequence[index]);
-        index += 1;
-        if (index < sequence.length) {
-          timers.push(window.setTimeout(tick, 135));
-        } else {
-          timers.push(window.setTimeout(startIdle, 420));
-        }
-      }
-
-      tick();
+      preload([sequence.animated]);
+      show(sequence.animated);
+      if (sequence.duration) timers.push(window.setTimeout(startIdle, sequence.duration));
     }
 
     function handleEnter() {
-      preload(frames.greet);
-      if (motionQuery.matches || hoverTimer !== null) return;
+      if (motionQuery.matches) return;
+      preload([sequences.greet.animated]);
+      if (hoverTimer !== null) return;
       hoverTimer = window.setTimeout(function () {
         hoverTimer = null;
         play('greet');
@@ -118,10 +98,11 @@
     button.addEventListener('pointerenter', handleEnter);
     button.addEventListener('pointerleave', handleLeave);
     button.addEventListener('focus', function () {
-      preload(frames.greet);
+      if (motionQuery.matches) return;
+      preload([sequences.greet.animated]);
     });
     button.addEventListener('click', function () {
-      preload(frames.laugh);
+      if (!motionQuery.matches) preload([sequences.laugh.animated]);
       play('laugh');
     });
 
@@ -140,7 +121,7 @@
       motionQuery.addListener(startIdle);
     }
 
-    preload(frames.idle.slice(1));
+    if (!motionQuery.matches) preload([sequences.idle.animated]);
     startIdle();
   }
 

@@ -91,6 +91,7 @@
     var t = effectiveTheme();
     var link = document.querySelector('link[data-theme-dark]');
     if (link) link.media = (t === 'dark') ? 'all' : 'not all';
+    document.documentElement.style.colorScheme = t;
     document.querySelectorAll('[data-theme-toggle]').forEach(function(button) {
       button.dataset.theme = t;
       button.innerHTML = '<span class="theme-toggle__icon" aria-hidden="true"></span>';
@@ -98,8 +99,9 @@
         ? '切换为浅色模式 / Switch to light mode'
         : '切换为深色模式 / Switch to dark mode');
     });
-    var meta = document.querySelector('meta[name="theme-color"]:not([media])');
-    if (meta) meta.setAttribute('content', t === 'dark' ? '#1b1d22' : '#ffffff');
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta) {
+      meta.setAttribute('content', t === 'dark' ? '#08090a' : '#ffffff');
+    });
   }
 
   function init() {
