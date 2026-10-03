@@ -73,6 +73,18 @@ a:hover {
   border-color: #565a63;
 }
 
+.milk-frog-pet__hint {
+  border-color: rgba(138, 180, 248, 0.2);
+  background: rgba(38, 40, 46, 0.96);
+  color: #d6d8dc;
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.35);
+}
+
+.milk-frog-pet__hint::after {
+  border-color: rgba(138, 180, 248, 0.2);
+  background: rgba(38, 40, 46, 0.96);
+}
+
 .error-page .error-code {
   color: #7aa7e8;
 }

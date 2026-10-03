@@ -3,6 +3,7 @@ permalink: /
 author_profile: true
 stylesheets:
   - /assets/css/home.css
+  - /assets/css/milk-frog.css
 redirect_from: 
   - /about/
   - /about.html
