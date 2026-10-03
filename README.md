@@ -8,7 +8,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 - Standalone Projects page (`/projects/`) with a responsive card grid
 - Author profile sidebar with avatar, bio, and social links
 - MathJax 3 support for LaTeX math (`$...$` inline, `$$...$$` display)
-- Font Awesome 6 icons via CDN
+- Inline SVG icons with optional Font Awesome loading for additional social links
 - Responsive design with mobile-friendly layout adjustments
 - Sitemap, Atom feed, and SEO support via Jekyll plugins
 
@@ -19,7 +19,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 - **kramdown** with GFM input for Markdown processing
 - **MathJax 3** for math rendering
 - **Sass/SCSS** for styling
-- **jQuery + plugins** for interactive features (greedy navigation, magnific popup, etc.)
+- **Native JavaScript** for navigation, responsive layout helpers, and small interactions
 
 ## Project Structure
 
@@ -31,6 +31,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 │   └── ui-text.yml          # Theme UI text strings
 ├── _includes/               # Reusable Liquid partials
 │   ├── head/custom.html     # Custom <head> snippets (FA, MathJax, favicon)
+│   ├── icon.html             # Small inline SVG icons
 │   ├── footer/custom.html   # Custom footer (sitemap link)
 │   └── ...                  # Other theme includes
 ├── _layouts/                # Page layout templates
@@ -44,7 +45,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 │   ├── 404.md               # Error page
 │   └── sitemap.md           # Sitemap page
 ├── _sass/                   # Theme Sass source files
-│   ├── vendor/              # Vendor libraries (breakpoint, susy, magnific-popup)
+│   ├── vendor/              # Vendor libraries (breakpoint, susy)
 │   └── _*.scss              # Theme component styles
 ├── assets/
 │   ├── css/
@@ -53,7 +54,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 │   │   ├── main.scss        # Main stylesheet entry (imports theme + custom)
 │   │   └── academicons.css  # Academic icons
 │   ├── js/
-│   │   ├── main.min.js      # Built JS (jQuery + plugins, run `npm run build:js`)
+│   │   ├── main.min.js      # Built native JS bundle (run `npm run build:js`)
 │   │   ├── show_publications.js
 │   │   └── pub_media_rotator.js
 │   └── fonts/               # Academicons font files

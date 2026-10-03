@@ -92,9 +92,8 @@
     var link = document.querySelector('link[data-theme-dark]');
     if (link) link.media = (t === 'dark') ? 'all' : 'not all';
     document.querySelectorAll('[data-theme-toggle]').forEach(function(button) {
-      button.innerHTML = t === 'dark'
-        ? '<i class="fa-solid fa-sun" aria-hidden="true"></i>'
-        : '<i class="fa-solid fa-moon" aria-hidden="true"></i>';
+      button.dataset.theme = t;
+      button.innerHTML = '<span class="theme-toggle__icon" aria-hidden="true"></span>';
       button.setAttribute('aria-label', t === 'dark'
         ? '切换为浅色模式 / Switch to light mode'
         : '切换为深色模式 / Switch to dark mode');

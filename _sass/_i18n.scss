@@ -14,9 +14,8 @@ html:not(.lang-zh) .lang-zh {
   display: none !important;
 }
 
-/* Masthead buttons (language + light/dark). They sit outside #site-nav on
-   purpose: the greedy-nav plugin binds every button inside it and measures
-   their width, which collapses the menu prematurely. */
+/* Masthead buttons (language + light/dark). They sit outside #site-nav so the
+   navigation can measure its own available width. */
 .lang-toggle,
 .theme-toggle {
   position: absolute;
@@ -51,9 +50,34 @@ html:not(.lang-zh) .lang-zh {
   padding: 0.25rem 0.6rem;
 }
 
+.theme-toggle__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+.theme-toggle__icon::before {
+  content: "☾";
+}
+
+.theme-toggle[data-theme="dark"] .theme-toggle__icon::before {
+  content: "☀";
+}
+
 /* Keep nav links clear of the toggle buttons at the right edge */
 .greedy-nav {
   padding-right: 9.5rem;
+}
+
+@media (max-width: 480px) {
+  .greedy-nav {
+    padding-right: 8.5rem;
+  }
+
+  .lang-toggle {
+    right: 4.25rem;
+  }
 }
 
 .masthead__inner-wrap {
