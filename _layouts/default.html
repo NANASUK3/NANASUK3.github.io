@@ -1,0 +1,37 @@
+---
+layout: compress
+---
+
+{% include base_path %}
+
+<!doctype html>
+<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
+
+  <body>
+
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
+
+    {{ content }}
+
+    <div class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include footer.html %}
+      </footer>
+    </div>
+
+    <button class="back-to-top" type="button" data-back-to-top aria-label="返回顶部 / Back to top"><span aria-hidden="true">↑</span></button>
+    {% if page.url == "/" %}
+      {% include milk-frog-pet.html %}
+      <script src="{{ base_path }}/assets/js/milk-frog.js?v=20261010-webp2" defer></script>
+    {% endif %}
+
+    {% include scripts.html %}
+
+  </body>
+</html>

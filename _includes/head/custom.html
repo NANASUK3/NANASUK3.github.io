@@ -1,0 +1,38 @@
+{% include base_path %}
+
+<!-- start custom head snippets -->
+
+<link rel="icon" href="{{ base_path }}/images/favicon.ico">
+<link rel="manifest" href="{{ base_path }}/images/manifest.json">
+
+<meta name="msapplication-config" content="{{ base_path }}/images/browserconfig.xml">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#08090a">
+{% assign icon_author = site.author %}
+{% if page.author and site.data.authors[page.author] %}
+  {% assign icon_author = site.data.authors[page.author] %}
+{% endif %}
+{% if icon_author.employer or icon_author.WeChat or icon_author.googlescholar or icon_author.researchgate or icon_author.bitbucket or icon_author.codepen or icon_author.dribbble or icon_author.kaggle or icon_author.stackoverflow or icon_author.bluesky or icon_author.facebook or icon_author.flickr or icon_author.foursquare or icon_author.goodreads or icon_author.google_plus or icon_author.keybase or icon_author.instagram or icon_author.lastfm or icon_author.linkedin or icon_author.mastodon or icon_author.medium or icon_author.pinterest or icon_author.soundcloud or icon_author.steam or icon_author.telegram or icon_author.tumblr or icon_author.bilibili or icon_author.twitter or icon_author.vine or icon_author.weibo or icon_author.wikipedia or icon_author.xing or icon_author.youtube or icon_author.zhihu or icon_author.XiaoHongShu %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+{% endif %}
+{% if icon_author.arxiv or icon_author.semantic or icon_author.impactstory or icon_author.orcid or icon_author.pubmed %}
+<link rel="stylesheet" href="{{ base_path }}/assets/css/academicons.css"/>
+{% endif %}
+
+<!-- MathJax (opt-in: set `math: true` in a page's front matter) -->
+{% if page.math %}
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    }
+  };
+</script>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
+
+<!-- end custom head snippets -->

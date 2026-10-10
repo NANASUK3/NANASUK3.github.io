@@ -1,0 +1,84 @@
+/* ===== Projects Page: Card Grid ===== */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: start;
+  gap: 20px;
+  max-width: 780px;
+  padding-top: 10px;
+}
+
+.project-grid .project-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: background-color 0.1s ease, box-shadow 0.1s ease;
+  -webkit-transition: background-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+.project-tile > picture {
+  display: block;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.project-grid .project-tile:hover {
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Stretches over the tile so the whole card is clickable */
+.project-tile .project-tile__link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.project-tile .project-tile__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+  background-color: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.project-tile .project-tile__body {
+  flex: 1 1 auto;
+  padding: 16px 20px 20px 20px;
+}
+
+.project-tile .project-tile__title {
+  margin: 0 0 8px 0;
+  font-size: 1.05em;
+  line-height: 1.3;
+}
+
+.project-tile .project-tile__text {
+  margin: 0 0 6px 0;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.project-tile .project-tile__meta {
+  color: #6c757d;
+}
+
+@media (max-width: 600px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-tile .project-tile__img {
+    max-height: 180px;
+  }
+}

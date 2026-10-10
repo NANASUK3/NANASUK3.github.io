@@ -1,0 +1,557 @@
+
+/* ===== Section Scroll Offset ===== */
+#news,
+#experience,
+#publications,
+#projects,
+#awards,
+#talks {
+  scroll-margin-top: 80px;
+}
+
+/* ===== Body ===== */
+body {
+  background-color: #FFFFFF;
+  font-family: 'Arial Rounded MT Bold', 'Verdana', sans-serif;
+  font-size: 15px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===== Keyframes ===== */
+@keyframes home-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes view-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-heading {
+  text-align: center;
+  color: #4a90e2;
+}
+
+div.markdown-body a,
+a {
+  text-decoration: none !important;
+  color: #0066cc;
+  transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+div.markdown-body a:hover,
+a:hover {
+  color: #004499;
+  text-decoration: underline;
+}
+
+/* ===== News Scroll Box ===== */
+.news-box {
+  max-height: 220px;
+  overflow-y: auto;
+  padding: 10px 14px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.news-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.news-list li {
+  margin-bottom: 10px;
+  margin-left: -8px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  line-height: 1.5;
+  transition: background-color 0.25s ease;
+}
+
+.news-list li:hover {
+  background-color: rgba(74, 144, 226, 0.07);
+}
+
+.news-date {
+  display: inline-block;
+  min-width: 70px;
+  font-weight: 400;
+  color: #4a90e2;
+}
+
+/* ===== Experience Cards ===== */
+.experience-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience-card {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
+}
+
+.experience-card > picture {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.experience-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.experience-logo {
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  border-radius: 8px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover .experience-logo {
+  transform: scale(1.06);
+}
+
+.experience-info {
+  font-family: "Segoe UI", sans-serif;
+}
+
+.experience-info strong {
+  font-size: 1.1em;
+}
+
+.experience-info a {
+  text-decoration: none;
+  color: #4a90e2;
+}
+
+.experience-note {
+  color: #888;
+}
+
+/* ===== Publication Cards ===== */
+.publication-card {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #5f6368;
+}
+
+.publication-card > div > strong,
+.publication-card > div > div > strong {
+  color: #202124;
+}
+
+.publication-card i {
+  color: #6b7280;
+}
+
+.publication-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.publication-card.featured {
+  border-color: #a8c8ec;
+  background: #f0f7ff;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.2);
+  z-index: 10;
+}
+
+.publication-card.featured:hover {
+  box-shadow: 0 8px 16px rgba(74, 144, 226, 0.4);
+}
+
+/* ===== Publication Badges ===== */
+.pub-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  vertical-align: middle;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  background: rgba(107, 114, 128, 0.08);
+  color: #6b7280;
+}
+
+.pub-badge::before {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.75;
+}
+
+.pub-badge--oral {
+  margin-left: 4px;
+  vertical-align: 2px;
+  color: #4c6a94;
+  background: rgba(131, 161, 199, 0.14);
+  border-color: rgba(131, 161, 199, 0.35);
+}
+
+/* ===== Publication Filter Buttons ===== */
+.pub-button-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.pub-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.pub-button:hover {
+  background-color: #e0e0e0;
+  transform: translateY(-1px);
+}
+
+.pub-button:active {
+  transform: scale(0.96);
+}
+
+.pub-button.active {
+  background-color: #4a90e2;
+  color: white;
+  border-color: #4a90e2;
+}
+
+/* ===== Publication Views ===== */
+.publication-view[hidden] {
+  display: none !important;
+}
+
+.publication-view:not([hidden]) {
+  animation: view-fade-in 0.4s ease both;
+}
+
+#full-publications {
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-bottom: 24px;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(74, 144, 226, 0.45) rgba(240, 247, 255, 0.7);
+}
+
+#full-publications::-webkit-scrollbar {
+  width: 8px;
+}
+
+#full-publications::-webkit-scrollbar-track {
+  background: rgba(240, 247, 255, 0.7);
+  border-radius: 999px;
+}
+
+#full-publications::-webkit-scrollbar-thumb {
+  background: rgba(74, 144, 226, 0.45);
+  border-radius: 999px;
+}
+
+#full-publications::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 144, 226, 0.65);
+}
+
+/* ===== Full Publication List ===== */
+.full-publication-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #5f6368;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.full-publication-list li {
+  margin-bottom: 14px;
+}
+
+.pub-list-badge {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 200, 236, 0.75);
+  background: #f0f7ff;
+  color: #4a90e2;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+
+.full-publication-list .pub-list-title {
+  color: #202124;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.45;
+  text-decoration: none !important;
+}
+
+.pub-list-authors {
+  color: #6b7280;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.pub-list-authors > strong {
+  color: #202124;
+}
+
+.pub-list-authors a strong {
+  color: inherit;
+}
+
+.pub-list-note {
+  color: #4a90e2;
+  font-style: italic;
+  font-weight: 650;
+}
+
+.pub-list-links {
+  white-space: nowrap;
+}
+
+.pub-list-links a {
+  margin-left: 4px;
+  color: #4a90e2 !important;
+  font-weight: 600;
+}
+
+.pub-list-links a:hover {
+  color: #357abd !important;
+}
+
+/* ===== Project Cards ===== */
+.project-card {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #5f6368;
+}
+
+.project-card > div > strong,
+.project-card > div > div > strong {
+  color: #202124;
+}
+
+.project-card i {
+  color: #6b7280;
+}
+
+.project-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+/* ===== Publication Placeholders ===== */
+.pub-link-placeholder {
+  color: #9aa0a8;
+  font-style: italic;
+}
+
+/* ===== 404 Page ===== */
+.error-page {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+.error-page .error-code {
+  margin: 0;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #4a90e2;
+}
+
+.error-page .error-text {
+  color: #5f6368;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 720px) {
+  .publication-card,
+  .project-card {
+    align-items: stretch;
+    padding: 8px;
+  }
+
+  .publication-card > div,
+  .project-card > div {
+    flex-direction: column;
+    align-items: stretch !important;
+    width: 100%;
+  }
+
+  .publication-card .pub-media-rotator,
+  .project-card .pub-media-rotator {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    margin-right: 0 !important;
+    margin-bottom: 12px;
+  }
+
+  .publication-card .pub-media-rotator > img,
+  .project-card .pub-media-rotator > img,
+  .publication-card .pub-media-rotator > picture,
+  .project-card .pub-media-rotator > picture {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    object-fit: contain;
+  }
+
+  .publication-card .pub-media-rotator > picture > img,
+  .project-card .pub-media-rotator > picture > img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+
+  .publication-card strong,
+  .project-card strong {
+    line-height: 1.35;
+  }
+
+  .full-publication-list {
+    padding-left: 1rem;
+  }
+
+  .pub-list-badge {
+    margin-bottom: 4px;
+  }
+}
+
+/* ===== Scroll Spy ===== */
+.masthead__menu-item a.nav-active {
+  color: #454b52;
+}
+
+/* Reuse the theme's nav underline for the active section */
+.greedy-nav .visible-links a.nav-active::before {
+  transform: scaleX(1);
+}
+
+/* ===== Scroll Reveal =====
+   An inline script at the top of the page content adds .reveal-armed to
+   <html> before first paint, so reveal targets start hidden without a
+   flash. assets/js/reveal.js then tags [data-reveal] and reveals elements
+   via IntersectionObserver; if that script never runs, the same inline
+   script removes .reveal-armed after a timeout so nothing stays hidden.
+   Keep the structural selectors below in sync with the auto-tag list in
+   reveal.js (h2/p/ul children of .page__content and children of
+   [data-reveal-group]). */
+.reveal-armed [data-reveal],
+.reveal-armed .page__content > h2,
+.reveal-armed .page__content > p:not(:first-of-type),
+.reveal-armed .page__content > ul,
+.reveal-armed [data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal-armed [data-reveal].is-revealed,
+.reveal-armed .page__content > h2.is-revealed,
+.reveal-armed .page__content > p:not(:first-of-type).is-revealed,
+.reveal-armed .page__content > ul.is-revealed,
+.reveal-armed [data-reveal-group] > .is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* One-time entrance for the author sidebar */
+.sidebar {
+  animation: home-fade-up 0.6s ease both;
+  animation-delay: 0.1s;
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-armed [data-reveal],
+  .reveal-armed .page__content > h2,
+  .reveal-armed .page__content > p:not(:first-of-type),
+  .reveal-armed .page__content > ul,
+  .reveal-armed [data-reveal-group] > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .sidebar,
+  .publication-view:not([hidden]) {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

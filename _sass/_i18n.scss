@@ -1,0 +1,85 @@
+/* ==========================================================================
+   BILINGUAL TOGGLE (EN / ZH)
+   Pages mark translated content with .lang-en / .lang-zh wrappers. A button
+   in the masthead toggles the `lang-zh` class on <html>; the choice is kept
+   in localStorage and restored by an inline script in head.html. Without
+   JavaScript the English text shows.
+   ========================================================================== */
+
+html.lang-zh .lang-en {
+  display: none !important;
+}
+
+html:not(.lang-zh) .lang-zh {
+  display: none !important;
+}
+
+/* Masthead buttons (language + light/dark). They sit outside #site-nav so the
+   navigation can measure its own available width. */
+.lang-toggle,
+.theme-toggle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  padding: 0.25rem 0.75rem;
+  border: 1px solid $border-color;
+  border-radius: 999px;
+  outline: none;
+  background: none;
+  color: $masthead-link-color;
+  font-family: $sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.5;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    color: $masthead-link-color-hover;
+    border-color: $masthead-link-color-hover;
+  }
+}
+
+.lang-toggle {
+  right: 3.25rem;
+}
+
+.theme-toggle {
+  right: 6.75rem;
+  padding: 0.25rem 0.6rem;
+}
+
+.theme-toggle__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+}
+
+.theme-toggle__icon::before {
+  content: "☾";
+}
+
+.theme-toggle[data-theme="dark"] .theme-toggle__icon::before {
+  content: "☀";
+}
+
+/* Keep nav links clear of the toggle buttons at the right edge */
+.greedy-nav {
+  padding-right: 9.5rem;
+}
+
+@media (max-width: 480px) {
+  .greedy-nav {
+    padding-right: 8.5rem;
+  }
+
+  .lang-toggle {
+    right: 4.25rem;
+  }
+}
+
+.masthead__inner-wrap {
+  position: relative;
+}

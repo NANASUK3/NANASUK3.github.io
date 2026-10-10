@@ -1,0 +1,274 @@
+<script src="{{ base_path }}/assets/js/main.min.js"></script>
+<script>
+(function() {
+  function closeAll() {
+    document.querySelectorAll('.author__urls-wrapper.is-open').forEach(function(wrapper) {
+      wrapper.classList.remove('is-open');
+    });
+  }
+
+  function init() {
+    document.querySelectorAll('.author__urls-wrapper').forEach(function(wrapper) {
+      var button = wrapper.querySelector('button');
+      var list = wrapper.querySelector('.author__urls');
+      if (!button || !list) return;
+
+      button.addEventListener('click', function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        wrapper.classList.toggle('is-open');
+      });
+    });
+
+    document.addEventListener('click', function() {
+      closeAll();
+    });
+
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') closeAll();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/* EN/ZH toggle: the button only shows on pages that actually carry .lang-zh
+   content, and the choice persists in localStorage. */
+(function() {
+  function init() {
+    var buttons = document.querySelectorAll('[data-lang-toggle]');
+    if (!buttons.length) return;
+
+    if (!document.querySelector('.lang-zh')) {
+      buttons.forEach(function(button) { button.hidden = true; });
+      return;
+    }
+
+    function updateLabel() {
+      var zh = document.documentElement.classList.contains('lang-zh');
+      buttons.forEach(function(button) {
+        button.textContent = zh ? 'EN' : 'CN';
+      });
+    }
+
+    buttons.forEach(function(button) {
+      button.addEventListener('click', function() {
+        var zh = document.documentElement.classList.toggle('lang-zh');
+        try {
+          localStorage.setItem('site-lang', zh ? 'zh' : 'en');
+        } catch (e) {}
+        updateLabel();
+        document.dispatchEvent(new CustomEvent('site:layoutchange'));
+      });
+    });
+
+    updateLabel();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/* Light/dark toggle: dark.css ships with media="(prefers-color-scheme: dark)"
+   so the site follows the OS by default; this flips the link's media
+   attribute and persists an explicit choice in localStorage. */
+(function() {
+  var selectedTheme = null;
+  var themeTransitionTimer = null;
+  var themeTransitionDuration = 480;
+  var activeThemeTransition = null;
+  var themeChangeId = 0;
+
+  function effectiveTheme() {
+    if (selectedTheme) return selectedTheme;
+    try {
+      var saved = localStorage.getItem('theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+    } catch (e) {}
+    return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+  }
+
+  function updateTheme(t) {
+    var root = document.documentElement;
+    var link = document.querySelector('link[data-theme-dark]');
+    if (link) link.media = (t === 'dark') ? 'all' : 'not all';
+    root.style.colorScheme = t;
+    root.dataset.theme = t;
+    document.querySelectorAll('[data-theme-toggle]').forEach(function(button) {
+      button.dataset.theme = t;
+      button.setAttribute('aria-label', t === 'dark'
+        ? '切换为浅色模式 / Switch to light mode'
+        : '切换为深色模式 / Switch to dark mode');
+    });
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function(meta) {
+      meta.setAttribute('content', t === 'dark' ? '#08090a' : '#ffffff');
+    });
+    document.dispatchEvent(new CustomEvent('site:themechange', { detail: { theme: t } }));
+  }
+
+  function resetThemeTransition(root) {
+    window.clearTimeout(themeTransitionTimer);
+    themeTransitionTimer = null;
+    root.classList.remove('theme-transitioning', 'theme-transitioning-active');
+    delete root.dataset.themeTransitionTo;
+    delete root.dataset.themeSnapshot;
+    root.style.removeProperty('--theme-transition-from');
+  }
+
+  function applyFallbackTheme(t, root, previousTheme, changeId) {
+    root.classList.add('theme-transitioning');
+    root.dataset.themeTransitionTo = t;
+    root.style.setProperty('--theme-transition-from', previousTheme === 'dark' ? '#08090a' : '#ffffff');
+
+    /* Make the full old-theme scrim exist before committing the new palette. */
+    window.getComputedStyle(root, '::after').opacity;
+
+    var requestFrame = window.requestAnimationFrame || function(callback) {
+      return window.setTimeout(callback, 16);
+    };
+    requestFrame(function() {
+      if (changeId !== themeChangeId) return;
+      updateTheme(t);
+      requestFrame(function() {
+        if (changeId !== themeChangeId) return;
+        root.classList.add('theme-transitioning-active');
+        themeTransitionTimer = window.setTimeout(function() {
+          if (changeId !== themeChangeId) return;
+          resetThemeTransition(root);
+        }, themeTransitionDuration + 80);
+      });
+    });
+  }
+
+  function applyTheme(animate) {
+    var t = effectiveTheme();
+    var root = document.documentElement;
+    var previousTheme = root.dataset.theme;
+    var themeChanged = previousTheme && previousTheme !== t;
+    var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var shouldAnimate = Boolean(animate && themeChanged && !reducedMotion);
+    var changeId = ++themeChangeId;
+
+    if (activeThemeTransition) {
+      activeThemeTransition.skipTransition();
+      activeThemeTransition = null;
+    }
+    resetThemeTransition(root);
+
+    if (shouldAnimate && typeof document.startViewTransition === 'function') {
+      root.dataset.themeSnapshot = '';
+
+      try {
+        var transition = document.startViewTransition(function() {
+          if (changeId === themeChangeId) updateTheme(t);
+        });
+        activeThemeTransition = transition;
+        var finish = function() {
+          if (changeId !== themeChangeId) return;
+          activeThemeTransition = null;
+          delete root.dataset.themeSnapshot;
+        };
+        transition.ready.catch(function() {});
+        transition.finished.then(finish, finish);
+        return;
+      } catch (error) {
+        delete root.dataset.themeSnapshot;
+        /* Use the solid scrim fallback when snapshots cannot be created. */
+      }
+    }
+
+    if (shouldAnimate) {
+      applyFallbackTheme(t, root, previousTheme, changeId);
+      return;
+    }
+
+    updateTheme(t);
+  }
+
+  function toggleTheme() {
+    selectedTheme = effectiveTheme() === 'dark' ? 'light' : 'dark';
+    try {
+      localStorage.setItem('theme', selectedTheme);
+    } catch (e) {}
+    applyTheme(true);
+  }
+
+  function init() {
+    var button = document.querySelector('[data-theme-toggle]');
+    if (button) {
+      button.addEventListener('click', toggleTheme);
+      if (window.matchMedia) {
+        var query = window.matchMedia('(prefers-color-scheme: dark)');
+        var onChange = function() {
+          var saved = null;
+          try { saved = localStorage.getItem('theme'); } catch (e) {}
+          if (saved !== 'dark' && saved !== 'light') applyTheme(true);
+        };
+        if (query.addEventListener) query.addEventListener('change', onChange);
+      }
+    }
+    window.addEventListener('storage', function(event) {
+      if (event.key === 'theme' || event.key === null) {
+        selectedTheme = null;
+        applyTheme(true);
+      }
+    });
+    applyTheme(false);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<script>
+/* Back-to-top: floats in after roughly one screen of scrolling. */
+(function() {
+  function init() {
+    var button = document.querySelector('[data-back-to-top]');
+    if (!button) return;
+    var frame = 0;
+    var requestFrame = window.requestAnimationFrame || function (callback) {
+      return window.setTimeout(callback, 16);
+    };
+
+    function update() {
+      frame = 0;
+      button.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.8);
+    }
+
+    function scheduleUpdate() {
+      if (frame) return;
+      frame = requestFrame(update);
+    }
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
+    update();
+
+    button.addEventListener('click', function() {
+      var reduced = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+{% include analytics.html %}

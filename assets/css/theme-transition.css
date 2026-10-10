@@ -1,0 +1,146 @@
+/*
+ * Smooth light/dark palette transitions.
+ *
+ * A theme switch changes a whole stylesheet at once. Animating every text node
+ * makes glyphs re-rasterize and can look like a brief flash. We therefore use
+ * one ordinary cross-fade for the whole view: supported browsers cross-fade
+ * the old/new view snapshots; older browsers fade a solid old-theme scrim
+ * over the already-updated page. Both paths keep text pixels stable while
+ * the palette changes underneath.
+ */
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Reserve the same border space in both palettes to keep text aligned. */
+html[data-theme="light"] :is(.news-box, .experience-card, .project-grid .project-tile, .pub-media-rotator) {
+  border: 1px solid transparent;
+}
+
+/* The fallback scrim is the only moving layer. Disable descendant transitions
+   while the new palette is committed so colors cannot animate independently. */
+html.theme-transitioning,
+html.theme-transitioning body,
+html.theme-transitioning body *,
+html.theme-transitioning body *::before,
+html.theme-transitioning body *::after {
+  transition: none !important;
+  animation-play-state: paused !important;
+}
+
+html.theme-transitioning::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  pointer-events: none;
+  background: var(--theme-transition-from, #fff);
+  opacity: 1;
+  will-change: opacity;
+}
+
+html.theme-transitioning.theme-transitioning-active::after {
+  animation: theme-scrim-fade 480ms cubic-bezier(.4, 0, .2, 1) both;
+}
+
+@keyframes theme-scrim-fade {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* Keep the small theme control legible and update its glyph without affecting
+   page typography. */
+.theme-toggle__icon {
+  display: inline-block;
+  transform-origin: center;
+  transition: transform 280ms ease-in-out;
+}
+
+html[data-theme="dark"] .theme-toggle__icon {
+  transform: rotate(180deg);
+}
+
+html.theme-transitioning .theme-toggle__icon {
+  transition: transform 280ms ease-in-out !important;
+}
+
+/* Freeze the live DOM while View Transition snapshots are captured. */
+html[data-theme-snapshot] body,
+html[data-theme-snapshot] body *,
+html[data-theme-snapshot] body::before,
+html[data-theme-snapshot] body::after,
+html[data-theme-snapshot] body *::before,
+html[data-theme-snapshot] body *::after {
+  transition: none !important;
+  animation-play-state: paused !important;
+}
+
+/* The masthead normally has its own cross-page snapshot. Let it join the
+   theme root snapshot so it uses the same timing and cannot flash separately. */
+html[data-theme-snapshot] .masthead {
+  view-transition-name: none !important;
+}
+
+@supports selector(::view-transition-new(root)) {
+  html[data-theme-snapshot]::view-transition,
+  html[data-theme-snapshot]::view-transition-group(*),
+  html[data-theme-snapshot]::view-transition-image-pair(*),
+  html[data-theme-snapshot]::view-transition-old(*),
+  html[data-theme-snapshot]::view-transition-new(*) {
+    pointer-events: none;
+  }
+
+  html[data-theme-snapshot]::view-transition {
+    background: transparent;
+  }
+
+  html[data-theme-snapshot]::view-transition-group(root) {
+    animation: none;
+  }
+
+  html[data-theme-snapshot]::view-transition-image-pair(root) {
+    isolation: isolate;
+  }
+
+  /* Explicitly use a normal alpha cross-fade for the complete page snapshots. */
+  html[data-theme-snapshot]::view-transition-old(root),
+  html[data-theme-snapshot]::view-transition-new(root) {
+    opacity: 1;
+    mix-blend-mode: normal;
+  }
+
+  html[data-theme-snapshot]::view-transition-old(root) {
+    animation: theme-view-fade-out 480ms cubic-bezier(.4, 0, .2, 1) both;
+  }
+
+  html[data-theme-snapshot]::view-transition-new(root) {
+    animation: theme-view-fade-in 480ms cubic-bezier(.4, 0, .2, 1) both;
+  }
+
+  @keyframes theme-view-fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes theme-view-fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-transitioning::after,
+  html.theme-transitioning .theme-toggle__icon,
+  .theme-toggle__icon {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  @supports selector(::view-transition-new(root)) {
+    html[data-theme-snapshot]::view-transition-old(root),
+    html[data-theme-snapshot]::view-transition-new(root) {
+      animation-duration: 0.01ms !important;
+    }
+  }
+}

@@ -1,0 +1,100 @@
+# ============================================================================
+# 站点文案（中英对照）
+#
+# 这个文件集中维护主页上所有需要翻译的文字：
+#   en: 英文文案    zh: 中文文案
+#
+# ⚠️ 目前所有 zh 文案是机器初稿，欢迎直接润色或重写。
+#
+# 说明：
+#   - 支持内联 HTML（<a>、<strong>、<br>、<em> 等），与 about.md 中原写法一致；
+#   - 多行文本用 |- 或 >- 开头（YAML 块写法），注意缩进保持一致；
+#   - 保存后 GitHub Pages 会自动重新构建，稍等一两分钟即可在线上看到。
+# ============================================================================
+
+# 首页开头的自我介绍
+# zh 含内嵌 HTML 属性，需要写成单行并转义引号（避免 YAML 折行在中文间插入空格）
+intro:
+  en: >-
+    Welcome to my Homepage! I am currently a postgraduate student
+    in Lab for Multimedia Intelligence (LAMI) at <a class="academic-link"
+    href="https://www.ustc.edu.cn/" target="_blank">University of Science and
+    Technology of China (USTC)</a>. Before that, I received my B.S. degree
+    from <a class="academic-link" href="https://www.nwpu.edu.cn/"
+    target="_blank">Northwestern Polytechnical University (NPU)</a> in 2026.
+  zh: "欢迎来到我的个人主页！我目前是<a class=\"academic-link\" href=\"https://www.ustc.edu.cn/\" target=\"_blank\">中国科学技术大学</a>多媒体智能实验室（LAMI）的硕士研究生，在此之前，我于 2026 年在<a class=\"academic-link\" href=\"https://www.nwpu.edu.cn/\" target=\"_blank\">西北工业大学</a>获得工学学士学位。"
+
+# 各区块标题
+sections:
+  news:
+    en: News
+    zh: 动态
+  experience:
+    en: Experience
+    zh: 经历
+  publications:
+    en: Publications
+    zh: 论文
+  awards:
+    en: Awards
+    zh: 荣誉
+
+# News 列表：date 为时间标签（不翻译），增删条目直接增删下面的块
+news:
+  items:
+    - date: Sep.2026
+      en: "🎉 I am starting my postgraduate studies at USTC."
+      zh: "🎉 我在中国科大开始了研究生阶段的学习。"
+    - date: Jun.2026
+      en: "🥹 I've graduated from NPU. These four‑year journey is beyond words."
+      zh: "🥹 从西工大毕业了。难忘的四年。"
+
+# 经历卡片：logo 为图片路径，en/zh 内的 <br> 用于换行
+experience:
+  items:
+    - logo: images/ustc.png
+      alt: USTC logo
+      en: |-
+        <strong>University of Science and Technology of China</strong><br>
+        <em>Sep.2026 - Present</em><br>
+        Postgraduate Student Major in Artificial Intelligence. <br>
+        <span class="experience-note">Research interests include Computer Vision and Embodied AI.</span>
+      zh: |-
+        <strong>中国科学技术大学</strong><br>
+        <em>2026年9月 - 至今</em><br>
+        人工智能专业硕士研究生。<br>
+        <span class="experience-note">研究方向包括具身智能与 Agent。</span>
+    - logo: images/nwpu.png
+      alt: NPU logo
+      en: |-
+        <strong>Northwestern Polytechnical University</strong><br>
+        <em>Sep.2022 - Jul.2026</em><br>
+        B.S. in Electrical Information Engineering<br>
+      zh: |-
+        <strong>西北工业大学</strong><br>
+        <em>2022年9月 - 2026年7月</em><br>
+        电子信息工程专业，工学学士<br>
+
+# 论文区
+publications:
+  core_button:
+    en: Core Publications
+    zh: 核心论文
+  full_button:
+    en: Full Publications List
+    zh: 全部论文列表
+  card_title:
+    en: Coming Soon...
+    zh: 敬请期待……
+  card_desc:
+    en: Coming soon...
+    zh: 敬请期待……
+  list_note:
+    en: Oral.
+    zh: 口头报告。
+
+# 获奖列表：增删条目直接增删下面的块
+awards:
+  items:
+    - en: "<em>Sep.2024</em>, Outstanding Student in Academic Performance, School of Electronics and Information, NPU."
+      zh: "<em>2024年9月</em>，西北工业大学电子信息学院学业优秀学生。"

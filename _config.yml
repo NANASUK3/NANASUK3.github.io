@@ -1,0 +1,119 @@
+locale                   : "en-US"
+title                    : "Jingpeng Yang"
+title_separator          : "-"
+name                     : "Jingpeng Yang"
+description              : &description "The academic homepage."
+url                      : ""
+baseurl                  : ""
+repository               : ""
+
+author:
+  avatar           : "avatar.png"
+  name             : "Jingpeng Yang 杨靖鹏"
+  pronouns         :
+  bio              : "Embodied AI & Agent."
+  location         : "Hefei, China"
+  employer         :
+  email            : "yangjingpeng@ustc.edu.cn"
+
+  github           : NANASUK3
+  kaggle           :
+  stackoverflow    :
+  linkedin         :
+
+teaser                   :
+breadcrumbs              : false
+future                   : true
+
+atom_feed:
+  hide                   : false
+  path                   :
+
+analytics:
+  provider               : false
+
+include:
+  - .htaccess
+  - _pages
+  - files
+
+exclude:
+  - "*.sublime-project"
+  - "*.sublime-workspace"
+  - .asset-cache
+  - .bundle
+  - .jekyll-assets-cache
+  - .sass-cache
+  - CHANGELOG
+  - Capfile
+  - Gemfile
+  - Gruntfile.js
+  - LICENSE
+  - README
+  - Rakefile
+  - assets/js/_main.js
+  - assets/js/plugins
+  - assets/js/vendor
+  - config
+  - gulpfile.js
+  - log
+  - node_modules
+  - local
+  - package.json
+  - tmp
+  - vendor
+
+keep_files:
+  - .git
+  - .svn
+
+encoding: "utf-8"
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+defaults:
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+permalink: /:categories/:title/
+timezone: UTC
+
+plugins:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-redirect-from
+
+whitelist:
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-feed
+  - jekyll-redirect-from
+
+compress_html:
+  clippings: all
+  ignore:
+    envs: development
