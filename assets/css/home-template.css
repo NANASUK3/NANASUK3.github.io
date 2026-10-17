@@ -292,41 +292,6 @@ body.home-template a:focus-visible {
   text-decoration: none;
 }
 
-.home-template .sitemap-page {
-  text-align: left;
-}
-
-.home-template .sitemap-page h1 {
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--home-border);
-}
-
-.home-template .sitemap-list {
-  display: grid;
-  gap: 8px;
-  margin: 24px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.home-template .sitemap-list li {
-  border-bottom: 1px solid var(--home-border-soft);
-}
-
-.home-template .sitemap-list a {
-  display: block;
-  padding: 10px 12px;
-  color: var(--home-text);
-  text-decoration: none;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.home-template .sitemap-list a:hover,
-.home-template .sitemap-list a:focus-visible {
-  background: var(--home-accent-soft);
-  color: var(--home-accent);
-}
-
 .home-template .home-anchor-alias {
   display: block;
   position: relative;

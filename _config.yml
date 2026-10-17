@@ -104,16 +104,10 @@ permalink: /:categories/:title/
 timezone: UTC
 
 plugins:
-  - jekyll-sitemap
-  - jekyll-gist
   - jekyll-feed
-  - jekyll-redirect-from
 
 whitelist:
-  - jekyll-sitemap
-  - jekyll-gist
   - jekyll-feed
-  - jekyll-redirect-from
 
 compress_html:
   clippings: all

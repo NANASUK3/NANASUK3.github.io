@@ -13,7 +13,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 - MathJax 3 support for LaTeX math (`$...$` inline, `$$...$$` display)
 - Inline SVG icons with optional Font Awesome loading for additional social links
 - Responsive design with mobile-friendly layout adjustments
-- Sitemap, Atom feed, and SEO support via Jekyll plugins
+- Atom feed and SEO support via Jekyll plugins
 
 ## Tech Stack
 
@@ -37,26 +37,23 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 │   └── ui-text.yml          # Theme UI text strings
 ├── _includes/               # Reusable Liquid partials
 │   ├── head/custom.html     # Custom <head> snippets (FA, MathJax, favicon)
-│   ├── icon.html             # Small inline SVG icons
-│   ├── footer/custom.html   # Custom footer (sitemap link)
-│   └── ...                  # Other theme includes
+│   ├── icon.html            # Small inline SVG icons
+│   ├── home-nav.html        # Homepage navigation
+│   ├── home-footer.html     # Homepage footer
+│   ├── milk-frog-pet.html   # Homepage companions
+│   └── ...                  # SEO and script includes
 ├── _layouts/                # Page layout templates
-│   ├── home.html             # Target-inspired Jekyll homepage shell
-│   ├── default.html         # Base HTML wrapper
-│   ├── single.html          # Single page/article layout
-│   ├── archive.html         # Archive listing layout
+│   ├── home.html             # Homepage shell
 │   └── compress.html        # HTML compression wrapper
 ├── _pages/                  # All site pages (unified management)
 │   ├── about.md             # Homepage (single-page with all sections)
-│   ├── 404.md               # Error page
-│   └── sitemap.md           # Sitemap page
+│   └── 404.md               # Error page
 ├── _sass/                   # Theme Sass source files
 │   ├── vendor/              # Vendor libraries (breakpoint, susy)
 │   └── _*.scss              # Theme component styles
 ├── assets/
 │   ├── css/
 │   │   ├── home-template.css # Target-inspired homepage styles
-│   │   ├── 404.css          # Standalone error page styles
 │   │   ├── main.scss        # Main stylesheet entry (imports theme + custom)
 │   │   ├── dark.css         # Dark theme overrides
 │   │   ├── milk-frog.css    # Companion interactions
@@ -147,7 +144,6 @@ main:
 ### Styling
 
 - Homepage shell styles: `assets/css/home-template.css`
-- Error page styles: `assets/css/404.css`
 - Main theme styles: `assets/css/main.scss` (imports Sass partials from `_sass/`)
 - Custom `<head>` snippets (favicon, CDN links, MathJax config): `_includes/head/custom.html`
 
