@@ -13,10 +13,7 @@ redirect_from:
     <div class="bio-layout">
       <div class="bio-main">
         <div class="bio-main-top">
-          <picture class="profile-frame">
-            <source type="image/webp" srcset="{{ site.baseurl }}/images/avatar-256.webp 256w, {{ site.baseurl }}/images/avatar-512.webp 512w" sizes="120px">
-            <img src="{{ site.baseurl }}/images/avatar.png" alt="Jingpeng Yang" class="profile-img" width="512" height="512" decoding="async">
-          </picture>
+          <img src="{{ site.baseurl }}/images/avatar-256.webp" alt="Jingpeng Yang" class="profile-img" width="256" height="256" decoding="async">
           <div class="bio-intro">
             <p class="bio-text">
               <span class="lang-en">{{ site.data.i18n.intro.en }}</span>
@@ -94,8 +91,7 @@ redirect_from:
         <div class="exp-period lang-zh">{{ entry.period_zh }}</div>
         <div class="exp-main">
           {% assign logo_path = site.baseurl | append: '/' | append: entry.logo %}
-          {% assign logo_webp = logo_path | replace: '.png', '.webp' %}
-          <picture class="exp-logo-frame"><source type="image/webp" srcset="{{ logo_webp }}"><img src="{{ logo_path }}" class="exp-logo" alt="{{ entry.alt }}" width="56" height="56" loading="lazy" decoding="async"></picture>
+          <img src="{{ logo_path }}" class="exp-logo" alt="{{ entry.alt }}" width="56" height="56" loading="lazy" decoding="async">
           <div class="exp-info">
             <div class="exp-title lang-en"><strong>{{ entry.title_en }}</strong><br><span class="experience-note">{{ entry.details_en }}</span></div>
             <div class="exp-title lang-zh"><strong>{{ entry.title_zh }}</strong><br><span class="experience-note">{{ entry.details_zh }}</span></div>

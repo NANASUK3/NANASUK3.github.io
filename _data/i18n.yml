@@ -52,7 +52,7 @@ news:
 # 经历卡片：logo 为图片路径，en/zh 内的 <br> 用于换行
 experience:
   items:
-    - logo: images/ustc.png
+    - logo: images/ustc.webp
       alt: USTC logo
       title_en: University of Science and Technology of China
       title_zh: 中国科学技术大学
@@ -69,7 +69,7 @@ experience:
         <em>2026年9月 - 至今</em><br>
         人工智能专业硕士研究生。<br>
         <span class="experience-note">研究方向包括具身智能与 Agent。</span>
-    - logo: images/nwpu.png
+    - logo: images/nwpu.webp
       alt: NPU logo
       title_en: Northwestern Polytechnical University
       title_zh: 西北工业大学

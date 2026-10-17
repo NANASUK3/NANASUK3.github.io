@@ -8,7 +8,7 @@ baseurl                  : ""
 repository               : "NANASUK3/NANASUK3.github.io"
 
 author:
-  avatar           : "avatar.png"
+  avatar           : "avatar-256.webp"
   name             : "Jingpeng Yang"
   name_zh          : "杨靖鹏"
   pronouns         :
@@ -105,9 +105,11 @@ timezone: UTC
 
 plugins:
   - jekyll-feed
+  - jekyll-redirect-from
 
 whitelist:
   - jekyll-feed
+  - jekyll-redirect-from
 
 compress_html:
   clippings: all

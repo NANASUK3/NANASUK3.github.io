@@ -113,7 +113,7 @@ title: "Your Name"
 name: "Your Name"
 description: "Your description."
 author:
-  avatar: "avatar.png"
+  avatar: "avatar-256.webp"
   name: "Your Name"
   bio: "Your bio."
   location: "City, Country"

@@ -384,7 +384,6 @@ body.home-template a:focus-visible {
   flex: 1 1 auto;
 }
 
-.home-template .profile-frame,
 .home-template .profile-img {
   display: block;
   width: 120px;
@@ -801,16 +800,6 @@ body.home-template a:focus-visible {
   min-width: 0;
 }
 
-.home-template .exp-logo-frame {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  flex: 0 0 56px;
-  overflow: visible;
-}
-
 .home-template .exp-logo {
   display: block;
   width: 56px;
@@ -1000,7 +989,6 @@ html:not(.lang-zh) .home-template .lang-zh {
     gap: 14px;
   }
 
-  .home-template .profile-frame,
   .home-template .profile-img {
     width: 80px;
     height: 80px;
