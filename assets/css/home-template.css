@@ -629,6 +629,10 @@ body.home-template a:focus-visible {
   padding: 12px 14px 12px 0;
 }
 
+.home-template .pub-media-rotator img.publication-pixel-art {
+  image-rendering: pixelated;
+}
+
 .home-template .publication-card__title {
   margin: 0 0 6px;
   color: var(--home-text-strong);

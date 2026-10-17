@@ -10,7 +10,11 @@
     en: "ICLR 3026"
     zh: "ICLR 3026"
   venueType: insub
-  image: "images/sleep-640.webp"
+  image: "images/research-dpsk-blocks.gif"
+  imagePixelArt: true
+  imageAlt:
+    en: "Pixel-art DeepSeek girl plays with wooden building blocks in a warm, cozy scene."
+    zh: "暖色调像素风的 DeepSeek 娘正在搭木质积木。"
   links: {}
   highlights:
     en:

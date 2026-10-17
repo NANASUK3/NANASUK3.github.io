@@ -130,7 +130,9 @@
     if (!publication.image) return '';
     var src = assetUrl(publication.image);
     return '<div class="pub-media-rotator" data-interval="4000">' +
-      '<img src="' + escapeHTML(src) + '" alt="" loading="lazy" decoding="async">' +
+      '<img src="' + escapeHTML(src) + '" alt="' + escapeHTML(localized(publication.imageAlt)) + '"' +
+      (publication.imagePixelArt ? ' class="publication-pixel-art" width="640" height="360"' : '') +
+      ' loading="lazy" decoding="async">' +
       '</div>';
   }
 
