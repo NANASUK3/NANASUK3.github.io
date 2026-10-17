@@ -1,0 +1,14 @@
+# main links links
+
+main:
+  - title: "News"
+    url: "/#news"
+
+  - title: "Experience"
+    url: "/#experience"
+
+  - title: "Pub"
+    url: "/#publications"
+
+  - title: "Awards"
+    url: "/#awards"

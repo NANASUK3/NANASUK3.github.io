@@ -1,0 +1,23 @@
+- id: something-new-2026
+  title:
+    en: "Something New"
+    zh: "Something New"
+  isPlaceholder: true
+  authors:
+    - name: "Jingpeng Yang"
+      isHighlight: true
+  venue:
+    en: "ICLR 3026"
+    zh: "ICLR 3026"
+  venueType: insub
+  image: "images/sleep-640.webp"
+  links: {}
+  highlights:
+    en:
+      - "A new project is on the way."
+    zh:
+      - "新的项目正在路上。"
+  topics:
+    - selected
+  year: 2026
+  show: true
