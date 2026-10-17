@@ -61,8 +61,8 @@ redirect_from:
   <section id="Research" class="home-section">
     <span id="publications" class="home-anchor-alias" aria-hidden="true"></span>
     <div class="research-heading">
-      <h2><strong><span class="lang-en">Research</span><span class="lang-zh">研究</span></strong></h2>
-      <div class="pub-button-container" role="tablist" aria-label="Research views">
+      <h2><strong><span class="lang-en">Publications</span><span class="lang-zh">研究</span></strong></h2>
+      <div class="pub-button-container" role="tablist" aria-label="Publication views">
         <button class="pub-button active" type="button" role="tab" aria-selected="true" aria-controls="core-publications" data-publication-view="core">
           <span class="lang-en">{{ site.data.i18n.publications.core_button.en }}</span><span class="lang-zh">{{ site.data.i18n.publications.core_button.zh }}</span>
         </button>

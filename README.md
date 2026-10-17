@@ -4,7 +4,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 
 ## Features
 
-- Target-inspired single-page homepage with sections: About, News, Research, Experiences, Awards
+- Target-inspired single-page homepage with sections: About, News, Publications, Experiences, Awards
 - Light/dark theme switch with OS preference and persistent selection
 - English/Chinese language switch with persistent selection
 - Milk frog and DeepSeek companion interactions
