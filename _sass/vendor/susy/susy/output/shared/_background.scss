@@ -8,7 +8,7 @@
 // - $size: background-size
 // - $clip: background-clip
 // - [$flow]: ltr | rtl
-@mixin background-grid-output (
+@mixin background-grid-output(
   $image,
   $size: null,
   $clip: null,

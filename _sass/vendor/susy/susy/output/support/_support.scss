@@ -3,27 +3,25 @@
 
 // Susy Support Defaults
 // ---------------------
-@include susy-defaults((
-  use-custom: (
-    clearfix: false,
-    background-image: true,
-    background-options: false,
-    breakpoint: true,
-    box-sizing: true,
-    rem: true,
-  ),
-));
-
+@include susy-defaults(
+  (
+    use-custom: (
+      clearfix: false,
+      background-image: true,
+      background-options: false,
+      breakpoint: true,
+      box-sizing: true,
+      rem: true,
+    ),
+  )
+);
 
 // Susy Support [mixin]
 // --------------------
 // Send property-value pairs to the proper support modules.
 // - $prop  : <css property>
 // - $val   : <css value>
-@mixin susy-support(
-  $prop,
-  $val
-) {
+@mixin susy-support($prop, $val) {
   // Background Support
   @if $prop == background-image {
     @include susy-background-image($val);
@@ -46,7 +44,6 @@
   }
 }
 
-
 // Susy Support [function]
 // -----------------------
 // Check for support of a feature.
@@ -55,11 +52,7 @@
 // - $requirements  : <map>
 //                    - e.g (variable: rem-with-px-fallback, mixin: rem)
 // - $warn          : <bool>
-@function susy-support(
-  $feature,
-  $requirements: (),
-  $warn: true
-) {
+@function susy-support($feature, $requirements: (), $warn: true) {
   $_support: susy-get(use-custom $feature);
 
   @if $_support {

@@ -36,7 +36,6 @@
 
 @import "print";
 
-
 @media (min-width: 1024px) {
   .page {
     padding-right: 0 !important;
@@ -57,22 +56,22 @@
 
   /* 2. 调整图片外层容器 (.pub-media-rotator) 并让其单独居中 */
   .publication-card .pub-media-rotator {
-    align-self: center !important;   /* 【核心修改】让图片在这个列中单独居中 */
-    margin-right: 0 !important;      /* 取消原来的右边距 */
-    margin-bottom: 15px !important;  /* 增加下边距，隔开文字 */
-    width: 100% !important;          
-    max-width: 320px !important;     /* 限制图片最大宽度 */
-    height: auto !important;         
-    flex: none !important;           
+    align-self: center !important; /* 【核心修改】让图片在这个列中单独居中 */
+    margin-right: 0 !important; /* 取消原来的右边距 */
+    margin-bottom: 15px !important; /* 增加下边距，隔开文字 */
+    width: 100% !important;
+    max-width: 320px !important; /* 限制图片最大宽度 */
+    height: auto !important;
+    flex: none !important;
   }
 
   /* 3. 调整内部图片尺寸 */
   .publication-card .pub-media-rotator img {
     width: 100% !important;
     height: auto !important;
-    max-height: 180px !important;    
+    max-height: 180px !important;
     object-fit: contain !important;
-    margin: 0 auto !important;       /* 确保图片本身在容器内部也居中 */
+    margin: 0 auto !important; /* 确保图片本身在容器内部也居中 */
   }
 }
 

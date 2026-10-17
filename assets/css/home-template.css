@@ -49,7 +49,9 @@ body.home-template a {
   text-decoration-color: #b3b3b3;
   text-underline-offset: 2px;
   text-decoration-thickness: 1px;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
 }
 
 body.home-template a:hover,
@@ -82,7 +84,12 @@ body.home-template a:focus-visible {
   /* Keep the soft fade local to the sticky navigation. A viewport-sized
      pseudo-element would paint an opaque layer over the page content. */
   height: calc(100% + 28px);
-  background: linear-gradient(to bottom, var(--home-bg) 0, var(--home-bg) calc(100% - 28px), transparent 100%);
+  background: linear-gradient(
+    to bottom,
+    var(--home-bg) 0,
+    var(--home-bg) calc(100% - 28px),
+    transparent 100%
+  );
   pointer-events: none;
 }
 
@@ -101,7 +108,12 @@ body.home-template a:focus-visible {
   border: 1px solid transparent;
   border-bottom-color: var(--home-border-soft);
   background: var(--home-surface);
-  transition: max-width 0.2s ease, padding 0.2s ease, border-color 0.2s ease, border-radius 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    max-width 0.2s ease,
+    padding 0.2s ease,
+    border-color 0.2s ease,
+    border-radius 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .home-template .home-nav.is-floating {
@@ -145,7 +157,9 @@ body.home-template a:focus-visible {
   opacity: 0;
   transform: scaleX(0.35);
   transform-origin: center;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
 }
 
 .home-template .home-nav__links a.is-active {
@@ -226,7 +240,10 @@ body.home-template a:focus-visible {
   content: "☾";
 }
 
-.home-template .home-nav .theme-toggle[data-theme="dark"] .theme-toggle__icon::before {
+.home-template
+  .home-nav
+  .theme-toggle[data-theme="dark"]
+  .theme-toggle__icon::before {
   content: "☀";
 }
 
@@ -342,7 +359,9 @@ body.home-template a:focus-visible {
   background: transparent;
   color: var(--home-muted);
   text-decoration: none;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .home-template .bio-link__icon {
@@ -500,7 +519,11 @@ body.home-template a:focus-visible {
   font-size: 13px;
   line-height: 1.35;
   cursor: pointer;
-  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .home-template .pub-button:hover,
@@ -530,8 +553,14 @@ body.home-template a:focus-visible {
 }
 
 @keyframes home-view-fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .home-template .research-loading,
@@ -552,7 +581,10 @@ body.home-template a:focus-visible {
   border-radius: 8px;
   background: var(--home-surface);
   color: var(--home-muted);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.2s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.2s ease;
 }
 
 .home-template .publication-card:hover {
@@ -762,7 +794,9 @@ body.home-template a:focus-visible {
 }
 
 @keyframes home-something-new-caret {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* Experiences and awards */
@@ -884,7 +918,9 @@ body.home-template a:focus-visible {
   border-radius: 0;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
 }
 
 .home-template .home-back-to-top.is-visible {
@@ -1058,7 +1094,6 @@ html:not(.lang-zh) .home-template .lang-zh {
     right: 14px;
     bottom: calc(14px + env(safe-area-inset-bottom));
   }
-
 }
 
 @media (prefers-reduced-motion: reduce) {

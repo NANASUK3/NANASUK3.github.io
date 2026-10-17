@@ -10,11 +10,11 @@
 // $style   : The container style to use.
 @mixin prefix(
   $columns,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from           : unquote($from);
+  $from: unquote($from);
   padding-#{$from}: space($columns, $context, $style);
 }
 
@@ -27,12 +27,12 @@
 // $style   : The container style to use.
 @mixin suffix(
   $columns,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from         : unquote($from);
-  $to           : opposite-position($from);
+  $from: unquote($from);
+  $to: opposite-position($from);
   padding-#{$to}: space($columns, $context, $style);
 }
 
@@ -44,13 +44,13 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 // $style   : The container style to use.
 @mixin pad(
-  $prefix   : false,
-  $suffix   : false,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $prefix: false,
+  $suffix: false,
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from     : unquote($from);
+  $from: unquote($from);
   @if $prefix {
     @include prefix($prefix, $context, $from, $style);
   }
@@ -71,21 +71,23 @@
   $sides: left right,
   $style: fix-static-misalignment()
 ) {
-  @if $border-box-sizing { @include box-sizing(content-box) }
+  @if $border-box-sizing {
+    @include box-sizing(content-box);
+  }
 
-  @if type-of($width) == 'list' {
+  @if type-of($width) == "list" {
     $width: filter($width, of);
-    $width: space(nth($width,1), nth($width,2), $style);
+    $width: space(nth($width, 1), nth($width, 2), $style);
   } @else if unitless($width) {
     $width: space($width, $style: $style);
   }
 
-  @if $sides == 'all' {
-    margin: - $width;
+  @if $sides == "all" {
+    margin: -$width;
     padding: $width;
   } @else {
     @each $side in $sides {
-      margin-#{$side}: - $width;
+      margin-#{$side}: -$width;
       padding-#{$side}: $width;
     }
   }

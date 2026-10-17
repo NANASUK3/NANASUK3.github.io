@@ -1,30 +1,23 @@
 // Column math
 // ===========
 
-
 // Is Symmetrical
 // --------------
 // Returns true if a grid is symmetrical.
 // - [$columns]   : <number> | <list>
-@function is-symmetrical(
-  $columns: susy-get(columns)
-) {
+@function is-symmetrical($columns: susy-get(columns)) {
   $columns: valid-columns($columns);
   @return if(type-of($columns) == number, $columns, null);
 }
-
 
 // Susy Count
 // ----------
 // Find the number of columns in a given layout
 // - [$columns]   : <number> | <list>
-@function susy-count(
-  $columns: susy-get(columns)
-) {
+@function susy-count($columns: susy-get(columns)) {
   $columns: valid-columns($columns);
   @return is-symmetrical($columns) or length($columns);
 }
-
 
 // Susy Sum
 // --------
@@ -33,9 +26,9 @@
 // - [$gutters]   : <ratio>
 // - [$spread]    : false/narrow | wide | wider
 @function susy-sum(
-  $columns  : susy-get(columns),
-  $gutters  : susy-get(gutters),
-  $spread   : false
+  $columns: susy-get(columns),
+  $gutters: susy-get(gutters),
+  $spread: false
 ) {
   $columns: valid-columns($columns);
   $gutters: valid-gutters($gutters);
@@ -53,18 +46,13 @@
   @return $column-sum + $gutter-sum;
 }
 
-
 // Susy Slice
 // ----------
 // Return a subset of columns at a given location.
 // - $span        : <number>
 // - $location    : <number>
 // - [$columns]   : <number> | <list>
-@function susy-slice(
-  $span,
-  $location,
-  $columns: susy-get(columns)
-) {
+@function susy-slice($span, $location, $columns: susy-get(columns)) {
   $columns: valid-columns($columns);
   $sub-columns: $span;
 
@@ -79,7 +67,6 @@
   @return $sub-columns;
 }
 
-
 // Susy
 // ----
 // Find the sum of a column-span.
@@ -90,10 +77,10 @@
 // - [$spread]    : false/narrow | wide | wider
 @function susy(
   $span,
-  $location     : false,
-  $columns      : susy-get(columns),
-  $gutters      : susy-get(gutters),
-  $spread       : false
+  $location: false,
+  $columns: susy-get(columns),
+  $gutters: susy-get(gutters),
+  $spread: false
 ) {
   $columns: valid-columns($columns);
   $gutters: valid-gutters($gutters);

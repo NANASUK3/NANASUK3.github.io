@@ -68,7 +68,7 @@ $breakpoint-min-max-features: 'color',
 //////////////////////////////
 // Returns whether the feature can have a string value
 //////////////////////////////
-$breakpoint-string-features:  'orientation',
+$breakpoint-string-features: 'orientation',
                               'scan',
                               'color',
                               'aspect-ratio',
@@ -93,7 +93,7 @@ $breakpoint-string-features:  'orientation',
 //////////////////////////////
 // Returns whether the feature is a media type
 //////////////////////////////
-$breakpoint-media-types:  'all',
+$breakpoint-media-types: 'all',
                           'braille',
                           'embossed',
                           'handheld',

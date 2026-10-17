@@ -13,8 +13,8 @@ The `laugh-60.webp` file is a 128 x 139 delivery-size, 60-frame animated
 WebP derivative for the homepage click interaction. It distributes 16 clean
 source poses from the Naiwa petdex laugh sequence across 60 full-canvas
 timing frames with alternating 16/17 ms durations (about 60 fps) and a
-total duration of 1000 ms. The individual `idle-*`, `greet-*`, and
-`laugh-*` files remain as static source/fallback references.
+total duration of 1000 ms. The site retains only the idle, greeting, and
+reduced-motion laugh frames used directly by the homepage scripts.
 
 The laugh delivery frames use a small palette normalization so the yellow
 character colors stay consistent with the idle frames. The correction keeps

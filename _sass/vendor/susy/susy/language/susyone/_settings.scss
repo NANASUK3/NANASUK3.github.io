@@ -2,30 +2,30 @@
 // Susy Settings
 
 // The total number of columns in the grid
-$total-columns      : 12              !default;
+$total-columns: 12 !default;
 
 // The width of columns and gutters.
 // These must all be set with the comparable units.
-$column-width       : 4em             !default;
-$gutter-width       : 1em             !default;
+$column-width: 4em !default;
+$gutter-width: 1em !default;
 
 // Padding on the left and right of a Grid Container.
-$grid-padding       : $gutter-width   !default;
+$grid-padding: $gutter-width !default;
 
 // ---------------------------------------------------------------------------
 // Advanced Settings
 
 // From Direction:
 // Controls for right-to-left or bi-directional sites.
-$from-direction     : left            !default;
+$from-direction: left !default;
 
 // Omega Float Direction:
 // The direction that +omega elements are floated by deafult.
-$omega-float        : opposite-position($from-direction)    !default;
+$omega-float: opposite-position($from-direction) !default;
 
 // Container Width:
 // Override the total width of your grid, using any length (50em, 75%, etc.)
-$container-width    : false           !default;
+$container-width: false !default;
 
 // Container Style:
 // 'magic'  - Static (fixed or elastic) when there's enough space,
@@ -33,18 +33,18 @@ $container-width    : false           !default;
 // 'static' - Forces the grid container to remain static at all times.
 // 'fluid'  - Forces the grid to remain fluid at all times.
 //            (this will overrule any static $container-width settings)
-$container-style    : magic           !default;
+$container-style: magic !default;
 
 // Border-Box Sizing
 // Adjust the grid math appropriately for box-sizing: border-box;
 // Warning: This does not actually apply the new box model!
 // In most cases you can ignore this setting,
 // and simply apply the border-box-sizing mixin.
-$border-box-sizing  : false           !default;
+$border-box-sizing: false !default;
 
 // Pixel Values only:
 // Make sure only pixel values are set for the container width.
-$pixel-values-only  : false           !default;
+$pixel-values-only: false !default;
 
 // ---------------------------------------------------------------------------
 // IE Settings
@@ -53,8 +53,8 @@ $pixel-values-only  : false           !default;
 // you can use these settings to control the output of at-breakpoint.
 // By default, at-breakpoint will output media-queries as well as
 // any defined ie-fallback classes.
-$breakpoint-media-output  : true      !default;
-$breakpoint-ie-output     : true      !default;
+$breakpoint-media-output: true !default;
+$breakpoint-ie-output: true !default;
 
 // Danger Zone! Only set as 'true' in IE-specific style sheets.
-$breakpoint-raw-output    : false     !default;
+$breakpoint-raw-output: false !default;

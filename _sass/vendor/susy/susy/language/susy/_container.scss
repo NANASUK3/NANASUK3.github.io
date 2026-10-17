@@ -5,20 +5,22 @@
 // -----------------
 // Set a container element
 // - [$layout]  : <settings>
-@mixin container(
-  $layout: $susy
-) {
-  $inspect    : $layout;
-  $layout     : parse-grid($layout);
+@mixin container($layout: $susy) {
+  $inspect: $layout;
+  $layout: parse-grid($layout);
 
-  $_width     : get-container-width($layout);
-  $_justify   : parse-container-position(susy-get(container-position, $layout));
-  $_property  : if(susy-get(math, $layout) == static, width, max-width);
+  $_width: get-container-width($layout);
+  $_justify: parse-container-position(susy-get(container-position, $layout));
+  $_property: if(susy-get(math, $layout) == static, width, max-width);
 
-  $_box       : susy-get(box-sizing, $layout);
+  $_box: susy-get(box-sizing, $layout);
 
   @if $_box {
-    @include output((box-sizing: $_box));
+    @include output(
+      (
+        box-sizing: $_box,
+      )
+    );
   }
 
   @include susy-inspect(container, $inspect);
@@ -30,9 +32,7 @@
 // --------------------
 // Return container width
 // - [$layout]  : <settings>
-@function container(
-  $layout: $susy
-) {
+@function container($layout: $susy) {
   $layout: parse-grid($layout);
   @return get-container-width($layout);
 }
@@ -41,20 +41,18 @@
 // -------------------
 // Calculate the container width
 // - [$layout]: <settings>
-@function get-container-width(
-  $layout: $susy
-) {
-  $layout         : parse-grid($layout);
-  $_width         : susy-get(container, $layout);
-  $_column-width  : susy-get(column-width, $layout);
-  $_math          : susy-get(math, $layout);
+@function get-container-width($layout: $susy) {
+  $layout: parse-grid($layout);
+  $_width: susy-get(container, $layout);
+  $_column-width: susy-get(column-width, $layout);
+  $_math: susy-get(math, $layout);
 
   @if not($_width) or $_width == auto {
     @if valid-column-math($_math, $_column-width) {
-      $_columns   : susy-get(columns, $layout);
-      $_gutters   : susy-get(gutters, $layout);
-      $_spread    : if(is-split($layout), wide, narrow);
-      $_width     : susy-sum($_columns, $_gutters, $_spread) * $_column-width;
+      $_columns: susy-get(columns, $layout);
+      $_gutters: susy-get(gutters, $layout);
+      $_spread: if(is-split($layout), wide, narrow);
+      $_width: susy-sum($_columns, $_gutters, $_spread) * $_column-width;
     } @else {
       $_width: 100%;
     }

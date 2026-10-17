@@ -77,7 +77,9 @@ div.markdown-body a,
 a {
   color: var(--dark-accent-hover);
   text-decoration-color: rgba(130, 143, 255, 0.55);
-  transition: color 160ms ease-out, text-decoration-color 160ms ease-out;
+  transition:
+    color 160ms ease-out,
+    text-decoration-color 160ms ease-out;
 }
 
 div.markdown-body a:hover,
@@ -166,7 +168,10 @@ textarea:focus-visible {
   border-color: var(--dark-border-strong);
   background: rgba(255, 255, 255, 0.03);
   color: var(--dark-text-muted);
-  transition: color 160ms ease-out, background-color 160ms ease-out, border-color 160ms ease-out;
+  transition:
+    color 160ms ease-out,
+    background-color 160ms ease-out,
+    border-color 160ms ease-out;
 }
 
 .lang-toggle:hover,
@@ -367,7 +372,11 @@ blockquote {
 
 .experience-card,
 .publication-card {
-  transition: transform 160ms ease-out, background-color 160ms ease-out, border-color 160ms ease-out, box-shadow 160ms ease-out;
+  transition:
+    transform 160ms ease-out,
+    background-color 160ms ease-out,
+    border-color 160ms ease-out,
+    box-shadow 160ms ease-out;
 }
 
 .experience-card:hover,
@@ -421,7 +430,11 @@ blockquote {
   background: var(--dark-surface-raised);
   border-color: var(--dark-border-strong);
   color: var(--dark-text-secondary);
-  transition: color 160ms ease-out, background-color 160ms ease-out, border-color 160ms ease-out, transform 160ms ease-out;
+  transition:
+    color 160ms ease-out,
+    background-color 160ms ease-out,
+    border-color 160ms ease-out,
+    transform 160ms ease-out;
 }
 
 .pub-button:hover {

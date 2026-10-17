@@ -4,21 +4,22 @@
 // Susy Language Defaults
 // ----------------------
 // - PRIVATE
-@include susy-defaults((
-  container: auto,
-  math: fluid,
-  output: float,
-  container-position: center,
-  gutter-position: after,
-  global-box-sizing: content-box,
-  debug: (
-    image: hide,
-    color: rgba(#66f, .25),
-    output: background,
-    toggle: top right,
-  ),
-));
-
+@include susy-defaults(
+  (
+    container: auto,
+    math: fluid,
+    output: float,
+    container-position: center,
+    gutter-position: after,
+    global-box-sizing: content-box,
+    debug: (
+      image: hide,
+      color: rgba(#66f, 0.25),
+      output: background,
+      toggle: top right,
+    ),
+  )
+);
 
 // Valid Keyword Values
 // --------------------
@@ -41,12 +42,9 @@ $susy-keywords: (
   debug output: background overlay,
 );
 
-
 // Parse Susy Keywords and Maps
 // ----------------------------
-@function parse-settings(
-  $short: $susy
-) {
+@function parse-settings($short: $susy) {
   $_return: ();
 
   @if type-of($short) == map {
@@ -61,7 +59,7 @@ $susy-keywords: (
             $_return: _susy-deep-set($_return, $_key-value...);
           }
         }
-      // maps
+        // maps
       } @else if type-of($item) == map {
         $_return: map-merge($_return, $item);
       }
@@ -71,12 +69,9 @@ $susy-keywords: (
   @return $_return;
 }
 
-
 // Parse Columns & Gutters
 // -----------------------
-@function parse-layout(
-  $short
-) {
+@function parse-layout($short) {
   $_return: ();
   $_columns: ();
   $_gutters: null;
@@ -84,7 +79,9 @@ $susy-keywords: (
   @if not(unitless(nth(nth($short, 1), 1))) {
     $_gutters: nth($short, 1);
   } @else {
-    $_columns: (columns: nth($short, 1));
+    $_columns: (
+      columns: nth($short, 1),
+    );
     $_gutters: if(length($short) > 1, nth($short, 2), $_gutters);
   }
 
@@ -94,7 +91,13 @@ $susy-keywords: (
       column-width: nth($_gutters, 1),
     );
   } @else {
-    $_gutters: if($_gutters, (gutters: $_gutters), ());
+    $_gutters: if(
+      $_gutters,
+      (
+        gutters: $_gutters,
+      ),
+      ()
+    );
   }
 
   $_return: map-merge($_return, $_columns);
@@ -103,12 +106,9 @@ $susy-keywords: (
   @return $_return;
 }
 
-
 // Parse Grid/Context
 // ------------------
-@function parse-grid(
-  $short: $susy
-) {
+@function parse-grid($short: $susy) {
   $_return: parse-settings($short);
   $_layout: ();
 
@@ -121,7 +121,12 @@ $susy-keywords: (
         @if type-of($item) == list or unitless($item) {
           $_layout: append($_layout, $item);
         } @else {
-          $_return: map-merge($_return, (container: $item));
+          $_return: map-merge(
+            $_return,
+            (
+              container: $item,
+            )
+          );
         }
       }
     }
@@ -132,13 +137,9 @@ $susy-keywords: (
   @return map-merge($_return, $_layout);
 }
 
-
 // Parse Span
 // ----------
-@function parse-span(
-  $short,
-  $key: span
-) {
+@function parse-span($short, $key: span) {
   $_return: ();
 
   @if type-of($short) == map {
@@ -149,7 +150,12 @@ $susy-keywords: (
     @if $_at {
       $_loci: $_at + 1;
       $_location: nth($short, $_loci);
-      $_return: map-merge($_return, (location: $_location));
+      $_return: map-merge(
+        $_return,
+        (
+          location: $_location,
+        )
+      );
       $short: set-nth($short, $_at, null);
       $short: set-nth($short, $_loci, null);
     }
@@ -173,7 +179,12 @@ $susy-keywords: (
 
     @if length($_span) > 0 {
       $_span: if(length($_span) == 1, nth($_span, 1), $_span);
-      $_return: map-merge($_return, ($key: $_span));
+      $_return: map-merge(
+        $_return,
+        (
+          $key: $_span,
+        )
+      );
     }
 
     $_return: map-merge($_return, parse-grid($short));
@@ -182,12 +193,9 @@ $susy-keywords: (
   @return $_return;
 }
 
-
 // Parse Gutters
 // -------------
-@function parse-gutters(
-  $short: $susy
-) {
+@function parse-gutters($short: $susy) {
   $_gutters: parse-span($short, gutter-override);
   $_span: susy-get(gutter-override, $_gutters);
 
@@ -206,7 +214,9 @@ $susy-keywords: (
     $_context: parse-grid($_context);
     $_new: if(length($_new) == 0, null, $_new);
     $_new: if(length($_new) == 1, nth($_new, 1), $_new);
-    $_new: (gutter-override: if($_new != $_span, $_new, $_span));
+    $_new: (
+      gutter-override: if($_new != $_span, $_new, $_span),
+    );
 
     $_gutters: map-merge($_gutters, $_new);
     $_gutters: map-merge($_gutters, $_context);

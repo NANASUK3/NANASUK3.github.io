@@ -6,10 +6,10 @@
  * browser APIs so the homepage does not need a runtime dependency.
  */
 (function () {
-  'use strict';
+  "use strict";
 
   function init() {
-    var footer = document.querySelector('.page__footer');
+    var footer = document.querySelector(".page__footer");
     if (!footer) return;
 
     var frame = 0;
@@ -20,7 +20,7 @@
       var marginTop = parseFloat(styles.marginTop) || 0;
       var marginBottom = parseFloat(styles.marginBottom) || 0;
       document.body.style.marginBottom =
-        footer.offsetHeight + marginTop + marginBottom + 'px';
+        footer.offsetHeight + marginTop + marginBottom + "px";
     }
 
     function scheduleFooterUpdate() {
@@ -29,15 +29,15 @@
     }
 
     updateFooterSpace();
-    window.addEventListener('resize', scheduleFooterUpdate, { passive: true });
+    window.addEventListener("resize", scheduleFooterUpdate, { passive: true });
 
-    if ('ResizeObserver' in window) {
+    if ("ResizeObserver" in window) {
       new ResizeObserver(scheduleFooterUpdate).observe(footer);
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init, { once: true });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init, { once: true });
   } else {
     init();
   }

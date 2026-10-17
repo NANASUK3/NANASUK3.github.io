@@ -1,49 +1,73 @@
 (function () {
-  'use strict';
+  "use strict";
 
   function initMilkFrog() {
-    var pet = document.querySelector('[data-milk-frog-pet]');
+    var pet = document.querySelector("[data-milk-frog-pet]");
     if (!pet) return;
 
-    var button = pet.querySelector('.milk-frog-pet__button');
-    var image = pet.querySelector('.milk-frog-pet__image');
+    var button = pet.querySelector(".milk-frog-pet__button");
+    var image = pet.querySelector(".milk-frog-pet__image");
     if (!button || !image) return;
 
-    var base = pet.getAttribute('data-asset-base') || '/images/milk-frog/';
-    var assetVersion = pet.getAttribute('data-asset-version') || '20261004-full60';
-    var motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var idleFile = 'idle-0.webp';
-    var laughFile = motionQuery.matches ? 'laugh-0.webp' : 'laugh-60.webp';
+    var base = pet.getAttribute("data-asset-base") || "/images/milk-frog/";
+    var assetVersion =
+      pet.getAttribute("data-asset-version") || "20261004-full60";
+    var motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var idleFile = "idle-0.webp";
+    var laughFile = motionQuery.matches ? "laugh-0.webp" : "laugh-60.webp";
     var animationTimer = null;
     var frameTimer = null;
     var preloaded = Object.create(null);
     var animationId = 0;
-    var frogMessage = pet.querySelector('.milk-frog-pet__message');
+    var frogMessage = pet.querySelector(".milk-frog-pet__message");
     var frogMessageTimer = null;
     var frogMessageLines = null;
     var frogHoldTimer = null;
     var frogLongPressTriggered = false;
     var frogTapStreak = 0;
     var frogTapStreakTimer = null;
-    var greetFiles = ['greet-0.webp', 'greet-1.webp', 'greet-2.webp', 'greet-3.webp', 'greet-4.webp'];
+    var greetFiles = [
+      "greet-0.webp",
+      "greet-1.webp",
+      "greet-2.webp",
+      "greet-3.webp",
+      "greet-4.webp",
+    ];
     var frogGreetings = [
-      ['咦，你来啦！奶蛙挥手报到～', 'Oh, you’re here! Milk frog reporting for duty!'],
-      ['嗨，今天也要对自己好一点。', 'Hi! Be a little kind to yourself today.'],
-      ['奶蛙已上线，给你递上一点好心情。', 'Milk frog is online, bringing you a little good mood.']
+      [
+        "咦，你来啦！奶蛙挥手报到～",
+        "Oh, you’re here! Milk frog reporting for duty!",
+      ],
+      ["嗨，今天也要对自己好一点。", "Hi! Be a little kind to yourself today."],
+      [
+        "奶蛙已上线，给你递上一点好心情。",
+        "Milk frog is online, bringing you a little good mood.",
+      ],
     ];
     var frogLaughReplies = [
-      ['哈哈哈哈，被你点醒啦！', 'Hahaha, you woke me up!'],
-      ['这一下笑得很有精神～', 'That laugh had some serious energy!'],
-      ['再来一下？奶蛙还没笑够呢！', 'One more? Milk frog is not done laughing yet!']
+      ["哈哈哈哈，被你点醒啦！", "Hahaha, you woke me up!"],
+      ["这一下笑得很有精神～", "That laugh had some serious energy!"],
+      [
+        "再来一下？奶蛙还没笑够呢！",
+        "One more? Milk frog is not done laughing yet!",
+      ],
     ];
-    var frogComboReply = ['连续三次！你发现了奶蛙的笑点～', 'Three taps in a row! You found milk frog’s funny bone.'];
-    var frogWorkingReply = ['嘘……奶蛙正在认真工作，摸鱼稍后再说。', 'Shh… milk frog is working hard. We can idle later.'];
-    var deepseekButton = pet.querySelector('.deepseek-pet__button');
-    var poseImage = pet.querySelector('.deepseek-pet__pose');
-    var message = pet.querySelector('.deepseek-pet__message');
-    var reactionIcon = pet.querySelector('.deepseek-pet__reaction-icon');
-    var poseBase = pet.getAttribute('data-deepseek-pose-base') || '/images/deepseek/poses/';
-    var poseVersion = pet.getAttribute('data-deepseek-pose-version') || '20261009-beg1';
+    var frogComboReply = [
+      "连续三次！你发现了奶蛙的笑点～",
+      "Three taps in a row! You found milk frog’s funny bone.",
+    ];
+    var frogWorkingReply = [
+      "嘘……奶蛙正在认真工作，摸鱼稍后再说。",
+      "Shh… milk frog is working hard. We can idle later.",
+    ];
+    var deepseekButton = pet.querySelector(".deepseek-pet__button");
+    var poseImage = pet.querySelector(".deepseek-pet__pose");
+    var message = pet.querySelector(".deepseek-pet__message");
+    var reactionIcon = pet.querySelector(".deepseek-pet__reaction-icon");
+    var poseBase =
+      pet.getAttribute("data-deepseek-pose-base") || "/images/deepseek/poses/";
+    var poseVersion =
+      pet.getAttribute("data-deepseek-pose-version") || "20261009-beg1";
     var preloadedPoses = Object.create(null);
     var messageTimer = null;
     var holdTimer = null;
@@ -54,45 +78,57 @@
     var activeReactionId = 0;
     var reactions = [
       {
-        action: 'hello',
-        pose: 'wave.webp',
-        icon: '✦',
-        replies: ['呀，你来啦！今天也一起加油吧～', 'There you are! Let’s make today a good one!']
+        action: "hello",
+        pose: "wave.webp",
+        icon: "✦",
+        replies: [
+          "呀，你来啦！今天也一起加油吧～",
+          "There you are! Let’s make today a good one!",
+        ],
       },
       {
-        action: 'think',
-        pose: 'think.webp',
-        icon: '…',
-        replies: ['唔……让我认真想一想。', 'Hmm… let me think that through.']
+        action: "think",
+        pose: "think.webp",
+        icon: "…",
+        replies: ["唔……让我认真想一想。", "Hmm… let me think that through."],
       },
       {
-        action: 'cheer',
-        pose: 'cheer.webp',
-        icon: '✧',
-        replies: ['收到！给你充满能量的应援！', 'You’ve got this! Sending you a little boost!']
+        action: "cheer",
+        pose: "cheer.webp",
+        icon: "✧",
+        replies: [
+          "收到！给你充满能量的应援！",
+          "You’ve got this! Sending you a little boost!",
+        ],
       },
       {
-        action: 'comfort',
-        pose: 'comfort.webp',
-        icon: '♡',
-        replies: ['辛苦啦，给你一个暖暖的抱抱。', 'You’ve done enough for now. Here’s a little warmth.']
+        action: "comfort",
+        pose: "comfort.webp",
+        icon: "♡",
+        replies: [
+          "辛苦啦，给你一个暖暖的抱抱。",
+          "You’ve done enough for now. Here’s a little warmth.",
+        ],
       },
       {
-        action: 'beg',
-        pose: 'beg.webp',
-        icon: '🥣',
-        replies: ['我饿啦……可以给我一点饭饭吗？', 'I’m hungry… could I have a little something to eat?']
-      }
+        action: "beg",
+        pose: "beg.webp",
+        icon: "🥣",
+        replies: [
+          "我饿啦……可以给我一点饭饭吗？",
+          "I’m hungry… could I have a little something to eat?",
+        ],
+      },
     ];
     var patReaction = {
-      action: 'pat',
-      pose: 'pat.webp',
-      icon: '♡',
-      replies: ['欸嘿，被摸摸头啦！', 'Hehe, a head pat! That feels nice.']
+      action: "pat",
+      pose: "pat.webp",
+      icon: "♡",
+      replies: ["欸嘿，被摸摸头啦！", "Hehe, a head pat! That feels nice."],
     };
 
     function frogLanguageIndex() {
-      return document.documentElement.classList.contains('lang-zh') ? 0 : 1;
+      return document.documentElement.classList.contains("lang-zh") ? 0 : 1;
     }
 
     function frogText(lines) {
@@ -104,8 +140,8 @@
       frogMessageTimer = null;
       frogMessageLines = null;
       if (!frogMessage) return;
-      frogMessage.classList.remove('is-visible');
-      frogMessage.textContent = '';
+      frogMessage.classList.remove("is-visible");
+      frogMessage.textContent = "";
     }
 
     function showFrogMessage(lines, duration) {
@@ -113,7 +149,7 @@
       window.clearTimeout(frogMessageTimer);
       frogMessageLines = lines;
       frogMessage.textContent = frogText(lines);
-      frogMessage.classList.add('is-visible');
+      frogMessage.classList.add("is-visible");
       frogMessageTimer = window.setTimeout(clearFrogMessage, duration);
     }
 
@@ -126,7 +162,12 @@
       frogHoldTimer = null;
       frogLongPressTriggered = false;
       animationId += 1;
-      button.classList.remove('is-greeting', 'is-laughing', 'is-working', 'is-pressed');
+      button.classList.remove(
+        "is-greeting",
+        "is-laughing",
+        "is-working",
+        "is-pressed",
+      );
       showIdle();
       clearFrogMessage();
     }
@@ -137,11 +178,23 @@
       window.clearTimeout(frameTimer);
       animationTimer = null;
       frameTimer = null;
-      button.classList.remove('is-greeting', 'is-laughing', 'is-working', 'is-pressed');
+      button.classList.remove(
+        "is-greeting",
+        "is-laughing",
+        "is-working",
+        "is-pressed",
+      );
       showIdle();
     }
 
-    function playFrogFrames(files, className, lines, frameDelay, endDelay, messageDuration) {
+    function playFrogFrames(
+      files,
+      className,
+      lines,
+      frameDelay,
+      endDelay,
+      messageDuration,
+    ) {
       cancelFrogAction();
       var actionId = animationId;
       button.classList.add(className);
@@ -166,20 +219,30 @@
     }
 
     function playFrogGreeting() {
-      if (document.documentElement.dataset.theme !== 'dark') return;
-      var lines = frogGreetings[Math.floor(Math.random() * frogGreetings.length)];
-      var files = motionQuery.matches ? [greetFiles[greetFiles.length - 1]] : greetFiles;
-      playFrogFrames(files, 'is-greeting', lines, motionQuery.matches ? 0 : 105, 360, 2400);
+      if (document.documentElement.dataset.theme !== "dark") return;
+      var lines =
+        frogGreetings[Math.floor(Math.random() * frogGreetings.length)];
+      var files = motionQuery.matches
+        ? [greetFiles[greetFiles.length - 1]]
+        : greetFiles;
+      playFrogFrames(
+        files,
+        "is-greeting",
+        lines,
+        motionQuery.matches ? 0 : 105,
+        360,
+        2400,
+      );
     }
 
     function playFrogWorking() {
-      if (document.documentElement.dataset.theme !== 'dark') return;
+      if (document.documentElement.dataset.theme !== "dark") return;
       cancelFrogAction();
       var actionId = animationId;
-      button.classList.add('is-working');
+      button.classList.add("is-working");
       showFrogMessage(frogWorkingReply, 2550);
-      preload('working-0.webp');
-      image.src = source('working-0.webp');
+      preload("working-0.webp");
+      image.src = source("working-0.webp");
       animationTimer = window.setTimeout(function () {
         finishFrogAction(actionId);
       }, 2200);
@@ -202,7 +265,7 @@
     }
 
     function playFrogLaugh() {
-      if (document.documentElement.dataset.theme !== 'dark') return;
+      if (document.documentElement.dataset.theme !== "dark") return;
       var isCombo = recordFrogTap();
       var lines = isCombo
         ? frogComboReply
@@ -211,7 +274,7 @@
 
       cancelFrogAction();
       var actionId = animationId;
-      button.classList.add('is-laughing');
+      button.classList.add("is-laughing");
       showFrogMessage(lines, duration + 650);
       preload(laughFile);
 
@@ -233,11 +296,11 @@
       clearPress();
       stopIdleBlink();
       longPressTriggered = false;
-      deepseekButton.classList.remove('is-reacting', 'has-pose', 'is-pressed');
-      deepseekButton.removeAttribute('data-action');
-      message.classList.remove('is-visible');
-      message.textContent = '';
-      if (reactionIcon) reactionIcon.textContent = '';
+      deepseekButton.classList.remove("is-reacting", "has-pose", "is-pressed");
+      deepseekButton.removeAttribute("data-action");
+      message.classList.remove("is-visible");
+      message.textContent = "";
+      if (reactionIcon) reactionIcon.textContent = "";
     }
 
     function stopIdleBlink() {
@@ -245,83 +308,111 @@
       window.clearTimeout(blinkEndTimer);
       blinkTimer = null;
       blinkEndTimer = null;
-      deepseekButton.classList.remove('is-blinking');
+      deepseekButton.classList.remove("is-blinking");
     }
 
     function scheduleIdleBlink() {
-      if (motionQuery.matches || document.hidden ||
-          document.documentElement.dataset.theme !== 'light' ||
-          deepseekButton.classList.contains('has-pose') ||
-          deepseekButton.classList.contains('is-reacting') ||
-          blinkTimer !== null || blinkEndTimer !== null) return;
+      if (
+        motionQuery.matches ||
+        document.hidden ||
+        document.documentElement.dataset.theme !== "light" ||
+        deepseekButton.classList.contains("has-pose") ||
+        deepseekButton.classList.contains("is-reacting") ||
+        blinkTimer !== null ||
+        blinkEndTimer !== null
+      )
+        return;
 
-      blinkTimer = window.setTimeout(function () {
-        blinkTimer = null;
-        if (document.hidden || document.documentElement.dataset.theme !== 'light' ||
-            deepseekButton.classList.contains('has-pose') ||
-            deepseekButton.classList.contains('is-reacting')) {
-          scheduleIdleBlink();
-          return;
-        }
+      blinkTimer = window.setTimeout(
+        function () {
+          blinkTimer = null;
+          if (
+            document.hidden ||
+            document.documentElement.dataset.theme !== "light" ||
+            deepseekButton.classList.contains("has-pose") ||
+            deepseekButton.classList.contains("is-reacting")
+          ) {
+            scheduleIdleBlink();
+            return;
+          }
 
-        deepseekButton.classList.add('is-blinking');
-        blinkEndTimer = window.setTimeout(function () {
-          blinkEndTimer = null;
-          deepseekButton.classList.remove('is-blinking');
-          scheduleIdleBlink();
-        }, 130);
-      }, 3900 + Math.floor(Math.random() * 2100));
+          deepseekButton.classList.add("is-blinking");
+          blinkEndTimer = window.setTimeout(function () {
+            blinkEndTimer = null;
+            deepseekButton.classList.remove("is-blinking");
+            scheduleIdleBlink();
+          }, 130);
+        },
+        3900 + Math.floor(Math.random() * 2100),
+      );
     }
 
     function showDeepseekPose(reactionId) {
       window.requestAnimationFrame(function () {
-        if (reactionId === activeReactionId && message.classList.contains('is-visible') &&
-            !document.hidden && document.documentElement.dataset.theme === 'light') {
-          deepseekButton.classList.add('has-pose', 'is-reacting');
+        if (
+          reactionId === activeReactionId &&
+          message.classList.contains("is-visible") &&
+          !document.hidden &&
+          document.documentElement.dataset.theme === "light"
+        ) {
+          deepseekButton.classList.add("has-pose", "is-reacting");
         }
       });
     }
 
     function playDeepseekReaction(reaction) {
-      if (document.documentElement.dataset.theme !== 'light') return;
+      if (document.documentElement.dataset.theme !== "light") return;
       resetDeepseek();
       var reactionId = activeReactionId;
-      var languageIndex = document.documentElement.classList.contains('lang-zh') ? 0 : 1;
-      deepseekButton.setAttribute('data-action', reaction.action);
+      var languageIndex = document.documentElement.classList.contains("lang-zh")
+        ? 0
+        : 1;
+      deepseekButton.setAttribute("data-action", reaction.action);
       if (reactionIcon) reactionIcon.textContent = reaction.icon;
       message.textContent = reaction.replies[languageIndex];
-      message.classList.add('is-visible');
+      message.classList.add("is-visible");
 
       if (poseImage && reaction.pose) {
-        poseImage.onload = function () { showDeepseekPose(reactionId); };
+        poseImage.onload = function () {
+          showDeepseekPose(reactionId);
+        };
         poseImage.onerror = function () {
-          if (reactionId === activeReactionId) deepseekButton.classList.add('is-reacting');
+          if (reactionId === activeReactionId)
+            deepseekButton.classList.add("is-reacting");
         };
         poseImage.src = poseSource(reaction.pose);
-        if (poseImage.complete && poseImage.naturalWidth > 0) showDeepseekPose(reactionId);
+        if (poseImage.complete && poseImage.naturalWidth > 0)
+          showDeepseekPose(reactionId);
       } else {
         showDeepseekPose(reactionId);
       }
 
-      messageTimer = window.setTimeout(function () {
-        resetDeepseek();
-        scheduleIdleBlink();
-      }, reaction.action === 'beg' ? 5200 : 3200);
+      messageTimer = window.setTimeout(
+        function () {
+          resetDeepseek();
+          scheduleIdleBlink();
+        },
+        reaction.action === "beg" ? 5200 : 3200,
+      );
     }
 
     function clearPress() {
       window.clearTimeout(holdTimer);
       holdTimer = null;
-      deepseekButton.classList.remove('is-pressed');
+      deepseekButton.classList.remove("is-pressed");
     }
 
-    deepseekButton.addEventListener('pointerdown', function (event) {
-      if (event.isPrimary === false || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    deepseekButton.addEventListener("pointerdown", function (event) {
+      if (
+        event.isPrimary === false ||
+        (event.pointerType === "mouse" && event.button !== 0)
+      )
+        return;
       clearPress();
       longPressTriggered = false;
       preloadNextPose();
       preloadPose(patReaction.pose);
-      deepseekButton.classList.add('is-pressed');
+      deepseekButton.classList.add("is-pressed");
       holdTimer = window.setTimeout(function () {
         holdTimer = null;
         playDeepseekReaction(patReaction);
@@ -329,25 +420,27 @@
       }, 520);
     });
 
-    deepseekButton.addEventListener('pointerup', clearPress);
-    deepseekButton.addEventListener('pointerleave', clearPress);
-    deepseekButton.addEventListener('pointercancel', function () {
+    deepseekButton.addEventListener("pointerup", clearPress);
+    deepseekButton.addEventListener("pointerleave", clearPress);
+    deepseekButton.addEventListener("pointercancel", function () {
       longPressTriggered = false;
       clearPress();
     });
 
-    deepseekButton.addEventListener('contextmenu', function (event) {
+    deepseekButton.addEventListener("contextmenu", function (event) {
       event.preventDefault();
     });
 
-    deepseekButton.addEventListener('dragstart', function (event) {
+    deepseekButton.addEventListener("dragstart", function (event) {
       event.preventDefault();
     });
 
-    deepseekButton.addEventListener('pointerenter', preloadNextPose, { passive: true });
-    deepseekButton.addEventListener('focus', preloadNextPose);
+    deepseekButton.addEventListener("pointerenter", preloadNextPose, {
+      passive: true,
+    });
+    deepseekButton.addEventListener("focus", preloadNextPose);
 
-    deepseekButton.addEventListener('click', function () {
+    deepseekButton.addEventListener("click", function () {
       if (longPressTriggered) {
         longPressTriggered = false;
         return;
@@ -359,16 +452,20 @@
     function clearFrogPress() {
       window.clearTimeout(frogHoldTimer);
       frogHoldTimer = null;
-      button.classList.remove('is-pressed');
+      button.classList.remove("is-pressed");
     }
 
-    button.addEventListener('pointerdown', function (event) {
-      if (event.isPrimary === false || (event.pointerType === 'mouse' && event.button !== 0)) return;
+    button.addEventListener("pointerdown", function (event) {
+      if (
+        event.isPrimary === false ||
+        (event.pointerType === "mouse" && event.button !== 0)
+      )
+        return;
       clearFrogPress();
       frogLongPressTriggered = false;
       preloadLaugh();
-      preload('working-0.webp');
-      button.classList.add('is-pressed');
+      preload("working-0.webp");
+      button.classList.add("is-pressed");
       frogHoldTimer = window.setTimeout(function () {
         frogHoldTimer = null;
         playFrogWorking();
@@ -376,25 +473,25 @@
       }, 560);
     });
 
-    button.addEventListener('pointerup', clearFrogPress);
-    button.addEventListener('pointerleave', clearFrogPress);
-    button.addEventListener('pointercancel', function () {
+    button.addEventListener("pointerup", clearFrogPress);
+    button.addEventListener("pointerleave", clearFrogPress);
+    button.addEventListener("pointercancel", function () {
       frogLongPressTriggered = false;
       clearFrogPress();
     });
 
-    button.addEventListener('contextmenu', function (event) {
+    button.addEventListener("contextmenu", function (event) {
       event.preventDefault();
     });
 
-    button.addEventListener('dragstart', function (event) {
+    button.addEventListener("dragstart", function (event) {
       event.preventDefault();
     });
 
-    button.addEventListener('pointerenter', preloadLaugh, { passive: true });
-    button.addEventListener('focus', preloadLaugh);
+    button.addEventListener("pointerenter", preloadLaugh, { passive: true });
+    button.addEventListener("focus", preloadLaugh);
 
-    button.addEventListener('click', function () {
+    button.addEventListener("click", function () {
       if (frogLongPressTriggered) {
         frogLongPressTriggered = false;
         return;
@@ -402,34 +499,50 @@
       playFrogLaugh();
     });
 
-    document.addEventListener('site:themechange', function () {
+    document.addEventListener("site:themechange", function () {
       stopAnimation();
       resetDeepseek();
       scheduleIdleBlink();
       warmLaughAsset();
-      if (document.documentElement.dataset.theme === 'dark') {
+      if (document.documentElement.dataset.theme === "dark") {
         window.setTimeout(playFrogGreeting, 180);
       }
     });
 
-    document.addEventListener('site:layoutchange', function () {
-      if (frogMessage && frogMessage.classList.contains('is-visible') && frogMessageLines) {
+    document.addEventListener("site:layoutchange", function () {
+      if (
+        frogMessage &&
+        frogMessage.classList.contains("is-visible") &&
+        frogMessageLines
+      ) {
         frogMessage.textContent = frogText(frogMessageLines);
       }
     });
 
     function source(file) {
-      return base.replace(/\/$/, '') + '/' + file + '?v=' + encodeURIComponent(assetVersion);
+      return (
+        base.replace(/\/$/, "") +
+        "/" +
+        file +
+        "?v=" +
+        encodeURIComponent(assetVersion)
+      );
     }
 
     function poseSource(file) {
-      return poseBase.replace(/\/$/, '') + '/' + file + '?v=' + encodeURIComponent(poseVersion);
+      return (
+        poseBase.replace(/\/$/, "") +
+        "/" +
+        file +
+        "?v=" +
+        encodeURIComponent(poseVersion)
+      );
     }
 
     function preloadPose(file) {
       if (!file || preloadedPoses[file]) return;
       var loader = new Image();
-      loader.decoding = 'async';
+      loader.decoding = "async";
       loader.src = poseSource(file);
       preloadedPoses[file] = loader;
     }
@@ -442,7 +555,7 @@
       if (preloaded[file]) return;
 
       var loader = new Image();
-      loader.decoding = 'async';
+      loader.decoding = "async";
       loader.src = source(file);
       preloaded[file] = loader;
     }
@@ -456,19 +569,19 @@
     }
 
     function preloadLaugh() {
-      preload(motionQuery.matches ? 'laugh-0.webp' : 'laugh-60.webp');
+      preload(motionQuery.matches ? "laugh-0.webp" : "laugh-60.webp");
     }
 
     function warmLaughAsset() {
-      if (document.documentElement.dataset.theme !== 'dark') return;
-      if (typeof window.requestIdleCallback === 'function') {
+      if (document.documentElement.dataset.theme !== "dark") return;
+      if (typeof window.requestIdleCallback === "function") {
         window.requestIdleCallback(preloadLaugh, { timeout: 1200 });
       } else {
         window.setTimeout(preloadLaugh, 240);
       }
     }
 
-    document.addEventListener('visibilitychange', function () {
+    document.addEventListener("visibilitychange", function () {
       if (document.hidden) {
         stopAnimation();
         resetDeepseek();
@@ -478,7 +591,7 @@
     });
 
     function updateReducedMotion() {
-      laughFile = motionQuery.matches ? 'laugh-0.webp' : 'laugh-60.webp';
+      laughFile = motionQuery.matches ? "laugh-0.webp" : "laugh-60.webp";
       stopAnimation();
       if (motionQuery.matches) {
         stopIdleBlink();
@@ -488,7 +601,7 @@
     }
 
     if (motionQuery.addEventListener) {
-      motionQuery.addEventListener('change', updateReducedMotion);
+      motionQuery.addEventListener("change", updateReducedMotion);
     } else if (motionQuery.addListener) {
       motionQuery.addListener(updateReducedMotion);
     }
@@ -497,16 +610,16 @@
     showIdle();
     warmLaughAsset();
     scheduleIdleBlink();
-    if (document.documentElement.dataset.theme === 'dark') {
+    if (document.documentElement.dataset.theme === "dark") {
       window.setTimeout(playFrogGreeting, 180);
     }
     window.setTimeout(function () {
-      if (document.documentElement.dataset.theme === 'light') preloadNextPose();
+      if (document.documentElement.dataset.theme === "light") preloadNextPose();
     }, 1600);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMilkFrog);
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMilkFrog);
   } else {
     initMilkFrog();
   }

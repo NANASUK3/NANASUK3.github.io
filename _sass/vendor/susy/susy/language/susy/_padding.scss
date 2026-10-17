@@ -5,17 +5,24 @@
 // ------
 // Add spanning-padding before an element.
 // - $span  : <span>
-@mixin prefix(
-  $span
-) {
-  $inspect  : $span;
-  $span     : map-merge((spread: wide), parse-span($span));
-  $flow     : susy-get(flow, $span);
-  $width    : span($span);
+@mixin prefix($span) {
+  $inspect: $span;
+  $span: map-merge(
+    (
+      spread: wide,
+    ),
+    parse-span($span)
+  );
+  $flow: susy-get(flow, $span);
+  $width: span($span);
 
   @if is-inside($span) {
     $gutter: gutter($span);
-    $width: if($gutter and comparable($width, $gutter), $width + $gutter, $width);
+    $width: if(
+      $gutter and comparable($width, $gutter),
+      $width + $gutter,
+      $width
+    );
   }
 
   @include susy-inspect(prefix, $inspect);
@@ -26,17 +33,24 @@
 // ------
 // Add spanning-padding after an element.
 // - $span  : <span>
-@mixin suffix(
-  $span
-) {
-  $inspect  : $span;
-  $span     : map-merge((spread: wide), parse-span($span));
-  $flow     : susy-get(flow, $span);
-  $width    : span($span);
+@mixin suffix($span) {
+  $inspect: $span;
+  $span: map-merge(
+    (
+      spread: wide,
+    ),
+    parse-span($span)
+  );
+  $flow: susy-get(flow, $span);
+  $width: span($span);
 
   @if is-inside($span) {
     $gutter: gutter($span);
-    $width: if($gutter and comparable($width, $gutter), $width + $gutter, $width);
+    $width: if(
+      $gutter and comparable($width, $gutter),
+      $width + $gutter,
+      $width
+    );
   }
 
   @include susy-inspect(suffix, $inspect);
@@ -48,20 +62,37 @@
 // Add spanning-padding before and after an element.
 // - $pre     : <span>
 // - [$post]  : <span>
-@mixin pad(
-  $pre,
-  $post: false
-) {
-  $inspect  : ($pre, $post);
-  $pre      : map-merge((spread: wide), parse-span($pre));
+@mixin pad($pre, $post: false) {
+  $inspect: ($pre, $post);
+  $pre: map-merge(
+    (
+      spread: wide,
+    ),
+    parse-span($pre)
+  );
 
   @if $post {
-    $post: map-merge((spread: wide), parse-span($post));
+    $post: map-merge(
+      (
+        spread: wide,
+      ),
+      parse-span($post)
+    );
   } @else {
     $span: susy-get(span, $pre);
     @if length($span) > 1 {
-      $pre: map-merge($pre, (span: nth($span, 1)));
-      $post: map-merge($pre, (span: nth($span, 2)));
+      $pre: map-merge(
+        $pre,
+        (
+          span: nth($span, 1),
+        )
+      );
+      $post: map-merge(
+        $pre,
+        (
+          span: nth($span, 2),
+        )
+      );
     } @else {
       $post: $pre;
     }
@@ -70,5 +101,4 @@
   @include susy-inspect(pad, $inspect);
   @include prefix($pre);
   @include suffix($post);
-
 }

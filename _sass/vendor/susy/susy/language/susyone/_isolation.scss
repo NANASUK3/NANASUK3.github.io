@@ -26,7 +26,7 @@
 @mixin isolate-grid(
   $columns,
   $context: $total-columns,
-  $selector: 'child',
+  $selector: "child",
   $from: $from-direction,
   $style: fix-static-misalignment()
 ) {
@@ -38,14 +38,19 @@
   margin-#{$to}: -100%;
 
   @for $item from 1 through $line {
-    $nth: '#{$line}n + #{$item}';
-    &:#{format-nth($nth,$selector)} {
+    $nth: "#{$line}n + #{$item}";
+    &:#{format-nth($nth, $selector)} {
       margin-#{$from}: space($location - 1, $context, $style);
-      @if $location == 1 { clear: $from; }
-      @else { clear: none; }
+      @if $location == 1 {
+        clear: $from;
+      } @else {
+        clear: none;
+      }
 
       $location: $location + $columns;
-      @if $location > $context { $location: 1; }
+      @if $location > $context {
+        $location: 1;
+      }
     }
   }
 }

@@ -6,10 +6,7 @@
 // Check for an existing support mixin, or output directly.
 // - $prop  : <css property>
 // - $val   : <css value>
-@mixin susy-rem(
-  $prop,
-  $val
-) {
+@mixin susy-rem($prop, $val) {
   $_reqs: (
     variable: rhythm-unit rem-with-px-fallback,
     mixin: rem,

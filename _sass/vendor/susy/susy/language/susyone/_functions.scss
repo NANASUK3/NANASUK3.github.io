@@ -5,11 +5,11 @@
 @import "compass/typography/vertical_rhythm";
 
 // For now, we also need this...
-$browser-default-font-size-px       : 16px;
-$browser-default-font-size-percent  : 100%;
-$browser-default-font-size-pt       : 12pt;
+$browser-default-font-size-px: 16px;
+$browser-default-font-size-percent: 100%;
+$browser-default-font-size-pt: 12pt;
 
-$rem-with-px-fallback               : true !default;
+$rem-with-px-fallback: true !default;
 
 // ---------------------------------------------------------------------------
 // Sass list Functions
@@ -25,7 +25,9 @@ $rem-with-px-fallback               : true !default;
     @each $item in $list {
       $clean: if($item == $target, $clean, append($clean, $item));
     }
-  } @else { $clean: $list; }
+  } @else {
+    $clean: $list;
+  }
   @return $clean;
 }
 
@@ -41,7 +43,10 @@ $rem-with-px-fallback               : true !default;
   $style: $container-style,
   $width: $container-width
 ) {
-  @if $container-width and $container-width != container-outer-width($width: false) {
+  @if $container-width and
+    $container-width !=
+    container-outer-width($width: false)
+  {
     $style: fluid;
   }
   @return $style;
@@ -53,25 +58,21 @@ $rem-with-px-fallback               : true !default;
 // Returns the full width of a grid based on your grid settings.
 //
 //  $columns  : The number of columns to get width for.
-@function columns-width(
-  $columns  : $total-columns
-) {
+@function columns-width($columns: $total-columns) {
   @if round($columns) != $columns {
     @warn "Susy works best with integer column-spans." +
     "For partial-columns, you may need to finesse the math by hand using functions directly.";
   }
-  @return ($columns * $column-width) + (if($columns >= 1, ceil($columns - 1), 0) * $gutter-width);
+  @return ($columns * $column-width) +
+    (if($columns >= 1, ceil($columns - 1), 0) * $gutter-width);
 }
 
 // Return the grid width after adding or subtracting grid padding
 //
 // $width     : the width of the grid without padding;
 // $operation : ( add | subtract ) if padding should be added or subtracted;
-@function handle-grid-padding(
-  $width,
-  $operation : subtract
-) {
-  $pad: $grid-padding*2;
+@function handle-grid-padding($width, $operation: subtract) {
+  $pad: $grid-padding * 2;
 
   @if comparable($width, $grid-padding) {
     $width: if($operation == subtract, $width - $pad, $width + $pad);
@@ -86,15 +87,19 @@ $rem-with-px-fallback               : true !default;
 //
 //  $columns  : The number of columns in the Grid Layout.
 @function container-outer-width(
-  $columns  : $total-columns,
-  $width    : $container-width
+  $columns: $total-columns,
+  $width: $container-width
 ) {
   $outerwidth: if($width, $width, columns-width($columns));
 
   @if $width {
-    @if not($border-box-sizing) { $outerwidth: handle-grid-padding($outerwidth, subtract); }
+    @if not($border-box-sizing) {
+      $outerwidth: handle-grid-padding($outerwidth, subtract);
+    }
   } @else {
-    @if $border-box-sizing { $outerwidth: handle-grid-padding($outerwidth, add); }
+    @if $border-box-sizing {
+      $outerwidth: handle-grid-padding($outerwidth, add);
+    }
   }
 
   @return $outerwidth;
@@ -104,11 +109,12 @@ $rem-with-px-fallback               : true !default;
 //
 //  $context  : The grid context in columns, if nested.
 //  $style    : The container style to use.
-@function column(
-  $context  : $total-columns,
-  $style    : fix-static-misalignment()
-) {
-  @return if($style == static, $column-width, relative-width($column-width, $context));
+@function column($context: $total-columns, $style: fix-static-misalignment()) {
+  @return if(
+    $style == static,
+    $column-width,
+    relative-width($column-width, $context)
+  );
 }
 
 // Return the percentage width of multiple 'columns' in a given 'context'.
@@ -118,31 +124,33 @@ $rem-with-px-fallback               : true !default;
 //  $style    : The container style to use.
 @function columns(
   $columns,
-  $context  : $total-columns,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $style: fix-static-misalignment()
 ) {
-  @return if($style == static, columns-width($columns), relative-width(columns-width($columns), $context));
+  @return if(
+    $style == static,
+    columns-width($columns),
+    relative-width(columns-width($columns), $context)
+  );
 }
 
 // Return the percentage width of a single gutter in a given 'context'.
 //
 //  $context  : The grid context in columns, if nested.
 //  $style    : The container style to use.
-@function gutter(
-  $context  : $total-columns,
-  $style    : fix-static-misalignment()
-) {
-  @return if($style == static, $gutter-width, relative-width($gutter-width, $context));
+@function gutter($context: $total-columns, $style: fix-static-misalignment()) {
+  @return if(
+    $style == static,
+    $gutter-width,
+    relative-width($gutter-width, $context)
+  );
 }
 
 // Return the percentage width of a given value in a given 'context'.
 //
 //  $width    : Any given width value.
 //  $context  : The grid context in columns, if nested.
-@function relative-width(
-  $width,
-  $context : $total-columns
-) {
+@function relative-width($width, $context: $total-columns) {
   @return percentage($width / columns-width($context));
 }
 
@@ -154,10 +162,11 @@ $rem-with-px-fallback               : true !default;
 //  $style    : The container style to use.
 @function space(
   $columns,
-  $context  : $total-columns,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $style: fix-static-misalignment()
 ) {
-  @return columns($columns, $context, $style) + if($columns >= 1, gutter($context, $style), 0);
+  @return columns($columns, $context, $style) +
+    if($columns >= 1, gutter($context, $style), 0);
 }
 
 // Accept a list including column-count and (optional) position.
@@ -165,18 +174,15 @@ $rem-with-px-fallback               : true !default;
 //
 //  $columns  : the list to split and interprate.
 //  $request  : The value to return, either 'columns' or 'position'.
-@function split-columns-value(
-  $columns,
-  $request : columns
-) {
-  $pos  : false;
-  $cols : false;
+@function split-columns-value($columns, $request: columns) {
+  $pos: false;
+  $cols: false;
 
   @each $var in $columns {
-    @if (type-of($var) == 'string') {
+    @if (type-of($var) == "string") {
       $pos: $var;
     } @else {
-      @if (type-of($var) == 'number') and (unitless($var)) {
+      @if (type-of($var) == "number") and (unitless($var)) {
         $cols: $var;
       } @else {
         @warn '"#{$var}" is not a valid part of "$columns: #{$columns}" in the columns() mixin.';
@@ -184,10 +190,10 @@ $rem-with-px-fallback               : true !default;
     }
   }
 
-  @if $request == 'columns' {
+  @if $request == "columns" {
     @return $cols;
   } @else {
-    @if $request == 'position' {
+    @if $request == "position" {
       @return $pos;
     } @else {
       @warn '"#{$request}" is not a valid value for $request';
@@ -199,14 +205,11 @@ $rem-with-px-fallback               : true !default;
 //
 // $n         : [first | only | last | <equation>]
 // $selector  : [child | last-child | of-type | last-of-type ]
-@function format-nth(
-  $n        : last,
-  $selector : child
-) {
-  @if ($n == 'last') or ($n =='first') or ($n =='only') {
-    $selector: '#{$n}-#{$selector}';
+@function format-nth($n: last, $selector: child) {
+  @if ($n == "last") or ($n == "first") or ($n == "only") {
+    $selector: "#{$n}-#{$selector}";
   } @else {
-    $selector: 'nth-#{$selector}(#{$n})';
+    $selector: "nth-#{$selector}(#{$n})";
   }
   @return $selector;
 }
@@ -219,50 +222,37 @@ $rem-with-px-fallback               : true !default;
 //
 // $ems         : The initial value to be converted.
 // $font-size   : The current font-size in.
-@function base-ems(
-  $ems,
-  $font-size: $base-font-size
-){
-  $font-size  : if(unit($ems) == 'rem', $base-font-size, $font-size);
-  $unit       : unit($font-size);
-  $mult       : $ems / ($ems * 0 + 1);
+@function base-ems($ems, $font-size: $base-font-size) {
+  $font-size: if(unit($ems) == "rem", $base-font-size, $font-size);
+  $unit: unit($font-size);
+  $mult: $ems / ($ems * 0 + 1);
 
-  @if $unit == 'px' {
+  @if $unit == "px" {
     @return $font-size / $browser-default-font-size-px * $mult * 1em;
-  }
-  @else if $unit == '%' {
+  } @else if $unit == "%" {
     @return $font-size / $browser-default-font-size-percent * $mult * 1em;
-  }
-  @else if $unit == 'em' {
+  } @else if $unit == "em" {
     @return $font-size / 1em * $mult * 1em;
-  }
-  @else if $unit == 'pt' {
+  } @else if $unit == "pt" {
     @return $font-size / $browser-default-font-size-pt * $mult * 1em;
-  }
-  @else {
+  } @else {
     @warn 'Variable $base-font-size does not have a valid font unit. Valid units for fonts in CSS are px, pt, em, and %.';
   }
 }
 
 // This name will be deprecated...
-@function absolute-ems(
-  $ems,
-  $font-size: $base-font-size
-){
-  @return base-ems( $ems, $font-size);
-  }
+@function absolute-ems($ems, $font-size: $base-font-size) {
+  @return base-ems($ems, $font-size);
+}
 
 // Return a length, after any em-values have been sent through absolute-ems().
 //
 // $length      : The length value to be checked and adjusted if necessary.
 // $font-size   : The current font-size in px.
-@function fix-ems(
-  $length,
-  $font-size: $base-font-size
-){
+@function fix-ems($length, $font-size: $base-font-size) {
   @if $length {
-    @if (unit($length) == 'em') or (unit($length) == 'rem') {
-      $length: absolute-ems($length,$font-size);
+    @if (unit($length) == "em") or (unit($length) == "rem") {
+      $length: absolute-ems($length, $font-size);
     }
   }
   @return $length;
@@ -276,28 +266,25 @@ $rem-with-px-fallback               : true !default;
 //                : - one optional boolean or string to trigger fallback support for IE.
 // $font-size     : [optional] The base font-size of your layout, if you are using ems.
 //                : - defaults to $base-font-size
-@function medialayout(
-  $media-layout,
-  $font-size: $base-font-size
-) {
-  $media        : false;
-  $min          : false;
-  $layout       : false;
-  $max          : false;
-  $ie           : false;
-  $has-layout   : false;
+@function medialayout($media-layout, $font-size: $base-font-size) {
+  $media: false;
+  $min: false;
+  $layout: false;
+  $max: false;
+  $ie: false;
+  $has-layout: false;
 
   @each $val in $media-layout {
     @if (type-of($val) == "number") {
       @if unitless($val) {
-        $layout     : $val;
-        $has-layout : true;
+        $layout: $val;
+        $has-layout: true;
       } @else {
         @if ($has-layout) and not($media) {
           $max: $val;
         } @else {
           @if $media {
-            $media: join($media,$val);
+            $media: join($media, $val);
           } @else {
             $media: $val;
           }
@@ -309,14 +296,14 @@ $rem-with-px-fallback               : true !default;
   }
   @if (length($media) > 0) {
     @if (length($media) == 1) {
-      $min: nth($media,1);
+      $min: nth($media, 1);
     } @else {
-      $min: nth($media,1);
-      $max: nth($media,2);
+      $min: nth($media, 1);
+      $max: nth($media, 2);
       @if comparable($min, $max) {
         @if ($min > $max) {
-          $max: nth($media,1);
-          $min: nth($media,2);
+          $max: nth($media, 1);
+          $min: nth($media, 2);
         }
       } @else {
         @warn "Can't compare incompatible units." +
@@ -331,8 +318,8 @@ $rem-with-px-fallback               : true !default;
 
   // media-queries must be set in ems relative to the browser default
   // rather than the font-size set in CSS.
-  $min: fix-ems($min,$font-size);
-  $max: fix-ems($max,$font-size);
+  $min: fix-ems($min, $font-size);
+  $max: fix-ems($max, $font-size);
 
   @return $min $layout $max $ie;
 }
@@ -340,14 +327,12 @@ $rem-with-px-fallback               : true !default;
 // Return the nearest layout (column-count) above a given breakpoint.
 //
 // $min : The min-width media-query breakpoint above which to establish a new layout.
-@function get-layout(
-  $min
-) {
-  $min      : fix-ems($min);
-  $return   : false;
+@function get-layout($min) {
+  $min: fix-ems($min);
+  $return: false;
 
   @if comparable($min, $column-width) {
-    $return : ceil(($min + $gutter-width) / ($column-width + $gutter-width));
+    $return: ceil(($min + $gutter-width) / ($column-width + $gutter-width));
   } @else {
     @warn "Can't determine a layout, becuse #{$min} and #{$column-width} are not comparable.";
   }
@@ -361,17 +346,15 @@ $rem-with-px-fallback               : true !default;
 //                : One unitless number (columns in a layout)
 //                : Two optional lengths (min and max-width media-query breakpoints).
 //                : One optional boolean or string to trigger fallback support for IE.
-@function is-default-layout(
-  $media-layout
-) {
-  $media-layout : medialayout($media-layout);
-  $min          : nth($media-layout,1);
-  $layout-cols  : nth($media-layout,2);
-  $max          : nth($media-layout,3);
+@function is-default-layout($media-layout) {
+  $media-layout: medialayout($media-layout);
+  $min: nth($media-layout, 1);
+  $layout-cols: nth($media-layout, 2);
+  $max: nth($media-layout, 3);
 
   @if $min or $max {
     @return false;
   } @else {
-    @return if($layout-cols == $total-columns,true,false);
+    @return if($layout-cols == $total-columns, true, false);
   }
 }

@@ -5,9 +5,7 @@
 // ------------
 // Set a spanning element using shorthand syntax.
 // - $span  : <span>
-@mixin span(
-  $span
-) {
+@mixin span($span) {
   $inspect: $span;
   $span: parse-span($span);
   $output: span-math($span);
@@ -15,7 +13,7 @@
   $clear: susy-get(clear, $span);
 
   $box: susy-get(box-sizing, $span);
-  $content-box: if(susy-get(global-box-sizing) != 'border-box', true, false);
+  $content-box: if(susy-get(global-box-sizing) != "border-box", true, false);
   $box: $box or if(is-inside($span) and $content-box, border-box, null);
 
   @if $clear == break {
@@ -25,11 +23,17 @@
   }
 
   @include susy-inspect(span, $inspect);
-  @include output((box-sizing: $box));
+  @include output(
+    (
+      box-sizing: $box,
+    )
+  );
   @include float-span-output($output...);
 
   @if valid-columns($nesting, silent) {
-    @include nested($span) { @content; }
+    @include nested($span) {
+      @content;
+    }
   } @else {
     @content;
   }
@@ -39,9 +43,7 @@
 // ---------------
 // Return the width of a span.
 // - $span  : <span>
-@function span(
-  $span
-) {
+@function span($span) {
   @return get-span-width($span);
 }
 
@@ -49,23 +51,30 @@
 // ---------
 // Get all the span results.
 // - $span: <map>
-@function span-math(
-  $span
-) {
-  $nest             : if(susy-get(role, $span) == nest, true, false);
-  $split-nest       : if(is-split($span) and $nest, true, false);
-  $edge             : get-edge($span);
-  $location         : get-location($span);
+@function span-math($span) {
+  $nest: if(susy-get(role, $span) == nest, true, false);
+  $split-nest: if(is-split($span) and $nest, true, false);
+  $edge: get-edge($span);
+  $location: get-location($span);
 
-  $float            : from;
-  $padding-before   : null;
-  $padding-after    : null;
-  $margin-before    : null;
-  $margin-after     : null;
+  $float: from;
+  $padding-before: null;
+  $padding-after: null;
+  $margin-before: null;
+  $margin-after: null;
 
   // calculate widths
   $spread: index(map-values($span), spread);
-  $span: if($split-nest and not($spread), map-merge($span, (spread: wide)), $span);
+  $span: if(
+    $split-nest and not($spread),
+    map-merge(
+      $span,
+      (
+        spread: wide,
+      )
+    ),
+    $span
+  );
   $width: get-span-width($span);
   $gutters: get-gutters($span);
 
@@ -102,17 +111,16 @@
         $margin-after: 0;
       }
     }
-
   }
 
   @return (
-    width           : $width,
-    float           : $float,
-    margin-before   : $margin-before,
-    margin-after    : $margin-after,
-    padding-before  : $padding-before,
-    padding-after   : $padding-after,
-    flow            : susy-get(flow, $span),
+    width: $width,
+    float: $float,
+    margin-before: $margin-before,
+    margin-after: $margin-after,
+    padding-before: $padding-before,
+    padding-after: $padding-after,
+    flow: susy-get(flow, $span)
   );
 }
 
@@ -120,22 +128,20 @@
 // --------------
 // Return span width.
 // - $span: <map>
-@function get-span-width(
-  $span
-) {
-  $span     : parse-span($span);
+@function get-span-width($span) {
+  $span: parse-span($span);
 
-  $n        : susy-get(span, $span);
-  $location : get-location($span);
-  $columns  : susy-get(columns, $span);
-  $gutters  : susy-get(gutters, $span);
-  $spread   : susy-get(spread, $span);
+  $n: susy-get(span, $span);
+  $location: get-location($span);
+  $columns: susy-get(columns, $span);
+  $gutters: susy-get(gutters, $span);
+  $spread: susy-get(spread, $span);
 
-  $context  : null;
-  $span-sum : null;
-  $width    : null;
+  $context: null;
+  $span-sum: null;
+  $width: null;
 
-  @if $n == 'full' {
+  @if $n == "full" {
     $pos: susy-get(gutter-position, $span);
     $role: susy-get(role, $span);
     $n: if($pos == split and $role != nest, susy-count($columns), 100%);

@@ -41,12 +41,16 @@ html.theme-transitioning::after {
 }
 
 html.theme-transitioning.theme-transitioning-active::after {
-  animation: theme-scrim-fade 480ms cubic-bezier(.4, 0, .2, 1) both;
+  animation: theme-scrim-fade 480ms cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 @keyframes theme-scrim-fade {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Keep the small theme control legible and update its glyph without affecting
@@ -111,21 +115,29 @@ html[data-theme-snapshot] .masthead {
   }
 
   html[data-theme-snapshot]::view-transition-old(root) {
-    animation: theme-view-fade-out 480ms cubic-bezier(.4, 0, .2, 1) both;
+    animation: theme-view-fade-out 480ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
 
   html[data-theme-snapshot]::view-transition-new(root) {
-    animation: theme-view-fade-in 480ms cubic-bezier(.4, 0, .2, 1) both;
+    animation: theme-view-fade-in 480ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
 
   @keyframes theme-view-fade-out {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 
   @keyframes theme-view-fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 }
 

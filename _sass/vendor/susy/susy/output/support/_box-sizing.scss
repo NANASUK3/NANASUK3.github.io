@@ -5,11 +5,16 @@
 // ----------
 // Check for an existing support mixin, or provide a simple fallback.
 // - $model: <box-sizing>
-@mixin susy-box-sizing(
-  $model: content-box
-) {
+@mixin susy-box-sizing($model: content-box) {
   @if $model {
-    @if susy-support(box-sizing, (mixin: box-sizing), $warn: false) {
+    @if susy-support(
+      box-sizing,
+      (
+        mixin: box-sizing,
+      ),
+      $warn: false
+    )
+    {
       @include box-sizing($model);
     } @else {
       $prefix: (moz, webkit, official);

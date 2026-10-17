@@ -190,7 +190,9 @@ html[data-theme="dark"] .milk-frog-pet__message.is-visible {
   opacity: 0;
   transform: translateY(4px) scale(0.97);
   transform-origin: center bottom;
-  transition: opacity 150ms ease, transform 260ms cubic-bezier(0.2, 0.8, 0.25, 1);
+  transition:
+    opacity 150ms ease,
+    transform 260ms cubic-bezier(0.2, 0.8, 0.25, 1);
   -webkit-user-drag: none;
   pointer-events: none;
   filter: drop-shadow(0 4px 5px rgba(44, 86, 163, 0.12));
@@ -300,18 +302,24 @@ html[data-theme="dark"] .milk-frog-pet__message.is-visible {
   animation: deepseek-icon-pop 900ms cubic-bezier(0.2, 0.8, 0.3, 1.15) both;
 }
 
-.deepseek-pet__button.is-reacting[data-action="hello"] .deepseek-pet__spark--one,
-.deepseek-pet__button.is-reacting[data-action="cheer"] .deepseek-pet__spark--one,
-.deepseek-pet__button.is-reacting[data-action="cheer"] .deepseek-pet__spark--two,
-.deepseek-pet__button.is-reacting[data-action="cheer"] .deepseek-pet__spark--three {
+.deepseek-pet__button.is-reacting[data-action="hello"]
+  .deepseek-pet__spark--one,
+.deepseek-pet__button.is-reacting[data-action="cheer"]
+  .deepseek-pet__spark--one,
+.deepseek-pet__button.is-reacting[data-action="cheer"]
+  .deepseek-pet__spark--two,
+.deepseek-pet__button.is-reacting[data-action="cheer"]
+  .deepseek-pet__spark--three {
   animation: deepseek-sparkle 850ms ease-out both;
 }
 
-.deepseek-pet__button.is-reacting[data-action="cheer"] .deepseek-pet__spark--two {
+.deepseek-pet__button.is-reacting[data-action="cheer"]
+  .deepseek-pet__spark--two {
   animation-delay: 90ms;
 }
 
-.deepseek-pet__button.is-reacting[data-action="cheer"] .deepseek-pet__spark--three {
+.deepseek-pet__button.is-reacting[data-action="cheer"]
+  .deepseek-pet__spark--three {
   animation-delay: 160ms;
 }
 
@@ -350,88 +358,197 @@ html[data-theme="light"] .deepseek-pet__message.is-visible {
 }
 
 @keyframes milk-frog-greet {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  35% { transform: translateY(-3px) rotate(-3deg); }
-  68% { transform: translateY(0) rotate(3deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  35% {
+    transform: translateY(-3px) rotate(-3deg);
+  }
+  68% {
+    transform: translateY(0) rotate(3deg);
+  }
 }
 
 @keyframes milk-frog-laugh {
-  0%, 100% { transform: translateY(0) scale(1); }
-  30% { transform: translateY(-2px) scale(1.02); }
-  62% { transform: translateY(1px) scale(0.99, 1.02); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-2px) scale(1.02);
+  }
+  62% {
+    transform: translateY(1px) scale(0.99, 1.02);
+  }
 }
 
 @keyframes milk-frog-working {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  50% { transform: translateY(1px) rotate(-2deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(1px) rotate(-2deg);
+  }
 }
 
 @keyframes milk-frog-message-in {
-  from { opacity: 0.72; transform: translateY(4px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0.72;
+    transform: translateY(4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes deepseek-wave {
-  0%, 100% { transform: translateY(0) rotate(0); }
-  24% { transform: translateY(-7px) rotate(-7deg); }
-  52% { transform: translateY(-2px) rotate(5deg); }
-  78% { transform: translateY(-5px) rotate(-3deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  24% {
+    transform: translateY(-7px) rotate(-7deg);
+  }
+  52% {
+    transform: translateY(-2px) rotate(5deg);
+  }
+  78% {
+    transform: translateY(-5px) rotate(-3deg);
+  }
 }
 
 @keyframes deepseek-breathe {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-1px) scale(1.012); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-1px) scale(1.012);
+  }
 }
 
 @keyframes deepseek-think {
-  0%, 100% { transform: translateX(0) rotate(0); }
-  32% { transform: translateX(-2px) rotate(-4deg); }
-  68% { transform: translateX(2px) rotate(2deg); }
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+  32% {
+    transform: translateX(-2px) rotate(-4deg);
+  }
+  68% {
+    transform: translateX(2px) rotate(2deg);
+  }
 }
 
 @keyframes deepseek-cheer {
-  0%, 100% { transform: translateY(0) scale(1); }
-  32% { transform: translateY(-13px) scale(1.05); }
-  55% { transform: translateY(0) scale(0.98, 1.02); }
-  76% { transform: translateY(-5px) scale(1.02); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  32% {
+    transform: translateY(-13px) scale(1.05);
+  }
+  55% {
+    transform: translateY(0) scale(0.98, 1.02);
+  }
+  76% {
+    transform: translateY(-5px) scale(1.02);
+  }
 }
 
 @keyframes deepseek-comfort {
-  0%, 100% { transform: rotate(0) scale(1); }
-  35% { transform: rotate(-3deg) scale(1.02); }
-  70% { transform: rotate(3deg) scale(1.02); }
+  0%,
+  100% {
+    transform: rotate(0) scale(1);
+  }
+  35% {
+    transform: rotate(-3deg) scale(1.02);
+  }
+  70% {
+    transform: rotate(3deg) scale(1.02);
+  }
 }
 
 @keyframes deepseek-pat {
-  0%, 100% { transform: translateY(0) scale(1); }
-  32% { transform: translateY(3px) scale(0.97, 1.02); }
-  60% { transform: translateY(-4px) scale(1.01); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  32% {
+    transform: translateY(3px) scale(0.97, 1.02);
+  }
+  60% {
+    transform: translateY(-4px) scale(1.01);
+  }
 }
 
 @keyframes deepseek-beg {
-  0%, 100% { transform: translateY(0) scale(1); }
-  16% { transform: translateY(2px) scale(0.98, 1.02); }
-  28% { transform: translateY(-1px) rotate(-1deg) scale(1.01); }
-  42% { transform: translateY(2px) scale(0.98, 1.02); }
-  55% { transform: translateY(-1px) rotate(1deg) scale(1.01); }
-  70% { transform: translateY(1px) scale(0.99, 1.01); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  16% {
+    transform: translateY(2px) scale(0.98, 1.02);
+  }
+  28% {
+    transform: translateY(-1px) rotate(-1deg) scale(1.01);
+  }
+  42% {
+    transform: translateY(2px) scale(0.98, 1.02);
+  }
+  55% {
+    transform: translateY(-1px) rotate(1deg) scale(1.01);
+  }
+  70% {
+    transform: translateY(1px) scale(0.99, 1.01);
+  }
 }
 
 @keyframes deepseek-icon-pop {
-  0% { opacity: 0; transform: translate(3px, 5px) scale(0.45); }
-  24% { opacity: 1; transform: translate(0, 0) scale(1.12); }
-  48%, 78% { opacity: 1; transform: translateY(-3px) scale(1); }
-  100% { opacity: 0; transform: translateY(-10px) scale(0.85); }
+  0% {
+    opacity: 0;
+    transform: translate(3px, 5px) scale(0.45);
+  }
+  24% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.12);
+  }
+  48%,
+  78% {
+    opacity: 1;
+    transform: translateY(-3px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.85);
+  }
 }
 
 @keyframes deepseek-sparkle {
-  0%, 100% { opacity: 0; transform: scale(0.4) rotate(-20deg); }
-  28%, 64% { opacity: 1; transform: scale(1) rotate(12deg); }
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-20deg);
+  }
+  28%,
+  64% {
+    opacity: 1;
+    transform: scale(1) rotate(12deg);
+  }
 }
 
 @keyframes deepseek-message-in {
-  from { opacity: 0; transform: translateY(4px) scale(0.97); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @media (max-width: 720px) {
@@ -487,7 +604,8 @@ html[data-theme="light"] .deepseek-pet__message.is-visible {
     opacity: 1;
   }
 
-  .deepseek-pet__button.is-reacting[data-action="hello"] .deepseek-pet__spark--one,
+  .deepseek-pet__button.is-reacting[data-action="hello"]
+    .deepseek-pet__spark--one,
   .deepseek-pet__button.is-reacting[data-action="cheer"] .deepseek-pet__spark {
     opacity: 1;
   }
@@ -510,5 +628,4 @@ html[data-theme="light"] .deepseek-pet__message.is-visible {
   .deepseek-pet__button:focus-visible {
     outline: 2px solid CanvasText;
   }
-
 }

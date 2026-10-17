@@ -6,18 +6,11 @@
 // - $before  : <length>
 // - $after   : <length>
 // - [$flow]  : ltr | rtl
-@mixin margin-output(
-  $before,
-  $after,
-  $flow: map-get($susy-defaults, flow)
-) {
+@mixin margin-output($before, $after, $flow: map-get($susy-defaults, flow)) {
   $to: to($flow);
   $from: from($flow);
 
-  $output: (
-    margin-#{$from}: $before,
-    margin-#{$to}: $after,
-  );
+  $output: (margin-#{$from}: $before, margin-#{$to}: $after);
 
   @include output($output);
 }

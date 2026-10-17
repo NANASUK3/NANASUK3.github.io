@@ -1,75 +1,46 @@
-locale                   : "en-US"
-title                    : "Jingpeng Yang"
-title_separator          : "-"
-name                     : "Jingpeng Yang"
-description              : &description "The academic homepage."
-url                      : "https://nanasuk3.github.io"
-baseurl                  : ""
-repository               : "NANASUK3/NANASUK3.github.io"
+locale: "en-US"
+title: "Jingpeng Yang"
+title_separator: "-"
+name: "Jingpeng Yang"
+description: &description "The academic homepage."
+url: "https://nanasuk3.github.io"
+baseurl: ""
+repository: "NANASUK3/NANASUK3.github.io"
 
 author:
-  avatar           : "avatar-256.webp"
-  name             : "Jingpeng Yang"
-  name_zh          : "杨靖鹏"
-  pronouns         :
-  bio              : "Embodied AI & Agent."
-  location         : "Hefei, China"
-  employer         :
-  email            : "yangjingpeng@ustc.edu.cn"
+  avatar: "avatar-256.webp"
+  name: "Jingpeng Yang"
+  name_zh: "杨靖鹏"
+  pronouns:
+  bio: "Embodied AI & Agent."
+  location: "Hefei, China"
+  employer:
+  email: "yangjingpeng@ustc.edu.cn"
 
-  github           : NANASUK3
-  kaggle           :
-  stackoverflow    :
-  linkedin         :
+  github: NANASUK3
+  kaggle:
+  stackoverflow:
+  linkedin:
 
-teaser                   :
-breadcrumbs              : false
-future                   : true
+teaser:
+breadcrumbs: false
+future: true
 
 atom_feed:
-  hide                   : false
-  path                   :
+  hide: false
+  path:
 
 analytics:
-  provider               : false
+  provider: false
 
 include:
-  - .htaccess
   - _pages
-  - files
 
 exclude:
-  - "*.sublime-project"
-  - "*.sublime-workspace"
-  - .asset-cache
-  - .bundle
-  - .jekyll-assets-cache
-  - .sass-cache
-  - CHANGELOG
-  - Capfile
-  - Gemfile
-  - Gruntfile.js
-  - LICENSE
-  - README
   - THIRD_PARTY_NOTICES.md
-  - Rakefile
   - assets/js/_main.js
   - assets/js/plugins
-  - assets/js/vendor
-  - config
-  - gulpfile.js
-  - log
-  - node_modules
-  - local
   - package.json
-  - tmp
-  - vendor
-
-keep_files:
-  - .git
-  - .svn
-
-encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 markdown: kramdown

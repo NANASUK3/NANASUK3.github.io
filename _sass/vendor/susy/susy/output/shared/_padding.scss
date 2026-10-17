@@ -6,18 +6,11 @@
 // - $before  : <length>
 // - $after   : <length>
 // - [$flow]  : ltr | rtl
-@mixin padding-output(
-  $before,
-  $after,
-  $flow: map-get($susy-defaults, flow)
-) {
+@mixin padding-output($before, $after, $flow: map-get($susy-defaults, flow)) {
   $to: to($flow);
   $from: from($flow);
 
-  $output: (
-    padding-#{$from}: $before,
-    padding-#{$to}: $after,
-  );
+  $output: (padding-#{$from}: $before, padding-#{$to}: $after);
 
   @include output($output);
 }

@@ -5,10 +5,7 @@
 // --------------
 // - $push    : <length>
 // - [$flow]  : ltr | rtl
-@mixin isolate-output(
-  $push,
-  $flow: map-get($susy-defaults, flow)
-) {
+@mixin isolate-output($push, $flow: map-get($susy-defaults, flow)) {
   $to: to($flow);
   $from: from($flow);
 

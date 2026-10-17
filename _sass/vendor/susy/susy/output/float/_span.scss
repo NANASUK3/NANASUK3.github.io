@@ -12,15 +12,15 @@
 // - [$flow]            : ltr | rtl
 @mixin float-span-output(
   $width,
-  $float            : from,
-  $margin-before    : null,
-  $margin-after     : null,
-  $padding-before   : null,
-  $padding-after    : null,
-  $flow             : map-get($susy-defaults, flow)
+  $float: from,
+  $margin-before: null,
+  $margin-after: null,
+  $padding-before: null,
+  $padding-after: null,
+  $flow: map-get($susy-defaults, flow)
 ) {
-  $to     : to($flow);
-  $from   : from($flow);
+  $to: to($flow);
+  $from: from($flow);
 
   $output: (
     width: $width,

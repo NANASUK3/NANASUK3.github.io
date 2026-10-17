@@ -33,8 +33,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 │   ├── authors.yml         # Publication author links
 │   ├── publications.yml    # Research data rendered by the homepage JS
 │   ├── i18n.yml            # Bilingual profile and page content
-│   ├── navigation.yml       # Header navigation links
-│   └── ui-text.yml          # Theme UI text strings
+│   ├── ui-text.yml          # Theme UI text strings
 ├── _includes/               # Reusable Liquid partials
 │   ├── head/custom.html     # Custom <head> snippets (FA, MathJax, favicon)
 │   ├── icon.html            # Small inline SVG icons
@@ -127,7 +126,7 @@ The homepage uses `_layouts/home.html` and `_pages/about.md`. Edit `_data/i18n.y
 
 ### Navigation
 
-Edit `_data/navigation.yml`:
+Edit `_includes/home-nav.html`:
 
 ```yaml
 main:

@@ -11,22 +11,22 @@
 // $style   : The container style to use.
 @mixin pre(
   $columns,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from     : unquote($from);
+  $from: unquote($from);
   margin-#{$from}: space($columns, $context, $style);
 }
 
 // 'push' is a synonymn for 'pre'
 @mixin push(
   $columns,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from     : unquote($from);
+  $from: unquote($from);
   @include pre($columns, $context, $from, $style);
 }
 
@@ -40,11 +40,11 @@
 // $style   : The container style to use.
 @mixin pull(
   $columns,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from     : unquote($from);
+  $from: unquote($from);
   margin-#{$from}: 0 - space($columns, $context, $style);
 }
 
@@ -58,12 +58,12 @@
 // $style   : The container style to use.
 @mixin post(
   $columns,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from     : unquote($from);
-  $to : opposite-position($from);
+  $from: unquote($from);
+  $to: opposite-position($from);
   margin-#{$to}: space($columns, $context, $style);
 }
 
@@ -77,17 +77,17 @@
 // $from    : The start direction of your layout (e.g. 'left' for ltr languages)
 // $style   : The container style to use.
 @mixin squish(
-  $pre      : false,
-  $post     : false,
-  $context  : $total-columns,
-  $from     : $from-direction,
-  $style    : fix-static-misalignment()
+  $pre: false,
+  $post: false,
+  $context: $total-columns,
+  $from: $from-direction,
+  $style: fix-static-misalignment()
 ) {
-  $from     : unquote($from);
+  $from: unquote($from);
   @if $pre {
-    @include pre($pre, $context, $from, $style)
+    @include pre($pre, $context, $from, $style);
   }
   @if $post {
-    @include post($post, $context, $from, $style)
+    @include post($post, $context, $from, $style);
   }
 }
