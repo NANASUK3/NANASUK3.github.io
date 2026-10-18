@@ -29,9 +29,13 @@ body.home-template {
   text-rendering: optimizeLegibility;
 }
 
+html[data-theme="dark"] body.home-template .home-nav__inner {
+  background: var(--home-bg);
+}
+
 html[data-theme="dark"] body.home-template {
   --home-bg: #08090a;
-  --home-surface: rgba(15, 16, 17, 0.96);
+  --home-surface: #08090a;
   --home-text: #d0d6e0;
   --home-text-strong: #f7f8f8;
   --home-muted: #8a8f98;
