@@ -218,12 +218,16 @@ body.home-template a:focus-visible {
   position: static;
   transform: none;
   z-index: auto;
-  width: auto;
+  width: 30px;
+  height: 30px;
   min-width: 30px;
-  padding: 3px 8px;
+  padding: 0;
   border: 0;
-  border-radius: 0;
+  border-radius: 50%;
   background: transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--home-muted);
   font-family: inherit;
   font-size: 12px;
@@ -694,15 +698,6 @@ body.home-template a:focus-visible {
   text-decoration: underline;
 }
 
-.home-template #publications-list {
-  max-height: 380px;
-  overflow-y: auto;
-  margin: 0 20px 24px;
-  padding-right: 8px;
-  scrollbar-color: var(--home-accent) var(--home-accent-soft);
-  scrollbar-width: thin;
-}
-
 .home-template .full-publication-list {
   margin: 0;
   padding-left: 1.25rem;
@@ -1000,8 +995,10 @@ body.home-template a:focus-visible {
 
   .home-template .home-nav .theme-toggle,
   .home-template .home-nav .lang-toggle {
-    min-width: 25px;
-    padding: 2px 5px;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    padding: 0;
   }
 
   .home-template .home-main {

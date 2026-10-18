@@ -100,8 +100,7 @@
       if (
         motionQuery.matches ||
         document.hidden ||
-        document.documentElement.dataset.theme !== "light" ||
-        deepseekButton.classList.contains("has-pose") ||
+                deepseekButton.classList.contains("has-pose") ||
         deepseekButton.classList.contains("is-reacting") ||
         blinkTimer !== null ||
         blinkEndTimer !== null
@@ -113,8 +112,7 @@
           blinkTimer = null;
           if (
             document.hidden ||
-            document.documentElement.dataset.theme !== "light" ||
-            deepseekButton.classList.contains("has-pose") ||
+                        deepseekButton.classList.contains("has-pose") ||
             deepseekButton.classList.contains("is-reacting")
           ) {
             scheduleIdleBlink();
@@ -138,7 +136,7 @@
           reactionId === activeReactionId &&
           message.classList.contains("is-visible") &&
           !document.hidden &&
-          document.documentElement.dataset.theme === "light"
+          true
         ) {
           deepseekButton.classList.add("has-pose", "is-reacting");
         }
@@ -146,7 +144,6 @@
     }
 
     function playDeepseekReaction(reaction) {
-      if (document.documentElement.dataset.theme !== "light") return;
       resetDeepseek();
       var reactionId = activeReactionId;
       var languageIndex = 1;
@@ -282,7 +279,7 @@
 
     scheduleIdleBlink();
     window.setTimeout(function () {
-      if (document.documentElement.dataset.theme === "light") preloadNextPose();
+      preloadNextPose();
     }, 1600);
   }
 

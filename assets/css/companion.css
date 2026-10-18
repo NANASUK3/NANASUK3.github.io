@@ -56,15 +56,8 @@
   transition: transform 180ms ease;
 }
 
-.deepseek-companion-pet__button,
 .deepseek-pet__button,
-.deepseek-pet__message,
-.deepseek-companion-pet__message {
-  display: none;
-}
-
-html[data-theme="dark"] .deepseek-companion-pet__button,
-html[data-theme="light"] .deepseek-pet__button {
+.deepseek-pet__message {
   display: block;
 }
 
@@ -123,7 +116,7 @@ html[data-theme="light"] .deepseek-pet__button {
   transform: rotate(45deg);
 }
 
-html[data-theme="dark"] .deepseek-companion-pet__message.is-visible {
+html[data-theme] .deepseek-companion-pet__message.is-visible {
   display: block;
   animation: deepseek-companion-message-in 180ms ease-out both;
 }
@@ -352,7 +345,7 @@ html[data-theme="dark"] .deepseek-companion-pet__message.is-visible {
   transform: rotate(45deg);
 }
 
-html[data-theme="light"] .deepseek-pet__message.is-visible {
+html[data-theme] .deepseek-pet__message.is-visible {
   display: block;
   animation: deepseek-message-in 180ms ease-out both;
 }
@@ -575,7 +568,7 @@ html[data-theme="light"] .deepseek-pet__message.is-visible {
   .deepseek-companion-pet__button.is-greeting .deepseek-companion-pet__image,
   .deepseek-companion-pet__button.is-laughing .deepseek-companion-pet__image,
   .deepseek-companion-pet__button.is-working .deepseek-companion-pet__image,
-  html[data-theme="dark"] .deepseek-companion-pet__message.is-visible {
+  html[data-theme] .deepseek-companion-pet__message.is-visible {
     animation: none;
   }
 
@@ -596,7 +589,7 @@ html[data-theme="light"] .deepseek-pet__message.is-visible {
   .deepseek-pet__button.is-reacting .deepseek-pet__pose,
   .deepseek-pet__button.is-reacting .deepseek-pet__reaction-icon,
   .deepseek-pet__button.is-reacting .deepseek-pet__spark,
-  html[data-theme="light"] .deepseek-pet__message.is-visible {
+  html[data-theme] .deepseek-pet__message.is-visible {
     animation: none;
   }
 

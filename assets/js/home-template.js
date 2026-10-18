@@ -238,9 +238,7 @@
     });
     var empty = "No public publications yet.";
     list.innerHTML = all.length
-      ? '<ul class="full-publication-list">' +
-        all.map(renderFullItem).join("") +
-        "</ul>"
+      ? all.map(renderCoreCard).join("")
       : '<p class="research-error">' + empty + "</p>";
     document.dispatchEvent(new CustomEvent("site:publicationsrendered"));
   }
