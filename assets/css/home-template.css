@@ -808,7 +808,22 @@ body.home-template a:focus-visible {
   grid-template-columns: 1fr auto;
   column-gap: 16px;
   align-items: start;
-  padding: 5px 0 15px;
+  /* Keep the separator centered between adjacent school logos. */
+  padding: 10px 0;
+  border-bottom: 0;
+  position: relative;
+}
+
+.home-template .experience-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  border-bottom: 1px solid var(--home-border-soft);
+}
+
+.home-template .experience-item:last-child {
   border-bottom: 1px solid var(--home-border-soft);
 }
 
