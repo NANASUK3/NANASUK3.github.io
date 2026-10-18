@@ -24,7 +24,7 @@
         var timer = null;
         var running = false;
         var original = Array.prototype.map.call(
-          button.querySelectorAll(".lang-en, .lang-zh"),
+          button.querySelectorAll(".lang-en"),
           function (label) {
             return [label, label.textContent];
           },
@@ -41,9 +41,7 @@
         function start() {
           if (running) return;
           running = true;
-          var selector = document.documentElement.classList.contains("lang-zh")
-            ? ".lang-zh"
-            : ".lang-en";
+          var selector = ".lang-en";
           var label =
             button.querySelector(selector) || button.querySelector("span");
           var index = 0;

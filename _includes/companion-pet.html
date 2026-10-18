@@ -1,41 +1,9 @@
-<aside
-  class="milk-frog-pet"
-  data-milk-frog-pet
-  data-asset-base="{{ base_path }}/images/milk-frog/"
-  data-asset-version="20261011-colorfix1"
-  data-deepseek-pose-base="{{ base_path }}/images/deepseek/poses/"
-  data-deepseek-pose-version="20261010-webp1"
-  aria-label="主题页宠 / Theme companion"
->
-  <button
-    class="milk-frog-pet__button"
-    type="button"
-    aria-label="和奶蛙互动 / Interact with the milk frog"
-    aria-describedby="milk-frog-message"
-    title="轻点让奶蛙笑一笑，长按看看它在忙什么 / Tap to make the milk frog laugh, hold to see what it is up to"
-  >
-    <img
-      class="milk-frog-pet__image"
-      src="{{ base_path }}/images/milk-frog/idle-0.webp?v=20261011-colorfix1"
-      width="192"
-      height="208"
-      alt=""
-      decoding="async"
-      fetchpriority="low"
-    />
-  </button>
-  <span
-    class="milk-frog-pet__message"
-    id="milk-frog-message"
-    role="status"
-    aria-live="polite"
-    aria-atomic="true"
-  ></span>
+<aside class="deepseek-companion-pet" data-deepseek-pet data-deepseek-pose-base="{{ base_path }}/images/deepseek/poses/" data-deepseek-pose-version="20261010-webp1" aria-label="Theme companion">
   <button
     class="deepseek-pet__button"
     type="button"
-    aria-label="和 DeepSeek 娘互动 / Interact with DeepSeek"
-    title="轻点切换动作，长按摸摸头 / Tap to change reactions, hold for a head pat"
+    aria-label="Interact with DeepSeek"
+    title="Tap to change reactions, hold for a head pat"
   >
     <span class="deepseek-pet__art">
       <img

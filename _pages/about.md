@@ -16,15 +16,13 @@ redirect_from:
           <img src="{{ site.baseurl }}/images/avatar-256.webp" alt="Jingpeng Yang" class="profile-img" width="256" height="256" decoding="async">
           <div class="bio-intro">
             <p class="bio-text">
-              <span class="lang-en">{{ site.data.i18n.intro.en }}</span>
-              <span class="lang-zh">{{ site.data.i18n.intro.zh }}</span>
+              {{ site.data.i18n.intro.en }}
             </p>
           </div>
         </div>
         <div class="bio-rest">
           <p class="bio-text">
-            <span class="lang-en">My research interests include computer vision, embodied AI, and agentic systems. I enjoy building practical and playful tools that help intelligent systems perceive, reason, and interact with the world.</span>
-            <span class="lang-zh">我的研究兴趣包括计算机视觉、具身智能和智能体系统。我喜欢构建实用又有趣的工具，让智能系统能够感知、推理并与世界交互。</span>
+            My research interests include computer vision, embodied AI, and agentic systems. I enjoy building practical and playful tools that help intelligent systems perceive, reason, and interact with the world.
           </p>
           <div class="bio-links" aria-label="Contact links">
             {% if site.author.email %}
@@ -47,12 +45,12 @@ redirect_from:
 
   <section id="News" class="home-section">
     <span id="news" class="home-anchor-alias" aria-hidden="true"></span>
-    <h2><strong><span class="lang-en">News</span><span class="lang-zh">动态</span></strong></h2>
+    <h2><strong>News</strong></h2>
     <div class="news-container">
       {% for item in site.data.i18n.news.items %}
       <div class="news-item">
         <div class="news-date">{{ item.date }}</div>
-        <div class="news-content"><span class="lang-en">{{ item.en }}</span><span class="lang-zh">{{ item.zh }}</span></div>
+        <div class="news-content">{{ item.en }}</div>
       </div>
       {% endfor %}
     </div>
@@ -61,21 +59,21 @@ redirect_from:
   <section id="Research" class="home-section">
     <span id="publications" class="home-anchor-alias" aria-hidden="true"></span>
     <div class="research-heading">
-      <h2><strong><span class="lang-en">Publications</span><span class="lang-zh">研究</span></strong></h2>
+      <h2><strong>Publications</strong></h2>
       <div class="pub-button-container" role="tablist" aria-label="Publication views">
         <button class="pub-button active" type="button" role="tab" aria-selected="true" aria-controls="core-publications" data-publication-view="core">
-          <span class="lang-en">{{ site.data.i18n.publications.core_button.en }}</span><span class="lang-zh">{{ site.data.i18n.publications.core_button.zh }}</span>
+          {{ site.data.i18n.publications.core_button.en }}
         </button>
         <button class="pub-button" type="button" role="tab" aria-selected="false" aria-controls="full-publications" data-publication-view="list">
-          <span class="lang-en">{{ site.data.i18n.publications.full_button.en }}</span><span class="lang-zh">{{ site.data.i18n.publications.full_button.zh }}</span>
+          {{ site.data.i18n.publications.full_button.en }}
         </button>
       </div>
     </div>
     <div id="core-publications" class="publication-view" data-publication-view="core" role="tabpanel" aria-live="polite">
-      <p class="research-loading"><span class="lang-en">Loading publications…</span><span class="lang-zh">正在加载论文……</span></p>
+      <p class="research-loading">Loading publications…</p>
     </div>
     <div id="full-publications" class="publication-view" data-publication-view="list" role="tabpanel" aria-live="polite" hidden>
-      <p class="research-loading"><span class="lang-en">Loading publications…</span><span class="lang-zh">正在加载论文……</span></p>
+      <p class="research-loading">Loading publications…</p>
     </div>
     <script id="publication-data" type="application/json">{{ site.data.publications | jsonify }}</script>
     <script id="author-links-data" type="application/json">{{ site.data.authors | jsonify }}</script>
@@ -83,18 +81,16 @@ redirect_from:
 
   <section id="Experiences" class="home-section">
     <span id="experience" class="home-anchor-alias" aria-hidden="true"></span>
-    <h2><strong><span class="lang-en">Experiences</span><span class="lang-zh">经历</span></strong></h2>
+    <h2><strong>Experiences</strong></h2>
     <div class="experience-section">
       {% for entry in site.data.i18n.experience.items %}
       <div class="experience-item">
-        <div class="exp-period lang-en">{{ entry.period_en }}</div>
-        <div class="exp-period lang-zh">{{ entry.period_zh }}</div>
+        <div class="exp-period">{{ entry.period_en }}</div>
         <div class="exp-main">
           {% assign logo_path = site.baseurl | append: '/' | append: entry.logo %}
           <img src="{{ logo_path }}" class="exp-logo" alt="{{ entry.alt }}" width="56" height="56" loading="lazy" decoding="async">
           <div class="exp-info">
-            <div class="exp-title lang-en"><strong>{{ entry.title_en }}</strong><br><span class="experience-note">{{ entry.details_en }}</span></div>
-            <div class="exp-title lang-zh"><strong>{{ entry.title_zh }}</strong><br><span class="experience-note">{{ entry.details_zh }}</span></div>
+            <div class="exp-title"><strong>{{ entry.title_en }}</strong><br><span class="experience-note">{{ entry.details_en }}</span></div>
           </div>
         </div>
       </div>
@@ -104,10 +100,10 @@ redirect_from:
 
   <section id="Awards" class="home-section">
     <span id="awards" class="home-anchor-alias" aria-hidden="true"></span>
-    <h2><strong><span class="lang-en">Awards</span><span class="lang-zh">荣誉</span></strong></h2>
+    <h2><strong>Awards</strong></h2>
     <ul class="awards-list">
       {% for award in site.data.i18n.awards.items %}
-      <li><span class="lang-en">{{ award.en }}</span><span class="lang-zh">{{ award.zh }}</span></li>
+      <li>{{ award.en }}</li>
       {% endfor %}
     </ul>
   </section>

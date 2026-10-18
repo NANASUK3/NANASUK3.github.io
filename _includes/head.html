@@ -21,16 +21,6 @@
     document.documentElement.className.replace(/\bno-js\b/g, "") + " js ";
 </script>
 
-<!-- Restore saved language (EN/ZH) before first paint -->
-<script>
-  try {
-    if (localStorage.getItem("site-lang") === "zh") {
-      document.documentElement.classList.add("lang-zh");
-      document.documentElement.lang = "zh-CN";
-    }
-  } catch (e) {}
-</script>
-
 <!-- For all browsers -->
 <link rel="stylesheet" href="{{ base_path }}/assets/css/main.css" />
 {% if page.stylesheets %} {% for stylesheet in page.stylesheets %}

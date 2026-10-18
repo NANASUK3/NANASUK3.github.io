@@ -165,7 +165,7 @@ textarea:focus-visible {
 
 .lang-toggle,
 .theme-toggle {
-  border-color: var(--dark-border-strong);
+  border-color: transparent;
   background: rgba(255, 255, 255, 0.03);
   color: var(--dark-text-muted);
   transition:
@@ -176,7 +176,7 @@ textarea:focus-visible {
 
 .lang-toggle:hover,
 .theme-toggle:hover {
-  border-color: rgba(130, 143, 255, 0.55);
+  border-color: transparent;
   background: rgba(255, 255, 255, 0.06);
   color: var(--dark-text-strong);
 }
@@ -628,9 +628,6 @@ select {
 
 /* Keep the transparent pet artwork untouched; only its keyboard focus ring
    participates in the dark palette. */
-.milk-frog-pet__button:focus-visible {
-  outline-color: var(--dark-accent);
-}
 
 /* ===== Reduced motion ==================================================== */
 

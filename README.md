@@ -6,8 +6,7 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 
 - Target-inspired single-page homepage with sections: About, News, Publications, Experiences, Awards
 - Light/dark theme switch with OS preference and persistent selection
-- English/Chinese language switch with persistent selection
-- Milk frog and DeepSeek companion interactions
+- DeepSeek companion interactions
 - Responsive research filters and desktop/mobile publication cards
 - Author profile with avatar, bio, and social links
 - MathJax 3 support for LaTeX math (`$...$` inline, `$$...$$` display)
@@ -32,14 +31,14 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 ├── _data/
 │   ├── authors.yml         # Publication author links
 │   ├── publications.yml    # Research data rendered by the homepage JS
-│   ├── i18n.yml            # Bilingual profile and page content
+│   ├── i18n.yml            # English profile and page content
 │   ├── ui-text.yml          # Theme UI text strings
 ├── _includes/               # Reusable Liquid partials
 │   ├── head/custom.html     # Custom <head> snippets (FA, MathJax, favicon)
 │   ├── icon.html            # Small inline SVG icons
 │   ├── home-nav.html        # Homepage navigation
 │   ├── home-footer.html     # Homepage footer
-│   ├── milk-frog-pet.html   # Homepage companions
+│   ├── companion-pet.html   # Homepage companion
 │   └── ...                  # SEO and script includes
 ├── _layouts/                # Page layout templates
 │   ├── home.html             # Homepage shell
@@ -55,12 +54,12 @@ Personal academic homepage of Jingpeng Yang, built with Jekyll and deployed on G
 │   │   ├── home-template.css # Target-inspired homepage styles
 │   │   ├── main.scss        # Main stylesheet entry (imports theme + custom)
 │   │   ├── dark.css         # Dark theme overrides
-│   │   ├── milk-frog.css    # Companion interactions
+│   │   ├── companion.css    # Companion interactions
 │   │   └── theme-transition.css # Theme transition effects
 │   ├── js/
 │   │   ├── home-template.js  # Homepage navigation and publication renderer
 │   │   ├── main.min.js      # Built native JS bundle (run `npm run build:js`)
-│   │   ├── milk-frog.js      # Milk frog and DeepSeek interactions
+│   │   ├── companion.js      # DeepSeek interactions
 │   │   └── something-new.js  # Publication placeholder interaction
 ├── images/                  # Avatar, logos, publication images, favicon
 ├── Gemfile                  # Ruby/Jekyll dependencies
@@ -122,7 +121,7 @@ author:
 
 ### Homepage
 
-The homepage uses `_layouts/home.html` and `_pages/about.md`. Edit `_data/i18n.yml` for bilingual profile, news, experiences, and awards text. Edit `_data/publications.yml` for research entries and topic filters.
+The homepage uses `_layouts/home.html` and `_pages/about.md`. Edit `_data/i18n.yml` for profile, news, experiences, and awards text. Edit `_data/publications.yml` for research entries and topic filters.
 
 ### Navigation
 
@@ -170,7 +169,7 @@ url: "https://yourdomain.com"
 
 MIT License. See `LICENSE` for details.
 
-See `THIRD_PARTY_NOTICES.md` for the target-template source and the existing milk-frog/DeepSeek asset notices. The target repository README welcomes reuse; personal information and private tracking metadata from the reference site were not copied.
+See `THIRD_PARTY_NOTICES.md` for the target-template source and DeepSeek asset notices. The target repository README welcomes reuse; personal information and private tracking metadata from the reference site were not copied.
 
 ## Acknowledgements
 

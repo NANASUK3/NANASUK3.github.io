@@ -9,5 +9,5 @@ This site does not copy the target author's personal information, portrait,
 research images, analytics ID, or verification metadata.
 
 The project also retains the existing Minimal Mistakes/Jekyll theme files and
-the local milk-frog and DeepSeek companion assets. Their source and notices
-remain in `images/milk-frog/NOTICE.txt` and `images/deepseek/README.md`.
+the local DeepSeek companion assets. Their source notice remains in
+`images/deepseek/README.md`.

@@ -36,8 +36,7 @@
 
   function localized(value) {
     if (value && typeof value === "object" && !Array.isArray(value)) {
-      var zh = document.documentElement.classList.contains("lang-zh");
-      return value[zh ? "zh" : "en"] || value.en || value.zh || "";
+      return value.en || value.zh || "";
     }
     return value == null ? "" : value;
   }
@@ -53,15 +52,7 @@
   }
 
   function linkLabel(type) {
-    var zh = document.documentElement.classList.contains("lang-zh");
-    var labels = {
-      paper: zh ? "论文" : "paper",
-      code: zh ? "代码" : "code",
-      project: zh ? "项目" : "project",
-      demo: zh ? "演示" : "demo",
-      benchmark: zh ? "基准" : "benchmark",
-      leaderboard: zh ? "榜单" : "leaderboard",
-    };
+    var labels = { paper: "paper", code: "code", project: "project", demo: "demo", benchmark: "benchmark", leaderboard: "leaderboard" };
     return labels[type] || type.charAt(0).toUpperCase() + type.slice(1);
   }
 
@@ -74,12 +65,7 @@
         classAttribute +
         ">" +
         '<button type="button" class="something-new-trigger" data-something-new aria-label="Explore something new">' +
-        '<span class="lang-en">' +
         escapeHTML((publication.title && publication.title.en) || title) +
-        "</span>" +
-        '<span class="lang-zh">' +
-        escapeHTML((publication.title && publication.title.zh) || title) +
-        "</span>" +
         "</button></span>"
       );
     }
@@ -260,9 +246,7 @@
     });
     if (!selected.length) selected = all;
 
-    var empty = document.documentElement.classList.contains("lang-zh")
-      ? "暂时没有公开的论文。"
-      : "No public publications yet.";
+    var empty = "No public publications yet.";
     core.innerHTML = selected.length
       ? selected.map(renderCoreCard).join("")
       : '<p class="research-error">' + empty + "</p>";
@@ -446,8 +430,7 @@
   }
 
   function syncLanguage() {
-    var zh = document.documentElement.classList.contains("lang-zh");
-    document.documentElement.setAttribute("lang", zh ? "zh-CN" : "en");
+    document.documentElement.setAttribute("lang", "en");
     renderPublications();
   }
 
@@ -457,7 +440,6 @@
     initNavigation();
     initResearch();
     syncLanguage();
-    document.addEventListener("site:layoutchange", syncLanguage);
   }
 
   if (document.readyState === "loading") {

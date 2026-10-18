@@ -5,7 +5,7 @@ layout: compress
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js home-template">
+<html lang="en" class="no-js home-template">
   <head>
     {% include head.html %}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +20,7 @@ layout: compress
     />
     <link
       rel="stylesheet"
-      href="{{ site.baseurl }}/assets/css/milk-frog.css?v=20261016-1"
+      href="{{ site.baseurl }}/assets/css/companion.css?v=20261016-1"
     />
     {% include head/custom.html %}
   </head>
@@ -32,12 +32,12 @@ layout: compress
       class="back-to-top home-back-to-top"
       type="button"
       data-back-to-top
-      aria-label="返回顶部 / Back to top"
+      aria-label="Back to top"
     >
       <span aria-hidden="true">↑</span>
     </button>
 
-    {% include milk-frog-pet.html %}
+    {% include companion-pet.html %}
 
     <script
       src="{{ site.baseurl }}/assets/js/home-template.js?v=20261017-3"
@@ -48,7 +48,7 @@ layout: compress
       defer
     ></script>
     <script
-      src="{{ site.baseurl }}/assets/js/milk-frog.js?v=20261011-frog1"
+      src="{{ site.baseurl }}/assets/js/companion.js?v=20261011-1"
       defer
     ></script>
     {% include scripts.html %}
