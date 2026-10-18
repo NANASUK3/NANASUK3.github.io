@@ -23,12 +23,7 @@
         button.dataset.somethingNewReady = "true";
         var timer = null;
         var running = false;
-        var original = Array.prototype.map.call(
-          button.querySelectorAll(".lang-en"),
-          function (label) {
-            return [label, label.textContent];
-          },
-        );
+        var original = [[button, button.textContent]];
         function restore() {
           if (timer !== null) window.clearTimeout(timer);
           timer = null;
@@ -41,9 +36,7 @@
         function start() {
           if (running) return;
           running = true;
-          var selector = ".lang-en";
-          var label =
-            button.querySelector(selector) || button.querySelector("span");
+          var label = button;
           var index = 0;
           var reduced =
             window.matchMedia &&
