@@ -60,19 +60,8 @@ redirect_from:
     <span id="publications" class="home-anchor-alias" aria-hidden="true"></span>
     <div class="research-heading">
       <h2><strong>Publications</strong></h2>
-      <div class="pub-button-container" role="tablist" aria-label="Publication views">
-        <button class="pub-button active" type="button" role="tab" aria-selected="true" aria-controls="core-publications" data-publication-view="core">
-          {{ site.data.i18n.publications.core_button.en }}
-        </button>
-        <button class="pub-button" type="button" role="tab" aria-selected="false" aria-controls="full-publications" data-publication-view="list">
-          {{ site.data.i18n.publications.full_button.en }}
-        </button>
-      </div>
     </div>
-    <div id="core-publications" class="publication-view" data-publication-view="core" role="tabpanel" aria-live="polite">
-      <p class="research-loading">Loading publications…</p>
-    </div>
-    <div id="full-publications" class="publication-view" data-publication-view="list" role="tabpanel" aria-live="polite" hidden>
+    <div id="publications-list" class="publication-view" role="region" aria-live="polite">
       <p class="research-loading">Loading publications…</p>
     </div>
     <script id="publication-data" type="application/json">{{ site.data.publications | jsonify }}</script>

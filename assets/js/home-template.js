@@ -4,7 +4,6 @@
   var state = {
     publications: [],
     authors: {},
-    publicationView: "core",
   };
 
   function getBasePath() {
@@ -231,67 +230,22 @@
   }
 
   function renderPublications() {
-    var core = document.getElementById("core-publications");
-    var full = document.getElementById("full-publications");
-    if (!core || !full) return;
+    var list = document.getElementById("publications-list");
+    if (!list) return;
 
     var all = state.publications.filter(function (publication) {
       return publication && publication.show !== false;
     });
-    var selected = all.filter(function (publication) {
-      return (
-        Array.isArray(publication.topics) &&
-        publication.topics.indexOf("selected") !== -1
-      );
-    });
-    if (!selected.length) selected = all;
-
     var empty = "No public publications yet.";
-    core.innerHTML = selected.length
-      ? selected.map(renderCoreCard).join("")
-      : '<p class="research-error">' + empty + "</p>";
-    full.innerHTML = all.length
+    list.innerHTML = all.length
       ? '<ul class="full-publication-list">' +
         all.map(renderFullItem).join("") +
         "</ul>"
       : '<p class="research-error">' + empty + "</p>";
-    setPublicationView(state.publicationView, null);
     document.dispatchEvent(new CustomEvent("site:publicationsrendered"));
   }
 
-  function setPublicationView(value, event) {
-    state.publicationView = value === "list" ? "list" : "core";
-    document
-      .querySelectorAll(".pub-button[data-publication-view]")
-      .forEach(function (button) {
-        var active =
-          button.getAttribute("data-publication-view") ===
-          state.publicationView;
-        button.classList.toggle("active", active);
-        button.setAttribute("aria-selected", active ? "true" : "false");
-      });
-    document
-      .querySelectorAll(".publication-view[data-publication-view]")
-      .forEach(function (view) {
-        var active =
-          view.getAttribute("data-publication-view") === state.publicationView;
-        view.hidden = !active;
-      });
-    if (event) event.preventDefault();
-  }
-
   function initResearch() {
-    document
-      .querySelectorAll(".pub-button[data-publication-view]")
-      .forEach(function (button) {
-        button.addEventListener("click", function () {
-          setPublicationView(
-            button.getAttribute("data-publication-view"),
-            null,
-          );
-        });
-      });
-    setPublicationView("core", null);
     renderPublications();
   }
 

@@ -694,7 +694,7 @@ body.home-template a:focus-visible {
   text-decoration: underline;
 }
 
-.home-template #full-publications {
+.home-template #publications-list {
   max-height: 380px;
   overflow-y: auto;
   margin: 0 20px 24px;
