@@ -61,7 +61,7 @@
       {
         action: "beg",
         pose: "beg.webp",
-        icon: "🥣",
+        icon: "",
         replies: [
           "我饿啦……可以给我一点饭饭吗？",
           "I’m hungry… could I have a little something to eat?",
