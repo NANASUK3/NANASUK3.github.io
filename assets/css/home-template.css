@@ -839,6 +839,7 @@ body.home-template a:focus-visible {
   width: 56px;
   height: 56px;
   flex: 0 0 56px;
+  align-self: center;
   object-fit: contain;
   object-position: center;
 }
