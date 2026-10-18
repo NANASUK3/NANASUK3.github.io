@@ -839,7 +839,7 @@ body.home-template a:focus-visible {
   width: 56px;
   height: 56px;
   flex: 0 0 56px;
-  align-self: center;
+  align-self: flex-end;
   object-fit: contain;
   object-position: center;
 }
@@ -1068,18 +1068,24 @@ body.home-template a:focus-visible {
     margin-left: 0;
   }
 
+  /* Keep the date in the second grid column at narrow widths too, so the
+     separator remains tied to the logo row rather than the date block. */
   .home-template .experience-item {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 6px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 10px;
   }
 
   .home-template .exp-period {
-    text-align: left;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
   }
 
   .home-template .exp-main {
-    width: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    width: auto;
   }
 
   .home-template .home-back-to-top {
