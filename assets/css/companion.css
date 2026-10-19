@@ -57,7 +57,7 @@
 }
 
 .deepseek-pet__message {
-  display: block;
+  display: none;
 }
 
 .deepseek-companion-pet__button {
