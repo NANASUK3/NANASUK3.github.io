@@ -56,7 +56,6 @@
   transition: transform 180ms ease;
 }
 
-.deepseek-pet__button,
 /* DeepSeek reactions use the character art without a speech bubble. */
 .deepseek-pet__message {
   display: none !important;
