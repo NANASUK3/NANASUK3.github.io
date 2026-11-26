@@ -1,0 +1,26 @@
+- id: something-new-2026
+  title: "Something New"
+  isPlaceholder: true
+  authors:
+    - name: "Jingpeng Yang"
+      isHighlight: true
+  venue: "ICLR 3026"
+  venueType: insub
+  image: "images/research-dpsk-blocks.webp"
+  imagePixelArt: true
+  imageAlt: "Pixel-art DeepSeek girl plays with wooden building blocks in a warm, cozy scene."
+  links: {}
+  highlights:
+    - "Coming soon"
+  topics:
+    - selected
+  year: 2026
+  show: true
+
+- id: under-review
+  title: "Under Review"
+  description: "A manuscript is currently under peer review."
+  image: "images/research-dpsk-pounce-v3.webp"
+  imagePixelArt: true
+  imageAlt: "Pixel-art DeepSeek girl summons a bowl of rice, leaps toward it, and slides to a stop just short of the bowl."
+  show: true

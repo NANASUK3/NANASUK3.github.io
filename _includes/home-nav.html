@@ -1,0 +1,43 @@
+{% assign section_path = site.baseurl | append: '/' %}
+{% if page.url == '/' %}
+  {% assign section_path = '' %}
+{% endif %}
+<nav id="site-nav" class="home-nav" aria-label="Primary navigation">
+  <div class="home-nav__inner">
+    <a class="home-nav__brand" href="{{ section_path }}#Top">
+      Jingpeng Yang
+    </a>
+    <div class="home-nav__links">
+      <a href="{{ section_path }}#Top">About</a>
+      <a href="{{ section_path }}#News">News</a>
+      <a href="{{ section_path }}#Research">Publications</a>
+      <a href="{{ section_path }}#Experiences">Experiences</a>
+      <a href="{{ section_path }}#Awards">Awards</a>
+    </div>
+    <div class="home-nav__controls" role="group" aria-label="Color theme">
+      <button
+        class="theme-toggle"
+        type="button"
+        data-theme-choice="light"
+        aria-label="Light theme"
+        aria-pressed="false"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="5.5"/>
+          <path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42m0-14.14-1.42 1.42M6.35 17.65l-1.42 1.42" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <button
+        class="theme-toggle"
+        type="button"
+        data-theme-choice="dark"
+        aria-label="Dark theme"
+        aria-pressed="false"
+      >
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+          <path d="M12.5 2.25A9.75 9.75 0 1 0 21.75 15a8.25 8.25 0 0 1-9.25-12.75Z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>

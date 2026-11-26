@@ -1,0 +1,58 @@
+---
+layout: compress
+---
+
+{% include base_path %}
+
+<!doctype html>
+<html lang="en" class="no-js home-template">
+  <head>
+    {% include head.html %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ site.baseurl }}/assets/css/home-template.css?v=20261123-1"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ site.baseurl }}/assets/css/companion.css?v=20261019-3"
+    />
+    {% include head/custom.html %}
+  </head>
+
+  <body class="home-template" data-base-path="{{ site.baseurl }}">
+    {% include browser-upgrade.html %} {{ content }}
+
+    <button
+      class="back-to-top home-back-to-top"
+      type="button"
+      data-back-to-top
+      aria-label="Back to top"
+    >
+      <span aria-hidden="true">↑</span>
+    </button>
+
+    {% include companion-pet.html %}
+
+    <script
+      src="{{ site.baseurl }}/assets/js/home-template.js?v=20261120-1"
+      defer
+    ></script>
+    {% if page.url == '/' %}
+    <script
+      src="{{ site.baseurl }}/assets/js/something-new.js?v=20261126-1"
+      defer
+    ></script>
+    {% endif %}
+    <script
+      src="{{ site.baseurl }}/assets/js/companion.js?v=20261119-2"
+      defer
+    ></script>
+    {% include scripts.html home_layout=true %}
+  </body>
+</html>

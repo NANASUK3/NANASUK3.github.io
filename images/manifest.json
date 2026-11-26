@@ -1,0 +1,14 @@
+{
+  "name": "Jingpeng Yang",
+  "short_name": "Jingpeng Yang",
+  "icons": [
+    {
+      "src": "/images/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

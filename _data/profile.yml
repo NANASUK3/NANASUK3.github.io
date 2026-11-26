@@ -1,0 +1,28 @@
+intro: >-
+  Welcome to my homepage! I am currently a postgraduate student
+  in the Lab for Multimedia Intelligence (LAMI) at the <a class="academic-link"
+  href="https://www.ustc.edu.cn/" target="_blank">University of Science and
+  Technology of China (USTC)</a>. I received my B.S. degree
+  from <a class="academic-link" href="https://www.nwpu.edu.cn/"
+  target="_blank">Northwestern Polytechnical University (NPU)</a> in 2026.
+
+news:
+  - date: Sep.2026
+    text: "🎉 I am starting my postgraduate studies at USTC."
+  - date: Jun.2026
+    text: "🥹 I've graduated from NPU. These four‑year journey is beyond words."
+
+experience:
+  - logo: images/ustc.webp
+    alt: USTC logo
+    title: University of Science and Technology of China
+    period: Sep.2026 - Present
+    details: Postgraduate Student Major in Artificial Intelligence.
+  - logo: images/nwpu.webp
+    alt: NPU logo
+    title: Northwestern Polytechnical University
+    period: Sep.2022 - Jul.2026
+    details: B.S. in Electrical Information Engineering.
+
+awards:
+  - "<em>Sep.2024</em>, Outstanding Student in Academic Performance, School of Electronics and Information, NPU."
