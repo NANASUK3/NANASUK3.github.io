@@ -246,8 +246,8 @@ body.home-template a:focus-visible {
   fill: currentColor;
 }
 
-html:not([data-theme="dark"]) .home-template .theme-toggle [data-theme-icon="light"],
-html[data-theme="dark"] .home-template .theme-toggle [data-theme-icon="dark"] {
+html:not([data-theme="dark"]) .home-template .theme-toggle [data-theme-icon="dark"],
+html[data-theme="dark"] .home-template .theme-toggle [data-theme-icon="light"] {
   display: none;
 }
 
