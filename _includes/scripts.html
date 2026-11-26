@@ -48,7 +48,8 @@
     var darkPreference = window.matchMedia
       ? window.matchMedia("(prefers-color-scheme: dark)")
       : null;
-    var themeButtons = document.querySelectorAll("[data-theme-choice]");
+    var themeButtons = document.querySelectorAll("[data-theme-toggle]");
+    var requestedTheme = systemTheme();
     var themeTransitionTimer = null;
     var themeTransitionDuration = 480;
     var activeThemeTransition = null;
@@ -66,7 +67,10 @@
       root.style.colorScheme = t;
       root.dataset.theme = t;
       themeButtons.forEach(function (button) {
-        button.setAttribute("aria-pressed", button.dataset.themeChoice === t);
+        button.setAttribute(
+          "aria-label",
+          t === "dark" ? "Switch to light theme" : "Switch to dark theme",
+        );
       });
       document
         .querySelectorAll('meta[name="theme-color"]')
@@ -123,6 +127,7 @@
     }
 
     function applyTheme(t, animate) {
+      requestedTheme = t;
       var root = document.documentElement;
       var previousTheme = root.dataset.theme;
       var themeChanged = previousTheme && previousTheme !== t;
@@ -168,13 +173,13 @@
       updateTheme(t);
     }
 
-    function selectTheme(event) {
-      applyTheme(event.currentTarget.dataset.themeChoice, true);
+    function toggleTheme() {
+      applyTheme(requestedTheme === "dark" ? "light" : "dark", true);
     }
 
     function init() {
       themeButtons.forEach(function (button) {
-        button.addEventListener("click", selectTheme);
+        button.addEventListener("click", toggleTheme);
       });
       if (darkPreference) {
         var onChange = function () {
